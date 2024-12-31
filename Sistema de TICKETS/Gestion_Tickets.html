@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tickets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/Gestion_Tickets.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Gestión de Tickets - <span id="currentDepartment">TIC'S</span></h1>
+            </div>
+        </header>
+
+        <div class="filters-section">
+            <div class="filter-group">
+                <select id="statusFilter" class="filter-select">
+                    <option value="all">Todos los estados</option>
+                    <option value="pending">Pendientes</option>
+                    <option value="inProgress">En Proceso</option>
+                    <option value="completed">Completados</option>
+                    <option value="transferred">Transferidos</option>
+                </select>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar ticket por nombre o ID...">
+            </div>
+        </div>
+
+        <div class="tickets-container">
+            <!-- Ticket Card 1 -->
+            <div class="ticket-card">
+                <div class="ticket-header">
+                    <span class="ticket-id">#TK001</span>
+                    <span class="ticket-status pending">Pendiente</span>
+                </div>
+                <div class="ticket-content">
+                    <h3>Solicitud de Diseño Web</h3>
+                    <p class="ticket-requester">
+                        <i class="fas fa-user"></i> Juan Pérez - Mercadeo
+                    </p>
+                    <p class="ticket-date">
+                        <i class="fas fa-calendar"></i> 15/03/2024
+                    </p>
+                    <p class="ticket-description">
+                        Necesitamos actualizar el diseño de la página principal del sitio web corporativo.
+                    </p>
+                </div>
+                <div class="ticket-actions">
+                    <button class="action-btn view-btn">
+                        <i class="fas fa-eye"></i> Ver Detalles
+                    </button>
+                    <button class="action-btn transfer-btn">
+                        <i class="fas fa-exchange-alt"></i> Transferir
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ticket Card 2 -->
+            <div class="ticket-card">
+                <div class="ticket-header">
+                    <span class="ticket-id">#TK002</span>
+                    <span class="ticket-status in-progress">En Proceso</span>
+                </div>
+                <div class="ticket-content">
+                    <h3>Actualización de Software</h3>
+                    <p class="ticket-requester">
+                        <i class="fas fa-user"></i> María González - Contabilidad
+                    </p>
+                    <p class="ticket-date">
+                        <i class="fas fa-calendar"></i> 16/03/2024
+                    </p>
+                    <p class="ticket-description">
+                        Solicitud de actualización del software contable en equipos del departamento.
+                    </p>
+                </div>
+                <div class="ticket-actions">
+                    <button class="action-btn view-btn">
+                        <i class="fas fa-eye"></i> Ver Detalles
+                    </button>
+                    <button class="action-btn transfer-btn">
+                        <i class="fas fa-exchange-alt"></i> Transferir
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ticket Card 3 -->
+            <div class="ticket-card">
+                <div class="ticket-header">
+                    <span class="ticket-id">#TK003</span>
+                    <span class="ticket-status completed">Completado</span>
+                </div>
+                <div class="ticket-content">
+                    <h3>Mantenimiento de Equipos</h3>
+                    <p class="ticket-requester">
+                        <i class="fas fa-user"></i> Carlos Ruiz - Comercial
+                    </p>
+                    <p class="ticket-date">
+                        <i class="fas fa-calendar"></i> 14/03/2024
+                    </p>
+                    <p class="ticket-description">
+                        Mantenimiento preventivo de equipos del área de ventas completado.
+                    </p>
+                </div>
+                <div class="ticket-actions">
+                    <button class="action-btn view-btn">
+                        <i class="fas fa-eye"></i> Ver Detalles
+                    </button>
+                    <button class="action-btn transfer-btn">
+                        <i class="fas fa-exchange-alt"></i> Transferir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transfer Modal -->
+    <div id="transferModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Transferir Ticket #TK001</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="transferDepartment">Seleccionar Área</label>
+                    <select id="transferDepartment">
+                        <option value="">Seleccione un área</option>
+                        <option value="marketing">Mercadeo</option>
+                        <option value="commercial">Comercial</option>
+                        <option value="administrative">Administrativo</option>
+                        <option value="accounting">Contable</option>
+                        <option value="sst">SST</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="transferReason">Motivo de Transferencia</label>
+                    <textarea id="transferReason" rows="4" placeholder="Explique el motivo de la transferencia..."></textarea>
+                </div>
+                <button class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Confirmar Transferencia
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ticket Detail Modal -->
+    <div id="ticketDetailModal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Ticket #TK001 - Detalles</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="ticket-detail-grid">
+                    <div class="ticket-info">
+                        <h3>Información del Ticket</h3>
+                        <div class="info-group">
+                            <label>Estado:</label>
+                            <select class="status-select">
+                                <option value="pending">Pendiente</option>
+                                <option value="inProgress">En Proceso</option>
+                                <option value="completed">Completado</option>
+                                <option value="transferred">Transferido</option>
+                            </select>
+                        </div>
+                        <div class="info-group">
+                            <label>Solicitante:</label>
+                            <span>Juan Pérez</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Área:</label>
+                            <span>Marketing</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Fecha:</label>
+                            <span>15/03/2024</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Prioridad:</label>
+                            <select class="priority-select">
+                                <option value="low">Baja</option>
+                                <option value="medium">Media</option>
+                                <option value="high">Alta</option>
+                                <option value="urgent">Urgente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ticket-description">
+                        <h3>Descripción</h3>
+                        <p>Necesitamos actualizar el diseño de la página principal del sitio web corporativo para mejorar la experiencia de usuario y alinearlo con la nueva imagen de marca.</p>
+                    </div>
+                </div>
+                <div class="ticket-history">
+                    <h3>Historial de Actividad</h3>
+                    <div class="history-item">
+                        <span class="history-date">15/03/2024 10:30</span>
+                        <span class="history-action">Ticket creado por Juan Pérez</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-date">15/03/2024 11:45</span>
+                        <span class="history-action">Estado actualizado a "En Proceso"</span>
+                    </div>
+                    <div class="history-item">
+                        <span class="history-date">15/03/2024 14:20</span>
+                        <span class="history-action">Comentario añadido por Soporte TIC</span>
+                    </div>
+                </div>
+                <div class="ticket-response">
+                    <h3>Respuesta</h3>
+                    <textarea rows="4" placeholder="Escribir respuesta o actualización..."></textarea>
+                    <div class="response-actions">
+                        <button class="submit-btn">
+                            <i class="fas fa-reply"></i> Responder
+                        </button>
+                        <button class="attach-btn">
+                            <i class="fas fa-paperclip"></i> Adjuntar Archivo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/Gestion_Tickets.js"></script>
+</body>
+</html>

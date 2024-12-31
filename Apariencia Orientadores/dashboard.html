@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Carreras</title>
+    <link rel="stylesheet" href="CSS/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="ASSETS/Etc-GRANDE.png" alt="Logo Empresa" class="logo logo-full">
+                <img src="ASSETS/etc-logo-mini.png" alt="Logo Icon" class="logo logo-icon">
+                <span class="version">v1.0.0</span>
+            </div>
+
+            <div class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="carreras.html" class="sidebar-item">
+                    <i class="fas fa-users"></i>
+                    <span>Carreras</span>
+                </a>
+                <a href="BASE.html" class="sidebar-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Base</span>
+                </a>
+                <a href="ventas.html" class="sidebar-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Ventas</span>
+                </a>
+                <a href="promociones.html" class="sidebar-item">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Promociones Activas</span>
+                </a>
+                <a href="ayuda.html" class="sidebar-item">
+                    <i class="fas fa-database"></i>
+                    <span>Tickets</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info" id="userInfo">
+                    <img src="assets/user-avatar.png" alt="User Avatar" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Johana</span>
+                        <span class="user-role">Supervisora</span>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+                <div class="user-menu" id="userMenu">
+                    <a href="cuenta.html" class="menu-item">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Mi Cuenta</span>
+                    </a>
+                    <a href="logout.php" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <div class="greeting">Hola Johana 👋</div>
+                <div class="search-bar">Search</div>
+            </div>
+
+            <div class="metrics">
+                <div class="metric">
+                    <div class="metric-value">$16.8M</div>
+                    <div class="metric-label">37.8% este mes</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">80</div>
+                    <div class="metric-label">25.65% esta semana</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">$1.5M</div>
+                    <div class="metric-label">15% esta semana</div>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="sales-chart">
+                    <div class="chart-title">VENTAS POR MES</div>
+                    <div class="chart-container">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="convertibility">
+                    <div class="chart-title">CONVERTIBILIDAD</div>
+                    <div class="chart-container">
+                        <canvas id="conversionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="careers">
+                <div class="chart-title">CARRERAS</div>
+                <div class="career-item">
+                    <div class="career-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="career-details">
+                        <div class="career-title">Ingeniería en Sistemas</div>
+                        <div class="career-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        <div class="career-stats">
+                            <div class="career-stat">32 Cupos</div>
+                            <div class="career-stat">$210,000</div>
+                            <div class="career-stat">20</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-item">
+                    <div class="career-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="career-details">
+                        <div class="career-title">Ingeniería Industrial</div>
+                        <div class="career-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        <div class="career-stats">
+                            <div class="career-stat">32 Cupos</div>
+                            <div class="career-stat">$210,000</div>
+                            <div class="career-stat">20</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-item">
+                    <div class="career-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div class="career-details">
+                        <div class="career-title">Licenciatura en Educación Infantil</div>
+                        <div class="career-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        <div class="career-stats">
+                            <div class="career-stat">32 Cupos</div>
+                            <div class="career-stat">$210,000</div>
+                            <div class="career-stat">20</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="career-item">
+                    <div class="career-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="career-details">
+                        <div class="career-title">Psicología</div>
+                        <div class="career-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                        <div class="career-stats">
+                            <div class="career-stat">32 Cupos</div>
+                            <div class="career-stat">$210,000</div>
+                            <div class="career-stat">20</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="JS/dashboard.js"></script>
+</body>
+</html>

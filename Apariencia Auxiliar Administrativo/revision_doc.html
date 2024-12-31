@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Aspirantes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/revision_doc.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Gestión de Aspirantes</h1>
+                <div class="search-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar aspirante...">
+                    </div>
+                    <button class="add-btn" id="addAspirantBtn">
+                        <i class="fas fa-plus"></i> Nuevo Aspirante
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+
+        <div class="filter-group">
+            <select id="orientadorFilter" class="filter-select">
+                <option value="">Todos los Orientadores</option>
+                <option value="Diana Rodríguez">Diana Rodríguez</option>
+                <option value="Naomi Mateus">Naomi Mateus</option>
+                <option value="Ana Venegas">Ana Venegas</option>
+                <option value="Francy Cortes">Francy Cortes</option>
+                <option value="Estefanía Rodríguez">Estefanía Rodríguez</option>
+                <option value="Diego Ruiz">Diego Ruiz</option>
+                <option value="Alison Gutiérrez">Alison Gutiérrez</option>
+                <option value="Daniela Muñoz">Daniela Muñoz</option>
+                <option value="Liz Bernal">Liz Bernal</option>
+                <option value="Nicol Castiblanco">Nicol Castiblanco</option>
+                <option value="Johana Niño">Johana Niño</option>
+                <option value="Andrea González">Andrea González</option>
+                <option value="Andrea Meneses">Andrea Meneses</option>
+                <option value="Angie Villamor">Angie Villamor</option>
+                <option value="Ada Rangel">Ada Rangel</option>
+                <option value="Yuli Hernández">Yuli Hernández</option>
+                <option value="José Sierra">José Sierra</option>
+                <option value="Yohandra Labrado">Yohandra Labrado</option>
+            </select>
+        </div>
+    
+
+        <div class="table-container">
+            <table id="aspirantesTable">
+                <thead>
+                    <tr>
+                        <th>Nombre del Aspirante</th>
+                        <th>Cédula</th>
+                        <th>Orientador</th>
+                        <th>Documental</th>
+                        <th>Administrativo</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Juan Pérez</td>
+                        <td>123456789</td>
+                        <td>María González</td>
+                        <td>
+                            <div class="status-indicator status-yellow" data-action="documental"></div>
+                        </td>
+                        <td>
+                            <label class="checkbox-container">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </td>
+                        <td>
+                            <button class="obs-btn" data-action="observations">
+                                <i class="fas fa-comments"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal for Documents -->
+    <div id="documentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Documentos Requeridos</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="documents-grid">
+                <div class="document-item">
+                    <div class="doc-info">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="doc-name">Cédula</span>
+                    </div>
+                    <div class="doc-actions">
+                        <select class="status-select">
+                            <option value="">Seleccionar estado</option>
+                            <option value="listo">Listo</option>
+                        </select>
+                        <div class="date-picker-container" style="display: none;">
+                            <input type="date" class="compromise-date">
+                        </div>
+                    </div>
+                </div>
+                <div class="document-item">
+                    <div class="doc-info">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="doc-name">EPS</span>
+                    </div>
+                    <div class="doc-actions">
+                        <select class="status-select">
+                            <option value="">Seleccionar estado</option>
+                            <option value="listo">Listo</option>
+                        </select>
+                        <div class="date-picker-container" style="display: none;">
+                            <input type="date" class="compromise-date">
+                        </div>
+                    </div>
+                </div>
+                <div class="document-item">
+                    <div class="doc-info">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="doc-name">ICFES</span>
+                    </div>
+                    <div class="doc-actions">
+                        <select class="status-select">
+                            <option value="">Seleccionar estado</option>
+                            <option value="listo">Listo</option>
+                        </select>
+                        <div class="date-picker-container" style="display: none;">
+                            <input type="date" class="compromise-date">
+                        </div>
+                    </div>
+                </div>
+                <div class="document-item">
+                    <div class="doc-info">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="doc-name">Bachiller</span>
+                    </div>
+                    <div class="doc-actions">
+                        <select class="status-select">
+                            <option value="">Seleccionar estado</option>
+                            <option value="listo">Listo</option>
+                        </select>
+                        <div class="date-picker-container" style="display: none;">
+                            <input type="date" class="compromise-date">
+                        </div>
+                    </div>
+                </div>
+                <div class="document-item">
+                    <div class="doc-info">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="doc-name">Título</span>
+                    </div>
+                    <div class="doc-actions">
+                        <select class="status-select">
+                            <option value="">Seleccionar estado</option>
+                            <option value="listo">Listo</option>
+                            <option value="compromiso">Compromiso</option>
+                        </select>
+                        <div class="date-picker-container" style="display: none;">
+                            <input type="date" class="compromise-date">
+                        </div>
+                    </div>
+                </div>
+                <div class="document-item">
+                    <div class="doc-info">
+                        <i class="fas fa-file-pdf"></i>
+                        <span class="doc-name">Sabana de Notas</span>
+                    </div>
+                    <div class="doc-actions">
+                        <select class="status-select">
+                            <option value="">Seleccionar estado</option>
+                            <option value="listo">Listo</option>
+                            <option value="compromiso">Compromiso</option>
+                        </select>
+                        <div class="date-picker-container" style="display: none;">
+                            <input type="date" class="compromise-date">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Observations -->
+    <div id="observationsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Observaciones</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message">
+                        <div class="message-info">
+                            <span class="user">María González</span>
+                            <span class="timestamp">10:30 AM</span>
+                        </div>
+                        <div class="message-content">
+                            Pendiente documento de identidad
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Escribir observación...">
+                    <button id="sendMessage">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/revision_doc.js"></script>
+</body>
+</html>

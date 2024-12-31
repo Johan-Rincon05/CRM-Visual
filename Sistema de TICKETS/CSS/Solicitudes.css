@@ -1,0 +1,187 @@
+:root {
+    --primary-color: #2C3E50;
+    --secondary-color: #34495E;
+    --accent-color: #3498DB;
+    --success-color: #2ECC71;
+    --light-gray: #ECF0F1;
+    --dark-gray: #7F8C8D;
+    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --gradient: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+body {
+    background-color: #f5f6fa;
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--primary-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard-header {
+    background: var(--gradient);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.header-content h1 {
+    color: white;
+    font-size: 2.2rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ticket-form-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    padding: 40px;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+.ticket-form-container:hover {
+    transform: translateY(-5px);
+}
+
+.ticket-form {
+    display: grid;
+    gap: 25px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group label i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 15px;
+    border: 2px solid var(--light-gray);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: var(--accent-color);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
+}
+
+.submit-btn {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--success-color);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .ticket-form-container {
+        padding: 25px;
+    }
+
+    .dashboard-header {
+        padding: 20px;
+    }
+
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px;
+    }
+
+    .submit-btn {
+        padding: 15px 25px;
+    }
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Master - Analytics</title>
+    <link rel="stylesheet" href="CSS/base_master.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Enhanced Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="ASSETS/Etc-GRANDE.png" alt="Logo Empresa" class="logo logo-full">
+                <img src="ASSETS/etc-logo-mini.png" alt="Logo Icon" class="logo logo-icon">
+                <span class="version">v1.0.0</span>
+            </div>
+
+            <div class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="Dashboard_Dirección.html" class="sidebar-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="Base_Master.html" class="sidebar-item active">
+                    <i class="fas fa-database"></i>
+                    <span>Base Master</span>
+                </a>
+                <a href="Equipos.html" class="sidebar-item">
+                    <i class="fas fa-users"></i>
+                    <span>Equipos</span>
+                </a>
+                <a href="Ventas.html" class="sidebar-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Ventas</span>
+                </a>
+                <a href="Reportes.html" class="sidebar-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Reportes</span>
+                </a>
+                <a href="Metas_Comerciales.html" class="sidebar-item">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Metas Comerciales</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info" id="userInfo">
+                    <img src="assets/user-avatar.png" alt="User Avatar" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Fernando Suarez</span>
+                        <span class="user-role">Director</span>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+                <div class="user-menu" id="userMenu">
+                    <a href="cuenta.html" class="menu-item">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Mi Cuenta</span>
+                    </a>
+                    <a href="logout.php" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Base Master de Leads</h1>
+                <div class="controls">
+                    <div class="search-bar">
+                        <input type="text" id="searchLeads" placeholder="Buscar leads...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <button id="assignLeadsBtn" class="action-btn" disabled>
+                        <i class="fas fa-user-plus"></i> Asignar Leads
+                    </button>
+                    <button id="uploadLeadsBtn" class="action-btn" onclick="location.href='Carga_leads.html'">
+                        <i class="fas fa-upload"></i> Cargar Leads
+                    </button>
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <div class="filter-group">
+                    <select id="pautaFilter">
+                        <option value="">Filtrar por Pauta</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="google">Google</option>
+                    </select>
+                    <select id="orientadorFilter">
+                        <option value="">Filtrar por Orientador</option>
+                    </select>
+                    <select id="carreraFilter">
+                        <option value="">Filtrar por Carrera</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="leadsTable">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>Pauta</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Carrera de Interés</th>
+                            <th>Último Título</th>
+                            <th>Nombre del Título</th>
+                            <th>Orientador Asignado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leadsTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button id="prevPage" class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                <span id="currentPage">Página 1 de 1</span>
+                <button id="nextPage" class="page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para asignar orientador -->
+    <div id="assignModal" class="modal">
+        <div class="modal-content">
+            <h2>Asignar Orientador</h2>
+            <p><span id="selectedLeadsCount">0</span> leads seleccionados</p>
+            <form id="assignForm">
+                <div class="form-group">
+                    <label>Seleccionar Orientador</label>
+                    <select id="orientadorSelect" required>
+                        <option value="">Seleccione un orientador</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Asignar</button>
+                    <button type="button" class="cancel-btn" onclick="closeModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="JS/base_master.js"></script>
+</body>
+</html>

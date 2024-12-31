@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pagos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/Ventas.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Gestión de Pagos</h1>
+                <div class="search-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar cliente...">
+                    </div>
+                    <button class="add-btn" id="addClientBtn">
+                        <i class="fas fa-plus"></i> Nuevo Cliente
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <div class="table-container">
+            <div class="table-wrapper">
+                <table id="paymentsTable">
+                    <thead>
+                        <tr>
+                            <th>Fecha De Pago</th>
+                            <th>Nombre Cliente</th>
+                            <th>Número De Documento</th>
+                            <th>Celular</th>
+                            <th>Universidad</th>
+                            <th>Valor de la inscripción</th>
+                            <th>Último Título</th>
+                            <th>Programa A Estudiar</th>
+                            <th>Abono</th>
+                            <th>¿Cómo pagó?</th>
+                            <th>Documento De Quien Consigna</th>
+                            <th>Observaciones</th>
+                            <th>Aprobado Comercial</th>
+                            <th>Aprobado Administrativo</th>
+                            <th>Aprobado Contable</th>
+                            <th>Observaciones De Auditoría</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td>2024-01-20</td>
+                            <td>Juan Pérez</td>
+                            <td>123456789</td>
+                            <td>3001234567</td>
+                            <td>Universidad Example</td>
+                            <td>$500.000</td>
+                            <td>Bachiller</td>
+                            <td>Ingeniería</td>
+                            <td>$200.000</td>
+                            <td>Efectivo</td>
+                            <td>123456789</td>
+                            <td>
+                                <button class="obs-btn" data-action="observations">
+                                    <i class="fas fa-comment"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" class="approval-checkbox" data-type="comercial">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" class="approval-checkbox" data-type="administrativo">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" class="approval-checkbox" data-type="contable">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                            <td>
+                                <button class="obs-btn" data-action="audit">
+                                    <i class="fas fa-comments"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Observations -->
+    <div id="observationsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Observaciones</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="chat-container">
+                <div class="chat-messages"></div>
+                <div class="chat-input">
+                    <input type="text" placeholder="Escribe una observación...">
+                    <button><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Audit Observations -->
+    <div id="auditModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Observaciones de Auditoría</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="audit-container">
+                <div class="audit-section">
+                    <h3>Comercial</h3>
+                    <div class="chat-messages" id="comercialMessages"></div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Agregar observación comercial...">
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+                <div class="audit-section">
+                    <h3>Administrativo</h3>
+                    <div class="chat-messages" id="administrativoMessages"></div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Agregar observación administrativa...">
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+                <div class="audit-section">
+                    <h3>Contable</h3>
+                    <div class="chat-messages" id="contableMessages"></div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Agregar observación contable...">
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/Ventas.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas Comerciales - Analytics</title>
+    <link rel="stylesheet" href="CSS/metas.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <a href="Dashboard_Dirección.html" class="sidebar-item">Dashboard</a>
+            <a href="Base_Master.html" class="sidebar-item">Base Master</a>
+            <a href="Equipos.html" class="sidebar-item">Equipos</a>
+            <a href="Ventas.html" class="sidebar-item">Ventas</a>
+            <a href="Reportes.html" class="sidebar-item">Reportes</a>
+            <a href="Metas_Comerciales.html" class="sidebar-item active">Metas Comerciales</a>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Metas Comerciales</h1>
+                <div class="controls">
+                    <div class="date-filter">
+                        <select id="periodFilter">
+                            <option value="month">Este Mes</option>
+                            <option value="quarter">Este Cuatrimestre</option>
+                            <option value="year">Este Año</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Meta de Ventas</h3>
+                    <div class="value" id="salesGoal">0</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="salesProgress"></div>
+                    </div>
+                    <div class="progress-label">Progreso: <span id="salesProgressLabel">0%</span></div>
+                </div>
+                <div class="metric-card">
+                    <h3>Meta de Recaudo</h3>
+                    <div class="value" id="collectionGoal">$0</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="collectionProgress"></div>
+                    </div>
+                    <div class="progress-label">Progreso: <span id="collectionProgressLabel">0%</span></div>
+                </div>
+                <div class="metric-card">
+                    <h3>Proyección de Cumplimiento</h3>
+                    <div class="value" id="projectedCompletion">0%</div>
+                    <div class="trend" id="projectionTrend">↑</div>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h3>Progreso por Equipo</h3>
+                    <canvas id="teamProgressChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Tendencia de Cumplimiento</h3>
+                    <canvas id="completionTrendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="goals-table-container">
+                <h3>Detalle de Metas por Equipo</h3>
+                <table id="goalsTable">
+                    <thead>
+                        <tr>
+                            <th>Equipo</th>
+                            <th>Meta de Ventas</th>
+                            <th>Ventas Actuales</th>
+                            <th>Meta de Recaudo</th>
+                            <th>Recaudo Actual</th>
+                            <th>Progreso</th>
+                            <th>Proyección</th>
+                        </tr>
+                    </thead>
+                    <tbody id="goalsTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="settings-container">
+                <h3>Configuración de Metas</h3>
+                <div class="settings-grid">
+                    <div class="setting-card">
+                        <h4>Valor Suscripción</h4>
+                        <div class="subscription-value">$195,000</div>
+                    </div>
+                    <div class="setting-card">
+                        <h4>Ajustar Meta</h4>
+                        <button id="adjustGoalBtn" class="adjust-btn">Ajustar Meta</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para ajustar metas -->
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <h2>Ajustar Metas Comerciales</h2>
+            <form id="goalForm">
+                <div class="form-group">
+                    <label>Meta de Ventas Global</label>
+                    <input type="number" id="newSalesGoal" required>
+                </div>
+                <div class="form-group">
+                    <label>Distribuir por Equipo</label>
+                    <div class="team-distribution">
+                        <div>
+                            <label>Equipo Diana</label>
+                            <input type="number" id="teamDianaGoal">
+                        </div>
+                        <div>
+                            <label>Equipo Nicol</label>
+                            <input type="number" id="teamNicolGoal">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Guardar</button>
+                    <button type="button" class="cancel-btn" onclick="closeModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="JS/metas.js"></script>
+</body>
+</html>

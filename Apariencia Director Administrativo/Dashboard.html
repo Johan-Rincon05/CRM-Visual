@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Dirección Administrativa</title>
+    <link rel="stylesheet" href="CSS/Dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="greeting">
+                <h1>Dashboard</h1>
+                <p>Bienvenido, Directora Alejandra Moreno 👋</p>
+            </div>
+            <div class="period-selector">
+                <select id="periodSelector">
+                    <option value="day">Hoy</option>
+                    <option value="week">Esta Semana</option>
+                    <option value="month">Este Mes</option>
+                    <option value="year">Este Año</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Métricas Principales -->
+        <section class="main-metrics">
+            <div class="metric-card">
+                <h3>Total Cartera</h3>
+                <p class="metric-value">$2.5M</p>
+                <p class="metric-trend positive">↑ 12% vs mes anterior</p>
+            </div>
+            <div class="metric-card">
+                <h3>Documentos Completados</h3>
+                <p class="metric-value">85%</p>
+                <p class="metric-trend positive">↑ 5% vs mes anterior</p>
+            </div>
+            <div class="metric-card">
+                <h3>Total Estudiantes</h3>
+                <p class="metric-value">1,234</p>
+                <p class="metric-trend neutral">= vs mes anterior</p>
+            </div>
+        </section>
+
+        <!-- Gráficos de Cartera -->
+        <section class="charts-grid">
+            <div class="chart-container">
+                <h3>Estado de Cartera por Universidad</h3>
+                <div style="height: 300px;">
+                    <canvas id="carteraUniversidades"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3>Pagos por Cuota</h3>
+                <div style="height: 300px;">
+                    <canvas id="pagosCuotas"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Métricas de Empleados -->
+        <section class="employee-metrics">
+            <div class="employee-card">
+                <div class="employee-info">
+                    <img src="assets/paul.jpg" alt="Paul Campos">
+                    <div class="employee-details">
+                        <h3>Paul Campos</h3>
+                        <p>Asistente Administrativo - Cartera</p>
+                    </div>
+                </div>
+                <div class="employee-stats">
+                    <div class="stat">
+                        <span>Gestiones Completadas</span>
+                        <p>245</p>
+                    </div>
+                    <div class="stat">
+                        <span>Efectividad de Cobro</span>
+                        <p>87%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="employee-card">
+                <div class="employee-info">
+                    <img src="assets/andres.jpg" alt="Andrés Morales">
+                    <div class="employee-details">
+                        <h3>Andrés Morales</h3>
+                        <p>Auxiliar Administrativo - Documentación</p>
+                    </div>
+                </div>
+                <div class="employee-stats">
+                    <div class="stat">
+                        <span>Documentos Procesados</span>
+                        <p>789</p>
+                    </div>
+                    <div class="stat">
+                        <span>Tasa de Completitud</span>
+                        <p>92%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gráficos de Equipos -->
+        <section class="charts-grid">
+            <div class="chart-container">
+                <h3>Cumplimiento Documentación - Equipo Nicol</h3>
+                <div style="height: 300px;">
+                    <canvas id="equipoNicol"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3>Cumplimiento Documentación - Equipo Diana</h3>
+                <div style="height: 300px;">
+                    <canvas id="equipoDiana"></canvas>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="JS/Dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes - Tickets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/Solicitudes.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Solicitudes - Tickets</h1>
+            </div>
+        </header>
+
+        <div class="ticket-form-container">
+            <form id="ticketForm" class="ticket-form">
+                <div class="form-group">
+                    <label for="nombre">
+                        <i class="fas fa-user"></i> Nombre Completo
+                    </label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i> Correo Corporativo
+                    </label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="areaPertenece">
+                        <i class="fas fa-building"></i> Área a la que pertenece
+                    </label>
+                    <select id="areaPertenece" name="areaPertenece" required>
+                        <option value="">Seleccione su área</option>
+                        <option value="TICS">TIC'S</option>
+                        <option value="SST">SST</option>
+                        <option value="Mercadeo">Mercadeo</option>
+                        <option value="Comercial">Comercial</option>
+                        <option value="Administrativo">Administrativo</option>
+                        <option value="Contable">Contable</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="areaDirige">
+                        <i class="fas fa-arrow-right"></i> Área a la que se dirige
+                    </label>
+                    <select id="areaDirige" name="areaDirige" required>
+                        <option value="">Seleccione área destino</option>
+                        <option value="TICS">TIC'S</option>
+                        <option value="SST">SST</option>
+                        <option value="Mercadeo">Mercadeo</option>
+                        <option value="Comercial">Comercial</option>
+                        <option value="Administrativo">Administrativo</option>
+                        <option value="Contable">Contable</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="solicitud">
+                        <i class="fas fa-clipboard"></i> Solicitud
+                    </label>
+                    <textarea id="solicitud" name="solicitud" rows="6" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Enviar Solicitud
+                </button>
+            </form>
+        </div>
+    </div>
+    <script src="JS/Solicitudes.js"></script>
+</body>
+</html>

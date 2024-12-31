@@ -1,0 +1,229 @@
+:root {
+    --primary-color: #2C3E50;
+    --secondary-color: #34495E;
+    --accent-color: #3498DB;
+    --success-color: #2ECC71;
+    --warning-color: #F1C40F;
+    --danger-color: #E74C3C;
+    --light-gray: #ECF0F1;
+    --dark-gray: #7F8C8D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f6fa;
+    color: var(--primary-color);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    
+}
+
+.greeting h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.period-selector select {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--light-gray);
+    background-color: white;
+    cursor: pointer;
+}
+
+.main-metrics {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-items: center;
+}
+
+.metric-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.metric-trend {
+    font-size: 14px;
+}
+
+.metric-trend.positive {
+    color: var(--success-color);
+}
+
+.charts-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-items: center;
+}
+
+.chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.employee-metrics {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    justify-items: center;
+}
+
+.employee-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.employee-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.employee-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.employee-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.stat {
+    text-align: center;
+    padding: 10px;
+    background: var(--light-gray);
+    border-radius: 8px;
+}
+
+.stat span {
+    font-size: 14px;
+    color: var(--dark-gray);
+}
+
+.stat p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        padding: 15px;
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-metrics,
+    .employee-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .metric-card,
+    .chart-container {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .chart-container {
+        min-height: 300px;
+    }
+
+    .employee-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .greeting h1 {
+        font-size: 20px;
+    }
+
+    .metric-value {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .employee-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .employee-info img {
+        margin: 0 0 10px 0;
+    }
+
+    .stat {
+        padding: 8px;
+    }
+
+    .stat p {
+        font-size: 20px;
+    }
+}

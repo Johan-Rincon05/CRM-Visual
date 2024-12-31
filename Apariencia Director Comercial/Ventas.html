@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas - Analytics</title>
+    <link rel="stylesheet" href="CSS/ventas.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <a href="Dashboard_Dirección.html" class="sidebar-item">Dashboard</a>
+            <a href="Base_Master.html" class="sidebar-item">Base Master</a>
+            <a href="Equipos.html" class="sidebar-item">Equipos</a>
+            <a href="Ventas.html" class="sidebar-item active">Ventas</a>
+            <a href="Reportes.html" class="sidebar-item">Reportes</a>
+            <a href="Metas_Comerciales.html" class="sidebar-item">Metas Comerciales</a>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Analytics de Ventas</h1>
+                <div class="filters">
+                    <select id="periodFilter">
+                        <option value="day">Hoy</option>
+                        <option value="week">Esta Semana</option>
+                        <option value="month">Este Mes</option>
+                        <option value="year">Este Año</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card total-sales">
+                    <h3>Ventas Totales</h3>
+                    <div class="value" id="totalSales">$0</div>
+                </div>
+                <div class="metric-card conversion-rate">
+                    <h3>Tasa de Conversión</h3>
+                    <div class="value" id="conversionRate">0%</div>
+                </div>
+                <div class="metric-card total-leads">
+                    <h3>Total Leads</h3>
+                    <div class="value" id="totalLeads">0</div>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h3>Ventas por Equipo</h3>
+                    <canvas id="teamSalesChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Convertibilidad Total</h3>
+                    <canvas id="conversionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h3>Seguimientos vs Suscripciones</h3>
+                    <canvas id="followupChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Formularios vs Suscripciones</h3>
+                    <canvas id="formsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <h3>Resumen por Equipo</h3>
+                <table id="teamsTable">
+                    <thead>
+                        <tr>
+                            <th>Equipo</th>
+                            <th>Leads</th>
+                            <th>Formularios</th>
+                            <th>Seguimientos</th>
+                            <th>Suscripciones</th>
+                            <th>Conversión</th>
+                        </tr>
+                    </thead>
+                    <tbody id="teamsTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="JS/ventas.js"></script>
+</body>
+</html>

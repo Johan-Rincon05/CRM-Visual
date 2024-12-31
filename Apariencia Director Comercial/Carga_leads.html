@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar Leads - Analytics</title>
+    <link rel="stylesheet" href="CSS/carga_leads.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <a href="Dashboard_Dirección.html" class="sidebar-item">Dashboard</a>
+            <a href="Base_Master.html" class="sidebar-item">Base Master</a>
+            <a href="Equipos.html" class="sidebar-item">Equipos</a>
+            <a href="Ventas.html" class="sidebar-item">Ventas</a>
+            <a href="Reportes.html" class="sidebar-item">Reportes</a>
+            <a href="Metas_Comerciales.html" class="sidebar-item">Metas Comerciales</a>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Cargar Leads</h1>
+                <a href="base_master.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Volver a Base Master
+                </a>
+            </div>
+
+            <div class="upload-container">
+                <div class="upload-section">
+                    <h2>Cargar Archivo CSV</h2>
+                    <div class="file-upload-area" id="dropZone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Arrastra y suelta tu archivo CSV aquí o</p>
+                        <label for="csvFile" class="upload-btn">Seleccionar Archivo</label>
+                        <input type="file" id="csvFile" accept=".csv" hidden>
+                        <p class="file-info" id="fileInfo">Ningún archivo seleccionado</p>
+                    </div>
+
+                    <div class="upload-options">
+                        <div class="form-group">
+                            <label>Fuente de Pauta</label>
+                            <select id="pautaSource" required>
+                                <option value="">Seleccionar fuente</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="google">Google</option>
+                            </select>
+                        </div>
+                        <button id="uploadBtn" class="submit-btn" disabled>
+                            <i class="fas fa-upload"></i> Cargar Leads
+                        </button>
+                    </div>
+                </div>
+
+                <div class="preview-section">
+                    <h2>Vista Previa</h2>
+                    <div class="preview-table-container">
+                        <table id="previewTable">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
+                                    <th>Carrera de Interés</th>
+                                    <th>Último Título</th>
+                                    <th>Nombre del Título</th>
+                                </tr>
+                            </thead>
+                            <tbody id="previewTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="uploadStatus" class="upload-status">
+                <div class="progress-bar">
+                    <div class="progress" id="uploadProgress"></div>
+                </div>
+                <p id="statusMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirmar Carga</h2>
+            <p>Se encontraron <span id="leadCount">0</span> leads en el archivo.</p>
+            <p>¿Deseas proceder con la carga?</p>
+            <div class="modal-actions">
+                <button id="confirmUpload" class="confirm-btn">Confirmar</button>
+                <button onclick="closeModal()" class="cancel-btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/carga_leads.js"></script>
+</body>
+</html>

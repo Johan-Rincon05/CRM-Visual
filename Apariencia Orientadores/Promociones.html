@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Descuentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/Promociones.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Gestión de Descuentos</h1>
+                <div class="price-base">
+                    <span>Precio Base: $193.000</span>
+                </div>
+                <div class="search-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar descuento...">
+                    </div>
+                    <button class="add-btn" id="addDiscountBtn">
+                        <i class="fas fa-plus"></i> Nuevo Descuento
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <div class="table-container">
+            <table id="discountsTable">
+                <thead>
+                    <tr>
+                        <th>Área</th>
+                        <th>Porcentaje Descuento</th>
+                        <th>Valor Final</th>
+                        <th>Carreras Aplicables</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dirección Comercial</td>
+                        <td>15%</td>
+                        <td>$164.050</td>
+                        <td>
+                            <button class="careers-btn">
+                                <i class="fas fa-graduation-cap"></i> Ver Carreras
+                            </button>
+                        </td>
+                        <td>
+                            <span class="status-active">Activo</span>
+                        </td>
+                        <td>
+                            <button class="action-btn edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="action-btn delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal for Careers -->
+    <div id="careersModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Carreras Aplicables</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="careers-list">
+                <div class="career-item">
+                    <span>Ingeniería de Sistemas</span>
+                    <span class="badge">Pregrado</span>
+                </div>
+                <div class="career-item">
+                    <span>Administración de Empresas</span>
+                    <span class="badge">Pregrado</span>
+                </div>
+                <!-- Add more careers as needed -->
+            </div>
+        </div>
+    </div>
+    <script src="JS/Promociones.js"></script>
+</body>
+</html>

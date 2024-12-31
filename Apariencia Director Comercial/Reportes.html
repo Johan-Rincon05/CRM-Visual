@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - Analytics</title>
+    <link rel="stylesheet" href="CSS/reportes.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <a href="Dashboard_Dirección.html" class="sidebar-item">Dashboard</a>
+            <a href="Base_Master.html" class="sidebar-item">Base Master</a>
+            <a href="Equipos.html" class="sidebar-item">Equipos</a>
+            <a href="Ventas.html" class="sidebar-item">Ventas</a>
+            <a href="Reportes.html" class="sidebar-item active">Reportes</a>
+            <a href="Metas_Comerciales.html" class="sidebar-item">Metas Comerciales</a>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Reportes Comerciales</h1>
+                <div class="controls">
+                    <div class="date-filter">
+                        <select id="periodFilter">
+                            <option value="day">Hoy</option>
+                            <option value="week">Esta Semana</option>
+                            <option value="month">Este Mes</option>
+                            <option value="year">Este Año</option>
+                        </select>
+                    </div>
+                    <button id="downloadPDF" class="download-btn">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Total Suscripciones</h3>
+                    <div class="value" id="totalSubscriptions">0</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Leads Entregados</h3>
+                    <div class="value" id="totalLeads">0</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Recaudos Realizados</h3>
+                    <div class="value" id="totalCollections">$0</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Promedio de Ventas</h3>
+                    <div class="value" id="salesAverage">0</div>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h3>Ventas por Equipo</h3>
+                    <canvas id="teamSalesChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Formularios vs Leads</h3>
+                    <canvas id="formsLeadsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h3>Leads Perdidos</h3>
+                    <canvas id="lostLeadsChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Tendencia de Ventas</h3>
+                    <canvas id="salesTrendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <h3>Resumen Detallado</h3>
+                <table id="detailedReport">
+                    <thead>
+                        <tr>
+                            <th>Equipo</th>
+                            <th>Suscripciones</th>
+                            <th>Leads</th>
+                            <th>Formularios</th>
+                            <th>No Responde</th>
+                            <th>No Interesa</th>
+                            <th>Equivocado</th>
+                            <th>Recaudo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="JS/reportes.js"></script>
+</body>
+</html>

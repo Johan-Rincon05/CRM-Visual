@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Base ETC - Leads Management</title>
+        <link rel="stylesheet" href="CSS/base.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    <body>    
+
+        <div class="sidebar" id="sidebar">
+        
+            <div class="sidebar-header">
+                <img src="ASSETS/Etc-GRANDE.png" alt="Logo Empresa" class="logo logo-full">
+                <img src="ASSETS/etc-logo-mini.png" alt="Icon" class="logo logo-icon">
+                <span class="version">v1.0.0</span>
+            </div>
+
+
+        
+            <div class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+        
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="xxxxx" class="sidebar-item">
+                    <i class="fas fa-users"></i>
+                    <span>Carreras</span>
+                </a>
+                <a href="BASE.html" class="sidebar-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Base</span>
+                </a>
+                <a href="xxxxx" class="sidebar-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Ventas</span>
+                </a>
+                <a href="xxxx" class="sidebar-item">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Promociones Activas</span>
+                </a>
+                <a href="xxxxxxx" class="sidebar-item">
+                    <i class="fas fa-database"></i>
+                    <span>Tickets</span>
+                </a>
+            </nav>
+        
+            <div class="sidebar-footer">
+                <div class="user-info" id="userInfo">
+                    <img src="../assets/user-avatar.png" alt="User Avatar" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Johana</span>
+                        <span class="user-role">Supervisora</span>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+                <div class="user-menu" id="userMenu">
+                    <a href="cuenta.html" class="menu-item">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Mi Cuenta</span>
+                    </a>
+                    <a href="logout.php" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+            <!-- Search Lead Modal -->
+            <div id="search-lead-modal" class="modal-overlay">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeSearchModal()">×</span>
+                    <h2>Validar Lead</h2>
+                    <div class="search-form">
+                        <div class="form-group">
+                            <label for="search-phone">Celular</label>
+                            <input type="tel" id="search-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="search-email">Correo electrónico</label>
+                            <input type="email" id="search-email" required>
+                        </div>
+                        <button id="validate-lead" class="validate-btn">Validar</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="main-content">
+                <header class="header">
+                    <div class="greeting">Hola Johana 👋</div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Buscar" id="searchInput">
+                    </div>
+                </header>
+
+                <div class="content">
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="value">5,423</span>
+                            <span class="label">Total de Leads</span>
+                        </div>
+                        <div class="stat">
+                            <span class="value">1,993</span>
+                            <span class="label">En Seguimiento</span>
+                        </div>
+                        <div class="stat">
+                            <span class="value">189</span>
+                            <span class="label">Suscripciones</span>
+                        </div>
+                    </div>
+                    
+                    <div class="create-lead-section">
+                        <button id="createLeadBtn" class="create-lead-btn">
+                            <span class="plus-icon">+</span>
+                            Crear Nuevo Lead
+                        </button>
+                    </div>
+
+                    <div class="careers-table">
+                        <table id="leadsTable">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Pauta</th>
+                                    <th>Número de Tel.</th>
+                                    <th>Correo</th>
+                                    <th>Ciudad</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTableBody">
+                                <tr>
+                                    <td>David Rodriguez</td>
+                                    <td>Lic. en Educación</td>
+                                    <td>3202536471</td>
+                                    <td>prueba@gmail.com</td>
+                                    <td>Bogotá</td>
+                                    <td class="active">Seguimiento</td>
+                                </tr>
+                                <tr>
+                                    <td>Paula Moreno</td>
+                                    <td>Ing. Industrial</td>
+                                    <td>3202536471</td>
+                                    <td>prueba2@gmail.com</td>
+                                    <td>Bogotá</td>
+                                    <td class="inactive">No le interesa</td>
+                                </tr>
+                                <tr>
+                                    <td>Santiago Rodriguez</td>
+                                    <td>Psicología</td>
+                                    <td>3202536471</td>
+                                    <td>prueba3@gmail.com</td>
+                                    <td>Bogotá</td>
+                                    <td class="inactive">Equivocado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-overlay" class="modal-overlay">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal()">×</span>
+                
+                <div class="modal-tabs">
+                    <button class="modal-tab active" onclick="switchTab('form')">Actualizar Aspirante</button>
+                    <button class="modal-tab" onclick="switchTab('chat')">Seguimiento</button>
+                    <button class="modal-tab" onclick="switchTab('documents')">Documentos</button>
+                </div>
+        
+                <div id="formTab" class="tab-content active">
+                    <form id="leadForm" class="modal-form">
+                        <!-- Datos Personales -->
+                        <div class="form-section">
+                            <div class="section-header" onclick="toggleSection('personal')">
+                                <h3>Datos Personales</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="personal-section" class="section-content">
+                                <div class="form-group">
+                                    <label for="nombres">Nombres</label>
+                                    <input type="text" id="nombres" name="nombres" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellidos">Apellidos</label>
+                                    <input type="text" id="apellidos" name="apellidos" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo_documento">Tipo de Documento</label>
+                                    <select id="tipo_documento" name="tipo_documento" required>
+                                        <option value="CC">Cédula de Ciudadanía</option>
+                                        <option value="TI">Tarjeta de Identidad</option>
+                                        <option value="CE">Cédula de Extranjería</option>
+                                        <option value="PA">Pasaporte</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="numero_documento">Número de Documento</label>
+                                    <input type="text" id="numero_documento" name="numero_documento" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="celular">Número de Celular</label>
+                                    <input type="tel" id="celular" name="celular" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="celular_secundario">Número Secundario</label>
+                                    <input type="tel" id="celular_secundario" name="celular_secundario">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Correo Electrónico</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pais_nacimiento">País de Nacimiento</label>
+                                    <select id="pais_nacimiento" name="pais_nacimiento" required></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="departamento_nacimiento">Departamento de Nacimiento</label>
+                                    <select id="departamento_nacimiento" name="departamento_nacimiento" required></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="municipio_nacimiento">Municipio de Nacimiento</label>
+                                    <select id="municipio_nacimiento" name="municipio_nacimiento" required></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="estado_civil">Estado Civil</label>
+                                    <select id="estado_civil" name="estado_civil" required>
+                                        <option value="soltero">Soltero/a</option>
+                                        <option value="casado">Casado/a</option>
+                                        <option value="union_libre">Unión Libre</option>
+                                        <option value="divorciado">Divorciado/a</option>
+                                        <option value="viudo">Viudo/a</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="victima_conflicto">¿Es víctima del conflicto Armado?</label>
+                                    <select id="victima_conflicto" name="victima_conflicto" required>
+                                        <option value="si">Sí</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipo_sangre">Tipo de Sangre</label>
+                                    <select id="tipo_sangre" name="tipo_sangre" required>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sexo">Sexo</label>
+                                    <select id="sexo" name="sexo" required>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                        <option value="O">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Datos de Residencia -->
+                        <div class="form-section">
+                            <div class="section-header" onclick="toggleSection('residence')">
+                                <h3>Datos de Residencia</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="residence-section" class="section-content">
+                                <div class="form-group">
+                                    <label for="pais_residencia">País de Residencia</label>
+                                    <select id="pais_residencia" name="pais_residencia" required></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="departamento_residencia">Departamento de Residencia</label>
+                                    <select id="departamento_residencia" name="departamento_residencia" required></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="municipio_residencia">Municipio de Residencia</label>
+                                    <select id="municipio_residencia" name="municipio_residencia" required></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zona_residencia">Zona de Residencia</label>
+                                    <select id="zona_residencia" name="zona_residencia" required>
+                                        <option value="urbana">Urbana</option>
+                                        <option value="rural">Rural</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="barrio">Barrio de Residencia</label>
+                                    <input type="text" id="barrio" name="barrio" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="direccion">Dirección de Residencia</label>
+                                    <input type="text" id="direccion" name="direccion" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="estrato">Estrato de Residencia</label>
+                                    <select id="estrato" name="estrato" required>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Datos de Estudio -->
+                        <div class="form-section">
+                            <div class="section-header" onclick="toggleSection('education')">
+                                <h3>Datos de Estudio</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="education-section" class="section-content">
+                                <div class="form-group">
+                                    <label for="ultimo_titulo">Último Título</label>
+                                    <select id="ultimo_titulo" name="ultimo_titulo" required>
+                                        <option value="tecnico">Técnico</option>
+                                        <option value="tecnologo">Tecnólogo</option>
+                                        <option value="profesional">Profesional</option>
+                                        <option value="especializacion">Especialización</option>
+                                        <option value="maestria">Maestría</option>
+                                        <option value="doctorado">Doctorado</option>
+                                        <option value="posdoctorado">Posdoctorado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Datos de Carrera de Ingreso -->
+                        <div class="form-section">
+                            <div class="section-header" onclick="toggleSection('career')">
+                                <h3>Datos de Carrera de Ingreso</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="career-section" class="section-content">
+                                <div class="form-group">
+                                    <label for="universidad">Universidad de Ingreso</label>
+                                    <input type="text" id="universidad" name="universidad" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="programa">Nombre del Programa de Ingreso</label>
+                                    <input type="text" id="programa" name="programa" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="forma_pago">Forma de Pago</label>
+                                    <select id="forma_pago" name="forma_pago" required>
+                                        <option value="cuotas">Cuotas</option>
+                                        <option value="contado">Contado</option>
+                                        <option value="cesantias">Cesantías</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="duracion">Duración del Programa</label>
+                                    <input type="text" id="duracion" name="duracion" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="valor_cesantias">Valor a Pagar para Cesantías</label>
+                                    <input type="number" id="valor_cesantias" name="valor_cesantias">
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Pago ETC -->
+                        <div class="form-section">
+                            <div class="section-header" onclick="toggleSection('payment')">
+                                <h3>Pago ETC</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div id="payment-section" class="section-content">
+                                <div class="form-group">
+                                    <label for="fecha_pago">Fecha de Pago de Suscripción</label>
+                                    <input type="date" id="fecha_pago" name="fecha_pago" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="valor_suscripcion">Valor de Pago de la Suscripción</label>
+                                    <input type="number" id="valor_suscripcion" name="valor_suscripcion" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comprobante">Comprobante de Pago</label>
+                                    <input type="file" id="comprobante" name="comprobante" accept="image/*,.pdf" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="metodo_pago">Método de Pago</label>
+                                    <select id="metodo_pago" name="metodo_pago" required>
+                                        <option value="efectivo">Efectivo</option>
+                                        <option value="qr">QR</option>
+                                        <option value="nequi">Nequi</option>
+                                        <option value="daviplata">Daviplata</option>
+                                        <option value="pse">PSE</option>
+                                        <option value="efecty">Efecty</option>
+                                        <option value="consignacion">Consignación al banco</option>
+                                        <option value="datafono">Datáfono</option>
+                                        <option value="nequi_autorizado">Nequi Autorizado</option>
+                                        <option value="transfiya">TransfiYa</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="autorizador">Responsable de Autorizar el Valor</label>
+                                    <select id="autorizador" name="autorizador" required>
+                                        <option value="sin_autorizar">Sin Autorizar</option>
+                                        <option value="johan_franco">Johan Franco</option>
+                                        <option value="jhonatan_franco">Jhonatan Franco</option>
+                                        <option value="fernando_suarez">Fernando Suarez</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="especialista">Especialista</label>
+                                    <select id="especialista" name="especialista" required>
+                                        <option value="diana_rodriguez">Diana Rodríguez</option>
+                                        <option value="naomi_mateus">Naomi Mateus</option>
+                                        <option value="ana_venegas">Ana Venegas</option>
+                                        <option value="francy_cortes">Francy Cortes</option>
+                                        <option value="estefania_rodriguez">Estefanía Rodríguez</option>
+                                        <option value="diego_ruiz">Diego Ruiz</option>
+                                        <option value="alison_gutierrez">Alison Gutiérrez</option>
+                                        <option value="daniela_munoz">Daniela Muñoz</option>
+                                        <option value="liz_bernal">Liz Bernal</option>
+                                        <option value="nicol_castiblanco">Nicol Castiblanco</option>
+                                        <option value="johana_nino">Johana Niño</option>
+                                        <option value="andrea_gonzalez">Andrea González</option>
+                                        <option value="andrea_meneses">Andrea Meneses</option>
+                                        <option value="angie_villamor">Angie Villamor</option>
+                                        <option value="ada_rangel">Ada Rangel</option>
+                                        <option value="yuli_hernandez">Yuli Hernández</option>
+                                        <option value="jose_sierra">José Sierra</option>
+                                        <option value="yohandra_labrado">Yohandra Labrado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">Guardar Cambios</button>
+                            <button type="button" class="btn-cancel" onclick="closeModal()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+        
+                <div id="chatTab" class="tab-content">
+                    <div class="chat-container" id="chatMessages"></div>
+                    <div class="chat-input-container">
+                        <select id="chatStatus" name="chatStatus">
+                            <option value="active">Seguimiento</option>
+                            <option value="inactive">No le interesa</option>
+                            <option value="wrong">Equivocado</option>
+                            <option value="suscrito">Suscrito</option>
+                            <option value="Sin Contacto">Sin Contacto</option>
+                        </select>
+                        <textarea id="chatMessage" placeholder="Escribe tu mensaje aquí..." rows="3"></textarea>
+                        <div class="chat-controls">
+                            <button class="update-button" onclick="addChatMessage()">Enviar Actualización</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div id="documentsTab" class="tab-content">
+                    <div class="documents-container">
+                        <div class="document-upload-section">
+                            <h3>Documentos Requeridos</h3>
+                            <div class="document-item">
+                                <label>Cédula de Ciudadanía</label>
+                                <input type="file" accept="application/pdf" id="cedula" onchange="handleFileUpload(this, 'cedula')">
+                                <span class="upload-status" id="cedula-status"></span>
+                            </div>
+                            <div class="document-item">
+                                <label>EPS</label>
+                                <input type="file" accept="application/pdf" id="eps" onchange="handleFileUpload(this, 'eps')">
+                                <span class="upload-status" id="eps-status"></span>
+                            </div>
+                            <div class="document-item">
+                                <label>Diploma Bachiller</label>
+                                <input type="file" accept="application/pdf" id="bachiller" onchange="handleFileUpload(this, 'bachiller')">
+                                <span class="upload-status" id="bachiller-status"></span>
+                            </div>
+                            <div class="document-item">
+                                <label>Título</label>
+                                <input type="file" accept="application/pdf" id="titulo" onchange="handleFileUpload(this, 'titulo')">
+                                <span class="upload-status" id="titulo-status"></span>
+                            </div>
+                            <div class="document-item">
+                                <label>ICFES</label>
+                                <input type="file" accept="application/pdf" id="icfes" onchange="handleFileUpload(this, 'icfes')">
+                                <span class="upload-status" id="icfes-status"></span>
+                            </div>
+                            <div class="document-item">
+                                <label>Sabana de Notas</label>
+                                <input type="file" accept="application/pdf" id="sabana" onchange="handleFileUpload(this, 'sabana')">
+                                <span class="upload-status" id="sabana-status"></span>
+                            </div>
+                            <div class="document-item">
+                                <label>Contrato INCCA</label>
+                                <input type="file" accept="application/pdf" id="contrato" onchange="handleFileUpload(this, 'contrato')">
+                                <span class="upload-status" id="contrato-status"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        <div id="warning-modal" class="warning-modal">
+            <div class="warning-content">
+                <h3>¡Atención!</h3>
+                <p>Si ingresas a este Lead tendrás que dejar alguna actualización en seguimiento</p>
+                <div class="warning-buttons">
+                    <button onclick="acceptWarning()">Aceptar</button>
+                    <button onclick="cancelWarning()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="JS/script_base.js"></script>
+
+        
+    </body>
+</html>

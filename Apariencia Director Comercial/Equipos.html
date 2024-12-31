@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos Comerciales</title>
+    <link rel="stylesheet" href="CSS/equipos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="ASSETS/Etc-GRANDE.png" alt="Logo Empresa" class="logo logo-full">
+                <img src="ASSETS/etc-logo-mini.png" alt="Logo Icon" class="logo logo-icon">
+                <span class="version">v1.0.0</span>
+            </div>
+
+            <div class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="Dashboard_Dirección.html" class="sidebar-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="Base_Master.html" class="sidebar-item">
+                    <i class="fas fa-database"></i>
+                    <span>Base Master</span>
+                </a>
+                <a href="Equipos.html" class="sidebar-item active">
+                    <i class="fas fa-users"></i>
+                    <span>Equipos</span>
+                </a>
+                <a href="Ventas.html" class="sidebar-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Ventas</span>
+                </a>
+                <a href="Reportes.html" class="sidebar-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Reportes</span>
+                </a>
+                <a href="Metas_Comerciales.html" class="sidebar-item">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Metas Comerciales</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info" id="userInfo">
+                    <img src="assets/user-avatar.png" alt="User Avatar" class="user-avatar">
+                    <div class="user-details">
+                        <span class="user-name">Fernando Suarez</span>
+                        <span class="user-role">Director</span>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+                <div class="user-menu" id="userMenu">
+                    <a href="cuenta.html" class="menu-item">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Mi Cuenta</span>
+                    </a>
+                    <a href="logout.php" class="menu-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <div class="header">
+                <h1>Equipos Comerciales</h1>
+                <div class="date-filter">
+                    <select id="periodSelector">
+                        <option value="day">Hoy</option>
+                        <option value="week">Esta Semana</option>
+                        <option value="month">Este Mes</option>
+                        <option value="year">Este Año</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="teams-container">
+                <!-- Equipo Diana -->
+                <section class="team-section">
+                    <h2>Equipo Diana</h2>
+                    <div class="team-metrics">
+                        <div class="metric">
+                            <h3>Total Leads</h3>
+                            <span class="value">1,234</span>
+                        </div>
+                        <div class="metric">
+                            <h3>Formularios</h3>
+                            <span class="value">890</span>
+                        </div>
+                    </div>
+
+                    <div class="status-metrics">
+                        <div class="status-item">
+                            <span class="label">Suscripciones</span>
+                            <span class="value">245</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Seguimientos</span>
+                            <span class="value">380</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">No Responde</span>
+                            <span class="value">156</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">No Interesado</span>
+                            <span class="value">89</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Equivocado</span>
+                            <span class="value">20</span>
+                        </div>
+                    </div>
+
+                    <div class="team-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Asesor</th>
+                                    <th>Suscripciones</th>
+                                    <th>Seguimientos</th>
+                                    <th>No Responde</th>
+                                    <th>No Interesado</th>
+                                    <th>Equivocado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teamDianaTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Equipo Nicol -->
+                <section class="team-section">
+                    <h2>Equipo Nicol</h2>
+                    <div class="team-metrics">
+                        <div class="metric">
+                            <h3>Total Leads</h3>
+                            <span class="value">1,156</span>
+                        </div>
+                        <div class="metric">
+                            <h3>Formularios</h3>
+                            <span class="value">856</span>
+                        </div>
+                    </div>
+
+                    <div class="status-metrics">
+                        <div class="status-item">
+                            <span class="label">Suscripciones</span>
+                            <span class="value">234</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Seguimientos</span>
+                            <span class="value">345</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">No Responde</span>
+                            <span class="value">167</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">No Interesado</span>
+                            <span class="value">92</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Equivocado</span>
+                            <span class="value">18</span>
+                        </div>
+                    </div>
+
+                    <div class="team-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Asesor</th>
+                                    <th>Suscripciones</th>
+                                    <th>Seguimientos</th>
+                                    <th>No Responde</th>
+                                    <th>No Interesado</th>
+                                    <th>Equivocado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teamNicolTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="JS/equipos.js"></script>
+</body>
+</html>
