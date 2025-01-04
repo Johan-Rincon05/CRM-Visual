@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Gerencia General</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/dashboard_GG.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-filters">
+                    <select class="styled-select" id="areaFilter">
+                        <option value="all">Todas las Áreas</option>
+                        <option value="financial">Financiero</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="commercial">Comercial</option>
+                        <option value="administrative">Administrativo</option>
+                    </select>
+                    <div class="date-range">
+                        <input type="date" class="styled-date">
+                        <span>hasta</span>
+                        <input type="date" class="styled-date">
+                    </div>
+                    <button class="filter-btn">
+                        <i class="fas fa-filter"></i> Aplicar Filtros
+                    </button>
+                </div>
+                <div class="user-info">
+                    <span>Johan Franco</span>
+                    <img src="ASSETS/avatar.png" alt="Usuario">
+                </div>
+            </header>
+
+            <div class="kpi-section">
+                <div class="kpi-card">
+                    <i class="fas fa-users"></i>
+                    <div class="kpi-info">
+                        <h3>Total Estudiantes</h3>
+                        <p>1,234</p>
+                        <span class="trend positive">+15% vs mes anterior</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <div class="kpi-info">
+                        <h3>Ingresos Totales</h3>
+                        <p>$245M</p>
+                        <span class="trend positive">+8% vs mes anterior</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="kpi-info">
+                        <h3>Conversión</h3>
+                        <p>68%</p>
+                        <span class="trend positive">+5% vs mes anterior</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div class="kpi-info">
+                        <h3>Tasa de Retención</h3>
+                        <p>92%</p>
+                        <span class="trend negative">-2% vs mes anterior</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>Ingresos por Universidad</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Distribución de Pagos</h3>
+                    <canvas id="paymentsChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Leads por Canal</h3>
+                    <canvas id="leadsChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Conversión por Asesor</h3>
+                    <canvas id="conversionChart"></canvas>
+                </div>
+                <div class="chart-card wide">
+                    <h3>Tendencia de Inscripciones</h3>
+                    <canvas id="enrollmentChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Costos de Nómina</h3>
+                    <canvas id="nominaChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>ROI Marketing</h3>
+                    <canvas id="roiChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Estado de Pagos por Universidad</h3>
+                    <canvas id="paymentStatusChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="JS/dashboard_GG.js"></script>
+</body>
+</html>
