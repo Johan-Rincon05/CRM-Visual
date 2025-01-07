@@ -1,7 +1,7 @@
-// Constants and Configuration
+// Configuración y constantes
 const REQUIRED_DOCUMENTS = [
     'Cédula',
-    'EPS',
+    'EPS', 
     'ICFES',
     'Bachiller',
     'Título',
@@ -11,21 +11,18 @@ const REQUIRED_DOCUMENTS = [
 const ITEMS_PER_PAGE = 10;
 let currentPage = 1;
 let filteredData = [];
+let editingRow = null;
+let hasUpdatedChat = false;
+let tempRowData = null;
+let tempRow = null;
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    initializeData();
-    setupEventListeners();
-    loadFilters();
-});
-
-// Sample data for testing
+// Datos de ejemplo para pruebas
 const sampleData = [
     {
         orientador: 'Andrea González',
         nombre: 'Juan Pérez',
         telefono: '3001234567',
-        carrera_interes: 'Ingeniería Industrial',
+        carrera_interes: 'Ingeniería Industrial', 
         ultimo_titulo: 'Bachiller',
         fecha_formulario: '2024-01-15',
         carga_sinu: '123456',
@@ -43,14 +40,84 @@ const sampleData = [
     }
 ];
 
+// Inicialización cuando el DOM está listo
+document.addEventListener('DOMContentLoaded', () => {
+    initializeData();
+    setupEventListeners();
+    loadFilters();
+    setupModalListeners();
+});
+
+// Configuración de listeners del modal
+function setupModalListeners() {
+    // Configurar listeners para las pestañas
+    document.querySelectorAll('.modal-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabName = tab.getAttribute('data-tab');
+            switchTab(tabName);
+        });
+    });
+
+    // Configurar listeners para las secciones
+    document.querySelectorAll('.section-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const sectionId = header.getAttribute('data-section');
+            toggleSection(sectionId);
+        });
+    });
+
+    // Botón de cerrar modal
+    const closeButton = document.querySelector('.modal-close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeModal);
+    }
+
+    // Formulario principal
+    const leadForm = document.getElementById('leadForm');
+    if (leadForm) {
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            updateLead();
+        });
+    }
+
+    // Botón de enviar mensaje
+    const sendMessageButton = document.getElementById('sendMessage');
+    if (sendMessageButton) {
+        sendMessageButton.addEventListener('click', addChatMessage);
+    }
+}
+
+// Función para cambiar entre pestañas
+function switchTab(tabName) {
+    // Ocultar todos los contenidos y remover clases activas
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.style.display = 'none';
+    });
+    document.querySelectorAll('.modal-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    // Activar la pestaña seleccionada
+    const selectedTab = document.querySelector(`.modal-tab[data-tab="${tabName}"]`);
+    const selectedContent = document.getElementById(`${tabName}Tab`);
+    
+    if (selectedTab && selectedContent) {
+        selectedTab.classList.add('active');
+        selectedContent.style.display = 'block';
+    }
+}
+
+// Inicialización de datos
 function initializeData() {
     filteredData = [...sampleData];
     updateTable();
     updatePagination();
 }
 
+// Configuración de event listeners principales
 function setupEventListeners() {
-    // Search functionality
+    // Búsqueda
     document.getElementById('searchDocuments').addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
         filteredData = sampleData.filter(student => 
@@ -63,12 +130,12 @@ function setupEventListeners() {
         updatePagination();
     });
 
-    // Filter handlers
+    // Filtros
     ['orientadorFilter', 'carreraFilter', 'documentFilter'].forEach(filterId => {
         document.getElementById(filterId).addEventListener('change', applyFilters);
     });
 
-    // Pagination handlers
+    // Paginación
     document.getElementById('prevPage').addEventListener('click', () => {
         if (currentPage > 1) {
             currentPage--;
@@ -87,8 +154,8 @@ function setupEventListeners() {
     });
 }
 
+// Carga de filtros dinámicos
 function loadFilters() {
-    // Load Orientadores
     const orientadores = [...new Set(sampleData.map(item => item.orientador))];
     const orientadorSelect = document.getElementById('orientadorFilter');
     orientadores.forEach(orientador => {
@@ -98,7 +165,6 @@ function loadFilters() {
         orientadorSelect.appendChild(option);
     });
 
-    // Load Carreras
     const carreras = [...new Set(sampleData.map(item => item.carrera_interes))];
     const carreraSelect = document.getElementById('carreraFilter');
     carreras.forEach(carrera => {
@@ -109,6 +175,7 @@ function loadFilters() {
     });
 }
 
+// Aplicación de filtros
 function applyFilters() {
     const orientador = document.getElementById('orientadorFilter').value;
     const carrera = document.getElementById('carreraFilter').value;
@@ -126,6 +193,7 @@ function applyFilters() {
     updatePagination();
 }
 
+// Verificación del estado de documentos
 function getDocumentStatusMatch(documents, status) {
     if (!status) return true;
     const count = documents.length;
@@ -137,6 +205,7 @@ function getDocumentStatusMatch(documents, status) {
     }
 }
 
+// Actualización de la tabla
 function updateTable() {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
@@ -169,10 +238,25 @@ function updateTable() {
             </td>
         `;
         
+        row.addEventListener('click', () => {
+            const data = {
+                orientador: student.orientador,
+                nombre: student.nombre,
+                telefono: student.telefono,
+                carrera_interes: student.carrera_interes,
+                ultimo_titulo: student.ultimo_titulo,
+                fecha_formulario: student.fecha_formulario,
+                carga_sinu: student.carga_sinu,
+                documents: student.documents
+            };
+            openModal(data, row);
+        });
+        
         tbody.appendChild(row);
     });
 }
 
+// Obtener estado de documentos
 function getDocumentStatus(documents) {
     const count = documents.length;
     if (count <= 2) return { color: 'red' };
@@ -180,6 +264,7 @@ function getDocumentStatus(documents) {
     return { color: 'green' };
 }
 
+// Generar lista de documentos
 function generateDocumentList(uploadedDocs) {
     return REQUIRED_DOCUMENTS.map(doc => {
         const isUploaded = uploadedDocs.includes(doc);
@@ -192,9 +277,102 @@ function generateDocumentList(uploadedDocs) {
     }).join('');
 }
 
+// Actualización de paginación
 function updatePagination() {
     const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
     document.getElementById('currentPage').textContent = `Página ${currentPage} de ${totalPages}`;
     document.getElementById('prevPage').disabled = currentPage === 1;
     document.getElementById('nextPage').disabled = currentPage === totalPages;
+}
+
+// Funciones del modal
+function openModal(data, row) {
+    const modalOverlay = document.getElementById('modal-overlay');
+    editingRow = row;
+    
+    const form = document.getElementById('leadForm');
+    Object.keys(data).forEach(key => {
+        if (form[key]) {
+            form[key].value = data[key];
+        }
+    });
+
+    modalOverlay.style.display = 'flex';
+    switchTab('form');
+    hasUpdatedChat = false;
+}
+
+function closeModal() {
+    if (!hasUpdatedChat) {
+        alert('Debes dejar un mensaje en el chat de seguimiento antes de cerrar.');
+        return;
+    }
+    document.getElementById('modal-overlay').style.display = 'none';
+    editingRow = null;
+    hasUpdatedChat = false;
+}
+
+// Toggle de secciones en el formulario
+function toggleSection(sectionId) {
+    const section = document.getElementById(`${sectionId}-section`);
+    if (!section) return;
+
+    const icon = section.previousElementSibling.querySelector('i');
+    const isExpanded = section.classList.contains('expanded');
+
+    document.querySelectorAll('.section-content').forEach(content => {
+        if (content !== section) {
+            content.classList.remove('expanded');
+            content.style.display = 'none';
+            const otherIcon = content.previousElementSibling.querySelector('i');
+            if (otherIcon) {
+                otherIcon.className = 'fas fa-chevron-down';
+            }
+        }
+    });
+
+    section.classList.toggle('expanded');
+    section.style.display = isExpanded ? 'none' : 'block';
+    if (icon) {
+        icon.className = isExpanded ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+    }
+}
+
+// Funcionalidad del chat
+function addChatMessage() {
+    const messageInput = document.getElementById('chatMessage');
+    const statusSelect = document.getElementById('chatStatus');
+    const message = messageInput.value.trim();
+    
+    if (!message) return;
+
+    const chatContainer = document.getElementById('chatMessages');
+    const messageElement = document.createElement('div');
+    messageElement.className = 'chat-message';
+    messageElement.innerHTML = `
+        <div class="timestamp">${new Date().toLocaleString()}</div>
+        <strong>Estado: ${statusSelect.options[statusSelect.selectedIndex].text}</strong>
+        <p>${message}</p>
+    `;
+
+    chatContainer.appendChild(messageElement);
+    messageInput.value = '';
+    hasUpdatedChat = true;
+}
+
+// Manejo de carga de archivos
+function handleFileUpload(input, documentType) {
+    const file = input.files[0];
+    const statusElement = document.getElementById(`${documentType}-status`);
+    
+    if (file) {
+        if (file.type === 'application/pdf') {
+            statusElement.textContent = 'Documento cargado exitosamente';
+            statusElement.className = 'upload-status success';
+        } else {
+            statusElement.textContent = 'Por favor, seleccione un archivo PDF';
+            statusElement.className = 'upload-status error';
+            input.value = '';
+        }
+    }
 }
