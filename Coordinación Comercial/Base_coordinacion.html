@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Documentos - Analytics</title>
+    <link rel="stylesheet" href="CSS/Base_coordinacion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Seguimiento de Documentos</h1>
+                <div class="controls">
+                    <div class="search-bar">
+                        <input type="text" id="searchDocuments" placeholder="Buscar estudiantes...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <div class="filter-group">
+                    <select id="orientadorFilter">
+                        <option value="">Filtrar por Orientador</option>
+                    </select>
+                    <select id="carreraFilter">
+                        <option value="">Filtrar por Carrera</option>
+                    </select>
+                    <select id="documentFilter">
+                        <option value="">Estado de Documentos</option>
+                        <option value="complete">Completos</option>
+                        <option value="incomplete">Incompletos</option>
+                        <option value="pending">Pendientes</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="documentTable">
+                    <thead>
+                        <tr>
+                            <th>Orientador Asignado</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Carrera de Interés</th>
+                            <th>Último Título</th>
+                            <th>Fecha de Formulario</th>
+                            <th>Carga SINU</th>
+                            <th>Documentos Cargados</th>
+                        </tr>
+                    </thead>
+                    <tbody id="documentTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button id="prevPage" class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                <span id="currentPage">Página 1 de 1</span>
+                <button id="nextPage" class="page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/Base_coordinacion.js"></script>
+</body>
+</html>

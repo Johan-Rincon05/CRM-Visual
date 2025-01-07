@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Coordinación Comercial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/dashboard_coordinacion.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="greeting">Dashboard Coordinación Comercial</div>
+            <div class="date-filter">
+                <select id="periodSelector">
+                    <option value="day">Hoy</option>
+                    <option value="week">Esta Semana</option>
+                    <option value="month">Este Mes</option>
+                    <option value="year">Este Año</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>Comisión</h3>
+                <div class="metric-value">$8M</div>
+                <div class="metric-trend positive">↑ 17.5%</div>
+            </div>
+            <div class="metric-card">
+                <h3>Ventas Totales</h3>
+                <div class="metric-value">$345.8M</div>
+                <div class="metric-trend positive">↑ 12.5%</div>
+            </div>
+            <div class="metric-card">
+                <h3>Formularios Diligenciados</h3>
+                <div class="metric-value">2,456</div>
+                <div class="metric-trend positive">↑ 8.3%</div>
+            </div>
+            <div class="metric-card">
+                <h3>Leads Entregados</h3>
+                <div class="metric-value">1,890</div>
+                <div class="metric-trend positive">↑ 15.2%</div>
+            </div>
+            <div class="metric-card">
+                <h3>Tasa de Conversión Global</h3>
+                <div class="metric-value">18.5%</div>
+                <div class="metric-trend positive">↑ 2.3%</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Ventas por Orientador</h3>
+                    <select id="salesPeriodFilter">
+                        <option value="month">Este Mes</option>
+                        <option value="quarter">Este Trimestre</option>
+                        <option value="year">Este Año</option>
+                    </select>
+                </div>
+                <div class="chart-canvas-container">
+                    <canvas id="salesByAdvisorChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Cumplimiento de Documentación</h3>
+                    <select id="docComplianceFilter">
+                        <option value="all">Todos los Orientadores</option>
+                        <option value="individual">Por Orientador</option>
+                    </select>
+                </div>
+                <div class="chart-canvas-container">
+                    <canvas id="documentComplianceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Distribución de Leads</h3>
+                    <select id="leadsFilter">
+                        <option value="all">Todos los Leads</option>
+                        <option value="converted">Leads Convertidos</option>
+                        <option value="pending">Leads Pendientes</option>
+                    </select>
+                </div>
+                <div class="chart-canvas-container">
+                    <canvas id="leadsDistributionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>Tasa de Convertibilidad</h3>
+                    <select id="conversionFilter">
+                        <option value="all">Vista Global</option>
+                        <option value="individual">Por Orientador</option>
+                    </select>
+                </div>
+                <div class="chart-canvas-container">
+                    <canvas id="conversionRateChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="JS/dashboard_coordinacion.js"></script>
+</body>
+</html>
