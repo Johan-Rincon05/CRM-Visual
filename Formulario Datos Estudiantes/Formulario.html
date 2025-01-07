@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inscripción</title>
+    <link rel="stylesheet" href="CSS/Formulario.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <div class="logo-container">
+            <img src="ASSETS/Etc png.png" alt="Logo" class="logo">
+        </div>
+        
+        <form id="inscriptionForm">
+            <h1>Formulario de Inscripción</h1>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="fullName">Nombres y Apellidos*</label>
+                    <input type="text" id="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="docType">Tipo de documento*</label>
+                    <select id="docType" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="cc">Cédula de Ciudadanía</option>
+                        <option value="ce">Cédula de Extranjería</option>
+                        <option value="ti">Tarjeta de Identidad</option>
+                        <option value="pasaporte">Pasaporte</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="docNumber">Número de documento*</label>
+                    <input type="text" id="docNumber" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Número celular*</label>
+                    <input type="tel" id="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico*</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="civilStatus">Estado Civil*</label>
+                    <select id="civilStatus" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="soltero">Soltero/a</option>
+                        <option value="casado">Casado/a</option>
+                        <option value="divorciado">Divorciado/a</option>
+                        <option value="viudo">Viudo/a</option>
+                        <option value="unionLibre">Unión Libre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthplace">Lugar de nacimiento</label>
+                    <input type="text" id="birthplace">
+                </div>
+
+                <div class="form-group">
+                    <label for="residence">Lugar de residencia</label>
+                    <input type="text" id="residence">
+                </div>
+
+                <div class="form-group">
+                    <label for="zone">ZONA DE RESIDENCIA*</label>
+                    <select id="zone" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="urbana">Zona Urbana</option>
+                        <option value="rural">Zona Rural</option>
+                    </select>
+                    <small class="helper-text">
+                        Zona urbana: Cuando vives en ciudades o pueblos que son cabeceras de los distritos oficiales del país y cuentan con calles, luz, edificios públicos, y otros.<br>
+                        Zona rural: Cuando vives fuera de las áreas consideradas urbanas y predomina la naturaleza.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="neighborhood">Barrio*</label>
+                    <input type="text" id="neighborhood" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Dirección*</label>
+                    <input type="text" id="address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="stratum">Estrato*</label>
+                    <select id="stratum" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bloodType">Tipo de sangre*</label>
+                    <select id="bloodType" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="victim">¿Es victima del conflicto armado?*</label>
+                    <select id="victim" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastDegree">Último título</label>
+                    <select id="lastDegree">
+                        <option value="">Seleccione una opción</option>
+                        <option value="bachiller">Bachiller</option>
+                        <option value="tecnico">Técnico</option>
+                        <option value="tecnologo">Tecnólogo</option>
+                        <option value="profesional">Profesional</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="degreeName">Nombre del último título*</label>
+                    <input type="text" id="degreeName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="admissionDate">Fecha de ingreso*</label>
+                    <input type="date" id="admissionDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="studyTime">Tiempo de Estudio</label>
+                    <input type="text" id="studyTime">
+                </div>
+
+                <div class="form-group">
+                    <label for="program">Programa de interés*</label>
+                    <select id="program" required>
+                        <option value="">Seleccione una opción</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Forma de pago del programa*</label>
+                    <select id="paymentMethod" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="contado">Contado</option>
+                        <option value="financiacion">Financiación</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="counselor">Nombre del orientador con el que llevas proceso</label>
+                    <select id="counselor">
+                        <option value="">Seleccione una opción</option>
+                        <option value="angie_villamor">Angie Villamor</option>
+                        <option value="andrea_gonzalez">Andrea González</option>
+                        <option value="andrea_meneses">Andrea Meneses</option>
+                        <option value="alison_gutierrez">Alison Gutiérrez</option>
+                        <option value="johana_nino">Johana Niño</option>
+                        <option value="estefania_rodriguez">Estefania Rodriguez</option>
+                        <option value="yuli_hernandez">Yuli Hernandez</option>
+                        <option value="daniela_munoz">Daniela Muñoz</option>
+                        <option value="ada_rangel">Ada Rangel</option>
+                        <option value="naomi_mateus">Naomi Mateus</option>
+                        <option value="francy_cortes">Francy Cortes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">Fecha de nacimiento*</label>
+                    <input type="date" id="birthDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="university">Universidad a la que ingresas*</label>
+                    <input type="text" id="university" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cancellationDate">Fecha de Cancelación de Inscripción</label>
+                    <input type="date" id="cancellationDate">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Enviar</button>
+                <button type="reset" class="reset-btn">Limpiar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
