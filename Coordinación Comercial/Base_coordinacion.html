@@ -35,13 +35,31 @@
                         <option value="incomplete">Incompletos</option>
                         <option value="pending">Pendientes</option>
                     </select>
+                    <select id="tipificacionFilter">
+                        <option value="">Filtrar por Tipificación</option>
+                        <option value="Seguimiento">Seguimiento</option>
+                        <option value="No le interesa">No le interesa</option>
+                        <option value="Equivocado">Equivocado</option>
+                        <option value="Sin Contacto">Sin Contacto</option>
+                        <option value="Suscrito">Suscrito</option>
+                    </select>
+                    
+                    <div class="date-range-filter">
+                        <input type="date" id="dateStart" placeholder="Fecha inicio">
+                        <input type="date" id="dateEnd" placeholder="Fecha fin">
+                    </div>
                 </div>
+                <button id="massTipificationBtn" class="mass-action-btn" disabled>
+                    Tipificación Masiva
+                </button>
             </div>
+
 
             <div class="table-container">
                 <table id="documentTable">
                     <thead>
                         <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
                             <th>Orientador Asignado</th>
                             <th>Nombre</th>
                             <th>Teléfono</th>
@@ -50,6 +68,8 @@
                             <th>Fecha de Formulario</th>
                             <th>Carga SINU</th>
                             <th>Documentos Cargados</th>
+                            <th>Última Tipificación</th>
+                            <th>Fecha Tipificación</th>
                         </tr>
                     </thead>
                     <tbody id="documentTableBody"></tbody>
