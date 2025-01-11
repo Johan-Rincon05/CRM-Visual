@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Administrativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard_aux.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="main-header">
+            <div class="header-title">
+                <h1>Dashboard Administrativo</h1>
+                <p class="subtitle">Métricas en tiempo real</p>
+            </div>
+            <div class="header-controls">
+                <div class="control-group">
+                    <i class="fas fa-building"></i>
+                    <select id="institutionSelect" class="institution-filter">
+                        <option value="all">Todas las instituciones</option>
+                        <option value="inst1">Institución 1</option>
+                        <option value="inst2">Institución 2</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <i class="fas fa-calendar"></i>
+                    <div class="date-range">
+                        <input type="date" id="startDate">
+                        <input type="date" id="endDate">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="metrics-grid">
+                <div class="metric-card">
+                    <i class="fas fa-users metric-icon"></i>
+                    <h3>Total Aspirantes</h3>
+                    <div class="metric-value" id="totalApplicants">0</div>
+                    <div class="metric-trend positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>15%</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-file-alt metric-icon"></i>
+                    <h3>Documentación Completa</h3>
+                    <div class="metric-value" id="completeDocuments">0</div>
+                    <div class="metric-trend positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>5%</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-chart-line metric-icon"></i>
+                    <h3>Tasa de Conversión</h3>
+                    <div class="metric-value" id="conversionRate">0</div>
+                    <div class="metric-trend positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>3%</span>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <i class="fas fa-clock metric-icon"></i>
+                    <h3>Pendientes por Revisar</h3>
+                    <div class="metric-value" id="pendingReview">0</div>
+                    <div class="metric-trend negative">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>2%</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="charts-section">
+                <div class="chart-row">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-chart-pie"></i> Progreso Documental</h3>
+                            <div class="chart-actions">
+                                <button class="refresh-btn"><i class="fas fa-sync-alt"></i></button>
+                            </div>
+                        </div>
+                        <div class="loading-overlay" id="docProgressLoader">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <canvas id="documentProgress"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-chart-bar"></i> Estado de Aspirantes</h3>
+                            <div class="chart-actions">
+                                <button class="refresh-btn"><i class="fas fa-sync-alt"></i></button>
+                            </div>
+                        </div>
+                        <div class="loading-overlay" id="applicantStatusLoader">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <canvas id="applicantStatus"></canvas>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-container full-width">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-chart-line"></i> Tendencia de Admisiones</h3>
+                            <div class="chart-actions">
+                                <button class="refresh-btn"><i class="fas fa-sync-alt"></i></button>
+                            </div>
+                        </div>
+                        <div class="loading-overlay" id="admissionTrendLoader">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        <canvas id="admissionTrend"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-section">
+                <div class="updates-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-bell"></i> Actualizaciones en Tiempo Real</h3>
+                        <span class="badge" id="updateCount">0</span>
+                    </div>
+                    <div class="updates-feed" id="updatesFeed"></div>
+                </div>
+                <div class="report-panel">
+                    <div class="panel-header">
+                        <h3><i class="fas fa-file-alt"></i> Generación de Informes</h3>
+                    </div>
+                    <div class="report-controls">
+                        <select id="reportType" class="report-select">
+                            <option value="daily">Informe Diario</option>
+                            <option value="weekly">Informe Semanal</option>
+                            <option value="monthly">Informe Mensual</option>
+                        </select>
+                        <button id="generateReport" class="primary-button">
+                            <i class="fas fa-download"></i> Generar Informe
+                        </button>
+                    </div>
+                    <div class="recent-reports" id="recentReports">
+                        <!-- Recent reports will be populated dynamically -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="JS/dashboard_aux.js"></script>
+</body>
+</html>
