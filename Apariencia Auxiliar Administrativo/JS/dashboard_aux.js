@@ -148,7 +148,7 @@ function createDocumentProgressChart() {
     return new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Completo', 'En Proceso', 'Pendiente'],
+            labels: ['Completo', 'Sin Completar', 'Sin Documentos'],
             datasets: [{
                 data: [65, 20, 15],
                 backgroundColor: [
