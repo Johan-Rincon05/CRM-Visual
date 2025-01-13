@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Estudiantes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/Base_estudiantes.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Gestión de Estudiantes</h1>
+                <div class="search-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar estudiante...">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="filter-group">
+            <select id="statusFilter" class="filter-select">
+                <option value="">Todos los Estados</option>
+                <option value="suscrito">Suscrito</option>
+                <option value="documentos">Documentos Cargados</option>
+                <option value="universidad">Cargado en Universidad</option>
+            </select>
+            <select id="universityFilter" class="filter-select">
+                <option value="">Todas las Universidades</option>
+                <option value="americana">Americana</option>
+                <option value="incca">INCCA</option>
+                <option value="cenda">CENDA</option>
+                <option value="sancamilo">San Camilo</option>
+            </select>
+        </div>
+
+        <div class="table-container">
+            <table id="studentsTable">
+                <thead>
+                    <tr>
+                        <th>Orientador</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Tipo de Documento</th>
+                        <th>Cédula</th>
+                        <th>Carrera</th>
+                        <th>Universidad</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-student-id="1" data-status="process-ok">
+                        <td>Diana Rodríguez</td>
+                        <td>Juan Carlos</td>
+                        <td>Pérez Gómez</td>
+                        <td>CC</td>
+                        <td>1234567890</td>
+                        <td>Ingeniería de Sistemas</td>
+                        <td>INCCA</td>
+                        <td><span class="status-badge process-ok">Proceso OK</span></td>
+                    </tr>
+                
+                    <tr data-student-id="2" data-status="sinu-inscribed">
+                        <td>Naomi Mateus</td>
+                        <td>María José</td>
+                        <td>López Silva</td>
+                        <td>CC</td>
+                        <td>9876543210</td>
+                        <td>Psicología</td>
+                        <td>Americana</td>
+                        <td><span class="status-badge sinu-inscribed">Inscrito SINU</span></td>
+                    </tr>
+                
+                    <tr data-student-id="3" data-status="loaded">
+                        <td>Ana Venegas</td>
+                        <td>Carlos Andrés</td>
+                        <td>Martínez Ruiz</td>
+                        <td>CE</td>
+                        <td>5678901234</td>
+                        <td>Técnico en Seguridad y Salud en el Trabajo</td>
+                        <td>San Camilo</td>
+                        <td><span class="status-badge loaded">Cargado</span></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Detalles del Estudiante</h2>
+                <span class="close">&times;</span>
+                <div class="modal-actions">
+                    <button id="saveChanges" class="btn-primary">
+                        <i class="fas fa-save"></i> Guardar Cambios
+                    </button>
+                </div>
+            </div>
+    
+            <div class="modal-body">
+                <div class="details-sections">
+                    <!-- Información Personal -->
+                    <section class="detail-section">
+                        <h3>Información Personal</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Orientador:</label>
+                                <span id="orientadorValue">Diana Rodríguez</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Nombres:</label>
+                                <span id="nombresValue">Juan Carlos</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Apellidos:</label>
+                                <span id="apellidosValue">Pérez Gómez</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Tipo de Documento:</label>
+                                <span id="tipoDocValue">CC</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Número de Documento:</label>
+                                <span id="documentoValue">1234567890</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Fecha de Suscripción:</label>
+                                <span id="fechaSuscripcionValue">15/01/2024</span>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <!-- Información Universitaria -->
+                    <section class="detail-section">
+                        <h3>Información Universitaria</h3>
+                        <div class="university-info">
+                            <div class="info-item">
+                                <label>Universidad:</label>
+                                <select id="universitySelect" class="university-select">
+                                    <option value="americana">Americana</option>
+                                    <option value="incca">INCCA</option>
+                                    <option value="cenda">CENDA</option>
+                                    <option value="sancamilo">San Camilo</option>
+                                </select>
+                            </div>
+                            <div class="info-item">
+                                <label>Estado del Proceso:</label>
+                                <select id="processStatus" class="status-select">
+                                    <!-- Dynamic options based on selected university -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <label>Carrera:</label>
+                            <span id="carreraValue">Ingeniería de Sistemas</span>
+                        </div>
+                    </section>
+    
+                    <!-- Documentos -->
+                    <section class="detail-section">
+                        <h3>Documentos</h3>
+                        <div id="documentsGrid" class="documents-grid">
+                            <div class="document-item">
+                                <div class="doc-info">
+                                    <span class="doc-name">Cédula</span>
+                                    <span class="doc-date">Actualizado: 16/01/2024</span>
+                                </div>
+                                <div class="doc-status">
+                                    <select class="status-select" data-doc-id="cedula">
+                                        <option value="">Sin Revisar</option>
+                                        <option value="listo" selected>Listo</option>
+                                        <option value="rechazado">Rechazado</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="document-item">
+                                <div class="doc-info">
+                                    <span class="doc-name">EPS</span>
+                                    <span class="doc-date">Actualizado: 16/01/2024</span>
+                                </div>
+                                <div class="doc-status">
+                                    <select class="status-select" data-doc-id="eps">
+                                        <option value="">Sin Revisar</option>
+                                        <option value="listo">Listo</option>
+                                        <option value="rechazado">Rechazado</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="document-item">
+                                <div class="doc-info">
+                                    <span class="doc-name">ICFES</span>
+                                    <span class="doc-date">Actualizado: 16/01/2024</span>
+                                </div>
+                                <div class="doc-status">
+                                    <select class="status-select" data-doc-id="icfes">
+                                        <option value="">Sin Revisar</option>
+                                        <option value="listo">Listo</option>
+                                        <option value="rechazado">Rechazado</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="document-item">
+                                <div class="doc-info">
+                                    <span class="doc-name">Bachiller</span>
+                                    <span class="doc-date">Actualizado: 16/01/2024</span>
+                                </div>
+                                <div class="doc-status">
+                                    <select class="status-select" data-doc-id="bachiller">
+                                        <option value="">Sin Revisar</option>
+                                        <option value="listo">Listo</option>
+                                        <option value="rechazado">Rechazado</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="document-item">
+                                <div class="doc-info">
+                                    <span class="doc-name">Título</span>
+                                    <span class="doc-date">Actualizado: 16/01/2024</span>
+                                </div>
+                                <div class="doc-status">
+                                    <select class="status-select" data-doc-id="titulo">
+                                        <option value="">Sin Revisar</option>
+                                        <option value="listo">Listo</option>
+                                        <option value="compromiso" selected>Carta de Compromiso</option>
+                                        <option value="rechazado">Rechazado</option>
+                                    </select>
+                                </div>
+                            </div>
+    
+                            <div class="document-item">
+                                <div class="doc-info">
+                                    <span class="doc-name">Sabana de Notas</span>
+                                    <span class="doc-date">Actualizado: 16/01/2024</span>
+                                </div>
+                                <div class="doc-status">
+                                    <select class="status-select" data-doc-id="sabana">
+                                        <option value="">Sin Revisar</option>
+                                        <option value="listo">Listo</option>
+                                        <option value="compromiso" selected>Carta de Compromiso</option>
+                                        <option value="rechazado">Rechazado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <!-- Información SINU -->
+                    <section class="detail-section">
+                        <h3>Información SINU</h3>
+                        <div class="sinu-info">
+                            <div class="info-item">
+                                <label>Fecha de Preinscripción:</label>
+                                <span id="preinscripcionValue">18/01/2024</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Código SINU:</label>
+                                <span id="codigoSinuValue">20241234567</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Fecha de Carga:</label>
+                                <span id="fechaCargaValue">19/01/2024</span>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <!-- Cartera -->
+                    <section class="detail-section">
+                        <h3>Cartera</h3>
+                        <div id="paymentGrid" class="payment-grid">
+                            <div class="payment-item">
+                                <h4>Cuota 1</h4>
+                                <div class="payment-info">
+                                    <div>Fecha Generación: 20/01/2024</div>
+                                    <div class="payment-status">
+                                        <i class="fas fa-check-circle status-check"></i>
+                                        <span>Comprobante Cargado</span>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="payment-item">
+                                <h4>Cuota 2</h4>
+                                <div class="payment-info">
+                                    <div>Fecha Generación: 20/02/2024</div>
+                                    <div class="payment-status">
+                                        <i class="fas fa-times-circle status-pending"></i>
+                                        <span>Pendiente</span>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="payment-item">
+                                <h4>Cuota 3</h4>
+                                <div class="payment-info">
+                                    <div>Fecha Generación: 20/02/2024</div>
+                                    <div class="payment-status">
+                                        <i class="fas fa-times-circle status-pending"></i>
+                                        <span>Pendiente</span>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="payment-item">
+                                <h4>Cuota 4</h4>
+                                <div class="payment-info">
+                                    <div>Fecha Generación: 20/02/2024</div>
+                                    <div class="payment-status">
+                                        <i class="fas fa-times-circle status-pending"></i>
+                                        <span>Pendiente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/Base_estudiantes.js"></script>
+</body>
+</html>
