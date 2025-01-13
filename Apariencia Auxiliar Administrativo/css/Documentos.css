@@ -1,0 +1,178 @@
+:root {
+    --primary-color: #2C3E50;
+    --secondary-color: #34495E;
+    --accent-color: #3498DB;
+    --success-color: #2ECC71;
+    --warning-color: #F1C40F;
+    --danger-color: #E74C3C;
+    --light-gray: #ECF0F1;
+    --dark-gray: #7F8C8D;
+    --gradient: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+body {
+    background-color: #f5f6fa;
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--primary-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    background: var(--gradient);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.career-section {
+    margin-bottom: 50px;
+}
+
+.career-section h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.career-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.career-card {
+    background: white;
+    border: none;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.career-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.career-card h3 {
+    margin: 0 0 15px 0;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.duration {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: var(--gradient);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    margin: 0;
+    padding: 25px 30px;
+    background: var(--gradient);
+    color: white;
+    border-radius: 20px 20px 0 0;
+}
+
+.career-details {
+    padding: 30px;
+}
+
+.career-details section {
+    margin-bottom: 25px;
+}
+
+.career-details h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.career-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.career-details li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-button:hover {
+    transform: rotate(90deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .career-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10px auto;
+    }
+}

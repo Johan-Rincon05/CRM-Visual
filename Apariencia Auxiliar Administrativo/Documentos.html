@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carreras - ETC</title>
+    <link rel="stylesheet" href="css/Documentos.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Documentos</h1>
+        
+        <!-- Documentos -->
+        <section class="career-section">
+            <h2>Documentos Administrativos</h2>
+            <div class="career-grid">
+                <button class="career-card professional" onclick="downloadDocument('carta-compromiso.pdf', 'Carta de Compromiso')">
+                    <h3>Carta de Compromiso</h3>
+                    <span class="duration">Descargar</span>
+                </button>
+                
+                <button class="career-card professional" onclick="downloadDocument('membretes.pdf', 'Membretes')">
+                    <h3>Membretes</h3>
+                    <span class="duration">Descargar</span>
+                </button>
+            </div>
+        </section>
+        
+
+    </div>   
+    <div class="container">
+        <h1>Programas Académicos</h1>
+        
+        <!-- Carreras Profesionales -->
+        <section class="career-section">
+            <h2>Carreras Profesionales</h2>
+            <div class="career-grid">
+                <button class="career-card professional" onclick="showCareerDetails('ing-sistemas')">
+                    <h3>Ingeniería en Sistemas</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+                
+                <button class="career-card professional" onclick="showCareerDetails('derecho')">
+                    <h3>Derecho</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+
+                <button class="career-card professional" onclick="showCareerDetails('contaduria')">
+                    <h3>Contaduría Pública</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+
+                <button class="career-card professional" onclick="showCareerDetails('comunicaciones')">
+                    <h3>Comunicaciones y Marketing</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+
+                <button class="career-card professional" onclick="showCareerDetails('adm-publica')">
+                    <h3>Administración Pública</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+
+                <button class="career-card professional" onclick="showCareerDetails('adm-empresas')">
+                    <h3>Administración de Empresas</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+
+                <button class="career-card professional" onclick="showCareerDetails('adm-hotelera')">
+                    <h3>Administración Hotelera y Turística</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+
+                <button class="career-card professional" onclick="showCareerDetails('psicologia')">
+                    <h3>Psicología</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+
+                <button class="career-card professional" onclick="showCareerDetails('edu-infantil')">
+                    <h3>Licenciatura en Educación Infantil</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+
+                <button class="career-card professional" onclick="showCareerDetails('ing-industrial')">
+                    <h3>Ingeniería Industrial</h3>
+                    <span class="duration">16 meses</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Carreras Técnicas -->
+        <section class="career-section">
+            <h2>Carreras Técnicas</h2>
+            <div class="career-grid">
+                <button class="career-card technical" onclick="showCareerDetails('tec-preescolar')">
+                    <h3>Técnico Laboral en Preescolar y Atención Integral a la Primera Infancia</h3>
+                    <span class="duration">7 meses</span>
+                </button>
+
+                <button class="career-card technical" onclick="showCareerDetails('tec-comercio')">
+                    <h3>Técnico Laboral en Comercio Exterior</h3>
+                    <span class="duration">7 meses</span>
+                </button>
+
+                <button class="career-card technical" onclick="showCareerDetails('tec-desarrollo')">
+                    <h3>Técnico Laboral en Desarrollador de Hardware y Software</h3>
+                    <span class="duration">7 meses</span>
+                </button>
+
+                <button class="career-card technical" onclick="showCareerDetails('tec-judicial')">
+                    <h3>Técnico Laboral Procedimiento Judicial y Criminal</h3>
+                    <span class="duration">7 meses</span>
+                </button>
+
+                <button class="career-card technical" onclick="showCareerDetails('tec-mantenimiento')">
+                    <h3>Técnico Laboral en Mantenimiento de Equipo de Cómputo</h3>
+                    <span class="duration">7 meses</span>
+                </button>
+
+                <button class="career-card technical" onclick="showCareerDetails('tec-sst')">
+                    <h3>Técnico Laboral en Seguridad y Salud en el Trabajo</h3>
+                    <span class="duration">7 meses</span>
+                </button>
+
+                <button class="career-card technical" onclick="showCareerDetails('tec-rrhh')">
+                    <h3>Técnico Laboral en Recursos Humanos</h3>
+                    <span class="duration">7 meses</span>
+                </button>
+
+                <button class="career-card technical" onclick="showCareerDetails('tec-administrativo')">
+                    <h3>Técnico Laboral en Auxiliar Administrativo</h3>
+                    <span class="duration">7 meses</span>
+                </button>
+
+                <button class="career-card technical" onclick="showCareerDetails('tec-contable')">
+                    <h3>Técnico Laboral en Auxiliar Contable</h3>
+                    <span class="duration">7 meses</span>
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Template -->
+    <div id="careerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="JS/Documentos.js"></script>
+</body>
+</html>
