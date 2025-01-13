@@ -287,6 +287,15 @@ tr:hover {
     transform: translateX(5px);
 }
 
+.status-red {
+    background-color: var(--danger-color);
+}
+
+.document-item.status-red {
+    border-color: var(--danger-color);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .header-content {
@@ -346,6 +355,28 @@ tr:hover {
     justify-content: space-between;
     margin-bottom: 5px;
     font-size: 0.9rem;
+}
+
+.message .status {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.message .status.rechazado {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.message .status.listo {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.message .status.compromiso {
+    background-color: var(--warning-color);
+    color: white;
 }
 
 .chat-input {
