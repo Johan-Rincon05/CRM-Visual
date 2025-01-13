@@ -48,7 +48,38 @@ document.addEventListener('DOMContentLoaded', () => {
             updateDocumentStatus(e.target);
         });
     });
+
+    
+    // Manejador para los botones de descarga
+    const downloadButtons = document.querySelectorAll('.download-btn');
+    
+    downloadButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const documentName = button.closest('.document-item').querySelector('.doc-name').textContent;
+            downloadDocument(documentName);
+        });
+    });
+
 });
+
+function downloadDocument(documentName) {
+    // Implementar la lógica de descarga
+    // Por ejemplo, hacer una petición al servidor:
+    fetch(`/api/documents/${documentName}`)
+        .then(response => response.blob())
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${documentName}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        })
+        .catch(error => console.error('Error al descargar el documento:', error));
+}
 
 function updateDocumentStatus(select) {
     const documentItem = select.closest('.document-item');

@@ -217,6 +217,37 @@ tr:hover {
     color: var(--danger-color);
 }
 
+/* Download Button */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.download-btn i {
+    font-size: 1.2rem;
+}
+
+/* Ajustamos el espaciado en doc-actions */
+.doc-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
 /* Animación para la aparición del modal */
 @keyframes modalFadeIn {
     from {
