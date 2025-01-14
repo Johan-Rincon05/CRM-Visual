@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universidad INCCA - Gestión de Datos</title>
+    <link rel="stylesheet" href="CSS/Base_Cartera_INCCA.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-university"></i> Universidad INCCA y San Camilo</h1>
+        <div class="header-stats">
+            <div class="stat-item">
+                <span>Total Registros:</span>
+                <strong>1,543</strong>
+            </div>
+            <div class="stat-item">
+                <span>Coincidencias:</span>
+                <strong>1,245</strong>
+            </div>
+            <div class="stat-item">
+                <span>Pendientes:</span>
+                <strong>298</strong>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <div class="upload-container">
+                <div class="upload-box">
+                    <h3>Base San Camilo</h3>
+                    <div class="dropzone" id="sanCamiloZone">
+                        <i class="fas fa-file-excel"></i>
+                        <p>Arrastra o selecciona el archivo</p>
+                        <input type="file" accept=".xlsx,.xls" hidden>
+                        <span class="filename">No hay archivo seleccionado</span>
+                    </div>
+                </div>
+                <div class="upload-box">
+                    <h3>Base Cohorte</h3>
+                    <div class="dropzone" id="cohorteZone">
+                        <i class="fas fa-file-excel"></i>
+                        <p>Arrastra o selecciona el archivo</p>
+                        <input type="file" accept=".xlsx,.xls" hidden>
+                        <span class="filename">No hay archivo seleccionado</span>
+                    </div>
+                </div>
+            </div>
+            <div class="process-controls">
+                <button id="processBtn" class="primary-btn" disabled>
+                    <i class="fas fa-sync-alt"></i> Procesar Archivos
+                </button>
+                <div class="progress-bar" style="display: none;">
+                    <div class="progress" style="width: 0%"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="results-tabs">
+                <button class="tab-btn active" data-tab="matches">
+                    Coincidencias (1,245)
+                </button>
+                <button class="tab-btn" data-tab="discrepancies">
+                    Discrepancias (180)
+                </button>
+                <button class="tab-btn" data-tab="missing">
+                    Sin Datos (118)
+                </button>
+            </div>
+
+            <div class="tab-content active" id="matches">
+                <div class="table-actions">
+                    <button class="secondary-btn">
+                        <i class="fas fa-download"></i> Exportar Excel
+                    </button>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Documento</th>
+                                <th>Estado</th>
+                                <th>Valor</th>
+                                <th>Observaciones</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Carlos Andrés Pérez</td>
+                                <td>1234567890</td>
+                                <td><span class="status verified">Verificado</span></td>
+                                <td>$850,000</td>
+                                <td>
+                                    <input type="text" class="observation-input" value="Tiene recibo">
+                                </td>
+                                <td>
+                                    <button class="action-btn" onclick="openPaymentModal('1234567890')">
+                                        <i class="fas fa-upload"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>María José López</td>
+                                <td>2345678901</td>
+                                <td><span class="status pending">Pendiente</span></td>
+                                <td>$850,000</td>
+                                <td>
+                                    <input type="text" class="observation-input" placeholder="Agregar observación">
+                                </td>
+                                <td>
+                                    <button class="action-btn" onclick="openPaymentModal('2345678901')">
+                                        <i class="fas fa-upload"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subir Soporte de Pago</h2>
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label>Estudiante:</label>
+                    <input type="text" readonly value="Carlos Andrés Pérez">
+                </div>
+                <div class="form-group">
+                    <label>Documento:</label>
+                    <input type="text" readonly value="1234567890">
+                </div>
+                <div class="form-group">
+                    <label>Valor:</label>
+                    <input type="text" readonly value="$850,000">
+                </div>
+                <div class="form-group">
+                    <label>Soporte de Pago:</label>
+                    <input type="file" accept="image/*,.pdf" required>
+                </div>
+                <div class="form-group">
+                    <label>Observaciones:</label>
+                    <textarea rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="primary-btn">Guardar</button>
+                    <button type="button" class="secondary-btn" onclick="closeModal()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="JS/Base_Cartera_INCCA.js"></script>
+</body>
+</html>
