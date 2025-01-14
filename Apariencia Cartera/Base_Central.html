@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base de Datos Centralizada</title>
+    <link rel="stylesheet" href="CSS/Base_Central.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-database"></i> Base de Datos Centralizada</h1>
+            <div class="global-search">
+                <input type="text" id="globalSearch" placeholder="Buscar en todas las universidades...">
+                <select id="globalFilter">
+                    <option value="all">Todas las universidades</option>
+                    <option value="incca">Universidad INCCA</option>
+                    <option value="sancamilo">San Camilo</option>
+                    <option value="cenda">CENDA</option>
+                </select>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div class="stat-item">
+                <span>Total Registros</span>
+                <strong>3,567</strong>
+            </div>
+            <div class="stat-item">
+                <span>Actualizados Hoy</span>
+                <strong>145</strong>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Universidad INCCA Table -->
+        <section class="university-section" id="inccaSection">
+            <div class="section-header">
+                <h2>Universidad INCCA</h2>
+                <div class="section-actions">
+                    <button class="column-config-btn">
+                        <i class="fas fa-columns"></i> Configurar Columnas
+                    </button>
+                    <div class="export-group">
+                        <button class="export-btn" data-type="excel">
+                            <i class="fas fa-file-excel"></i> Excel
+                        </button>
+                        <button class="export-btn" data-type="pdf">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Estado</th>
+                            <th>Fecha Pago</th>
+                            <th>Valor</th>
+                            <th>Observaciones</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ana María Rodríguez</td>
+                            <td>1234567890</td>
+                            <td><span class="status verified">Verificado</span></td>
+                            <td>15/02/2024</td>
+                            <td>$850,000</td>
+                            <td>Pago completo febrero</td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn"><i class="fas fa-file"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Carlos Martínez López</td>
+                            <td>2345678901</td>
+                            <td><span class="status pending">Pendiente</span></td>
+                            <td>-</td>
+                            <td>$850,000</td>
+                            <td>Pendiente verificación</td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn"><i class="fas fa-file"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- San Camilo Table -->
+        <section class="university-section" id="sancamiloSection">
+            <div class="section-header">
+                <h2>San Camilo</h2>
+                <div class="section-actions">
+                    <button class="column-config-btn">
+                        <i class="fas fa-columns"></i> Configurar Columnas
+                    </button>
+                    <div class="export-group">
+                        <button class="export-btn" data-type="excel">
+                            <i class="fas fa-file-excel"></i> Excel
+                        </button>
+                        <button class="export-btn" data-type="pdf">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Estado</th>
+                            <th>Soporte</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>María José Sánchez</td>
+                            <td>3456789012</td>
+                            <td><span class="status verified">Verificado</span></td>
+                            <td><i class="fas fa-check-circle"></i> Cargado</td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-download"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Juan Pablo Torres</td>
+                            <td>4567890123</td>
+                            <td><span class="status pending">Pendiente</span></td>
+                            <td><i class="fas fa-times-circle"></i> Pendiente</td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-upload"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- CENDA Table -->
+        <section class="university-section" id="cendaSection">
+            <div class="section-header">
+                <h2>CENDA</h2>
+                <div class="section-actions">
+                    <button class="column-config-btn">
+                        <i class="fas fa-columns"></i> Configurar Columnas
+                    </button>
+                    <div class="export-group">
+                        <button class="export-btn" data-type="excel">
+                            <i class="fas fa-file-excel"></i> Excel
+                        </button>
+                        <button class="export-btn" data-type="pdf">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Estado</th>
+                            <th>Soporte</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Laura Valentina Díaz</td>
+                            <td>5678901234</td>
+                            <td><span class="status verified">Verificado</span></td>
+                            <td><i class="fas fa-check-circle"></i> Cargado</td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-download"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Diego Alejandro Ruiz</td>
+                            <td>6789012345</td>
+                            <td><span class="status pending">Pendiente</span></td>
+                            <td><i class="fas fa-times-circle"></i> Pendiente</td>
+                            <td>
+                                <button class="action-btn"><i class="fas fa-upload"></i></button>
+                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Column Configuration Modal -->
+    <div id="columnModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Configurar Columnas</h2>
+            <div class="column-list">
+                <div class="column-item">
+                    <input type="checkbox" id="col-name" checked>
+                    <label for="col-name">Nombre</label>
+                </div>
+                <div class="column-item">
+                    <input type="checkbox" id="col-document" checked>
+                    <label for="col-document">Documento</label>
+                </div>
+                <div class="column-item">
+                    <input type="checkbox" id="col-status" checked>
+                    <label for="col-status">Estado</label>
+                </div>
+                <div class="column-item">
+                    <input type="checkbox" id="col-payment" checked>
+                    <label for="col-payment">Fecha Pago</label>
+                </div>
+                <div class="column-item">
+                    <input type="checkbox" id="col-amount" checked>
+                    <label for="col-amount">Valor</label>
+                </div>
+                <div class="column-item">
+                    <input type="checkbox" id="col-observations" checked>
+                    <label for="col-observations">Observaciones</label>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="save-btn">Guardar</button>
+                <button class="cancel-btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="JS/Base_Central.js"></script>
+</body>
+</html>
