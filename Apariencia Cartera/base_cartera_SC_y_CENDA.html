@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Camilo y CENDA - Gestión de Pagos</title>
+    <link rel="stylesheet" href="CSS/base_cartera_SC_y_CENDA.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <i class="fas fa-university"></i>
+            <h1>San Camilo y CENDA</h1>
+        </div>
+        <div class="upload-stats">
+            <div class="stat">
+                <span>Registros</span>
+                <strong>245</strong>
+            </div>
+            <div class="stat">
+                <span>Procesados</span>
+                <strong>180</strong>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <div class="upload-container" id="filterUpload">
+                <i class="fas fa-file-excel"></i>
+                <h2>Cargar Filtro</h2>
+                <p>Arrastra o selecciona el archivo Excel</p>
+                <input type="file" accept=".xlsx,.xls" hidden>
+                <button class="upload-btn">Seleccionar Archivo</button>
+                <span class="filename">No hay archivo seleccionado</span>
+            </div>
+        </section>
+
+        <section class="data-section">
+            <div class="table-header">
+                <h2>Registros Cargados</h2>
+                <div class="table-actions">
+                    <input type="text" placeholder="Buscar..." class="search-input">
+                    <button class="action-btn refresh">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ana María González</td>
+                            <td>1234567890</td>
+                            <td><span class="status pending">Pendiente</span></td>
+                            <td>
+                                <button class="upload-support-btn" onclick="openUploadModal('1234567890')">
+                                    <i class="fas fa-upload"></i> Subir Soporte
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Juan Carlos Martínez</td>
+                            <td>2345678901</td>
+                            <td><span class="status verified">Verificado</span></td>
+                            <td>
+                                <button class="upload-support-btn" onclick="openUploadModal('2345678901')">
+                                    <i class="fas fa-upload"></i> Subir Soporte
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>María José López</td>
+                            <td>3456789012</td>
+                            <td><span class="status pending">Pendiente</span></td>
+                            <td>
+                                <button class="upload-support-btn" onclick="openUploadModal('3456789012')">
+                                    <i class="fas fa-upload"></i> Subir Soporte
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Subir Soporte de Pago</h2>
+            <form id="uploadForm">
+                <div class="form-group">
+                    <label>Estudiante:</label>
+                    <input type="text" id="studentName" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Documento:</label>
+                    <input type="text" id="studentDocument" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Soporte de Pago:</label>
+                    <div class="file-upload-container">
+                        <input type="file" accept="image/*,.pdf" required>
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>Seleccionar archivo</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Observaciones:</label>
+                    <textarea rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-check"></i> Guardar
+                    </button>
+                    <button type="button" class="cancel-btn" onclick="closeModal()">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="JS/base_cartera_SC_y_CENDA.js"></script>
+</body>
+</html>
