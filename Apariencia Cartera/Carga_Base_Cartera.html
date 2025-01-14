@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesos Generales</title>
+    <link rel="stylesheet" href="CSS/Carga_Base_Cartera.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Procesos Generales</h1>
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <div class="upload-container" id="dropZone">
+                <i class="fas fa-file-excel"></i>
+                <h3>Arrastra o selecciona archivos Excel</h3>
+                <p>Formatos permitidos: .xlsx, .xls</p>
+                <input type="file" id="fileInput" accept=".xlsx,.xls" hidden>
+                <button class="select-file-btn">Seleccionar Archivo</button>
+            </div>
+
+            <div class="form-controls">
+                <div class="form-group">
+                    <label for="university">Universidad:</label>
+                    <select id="university" required>
+                        <option value="">Seleccione una universidad</option>
+                        <option value="univ1">Universidad Central</option>
+                        <option value="univ2">Universidad del Norte</option>
+                        <option value="univ3">Universidad del Sur</option>
+                        <option value="univ4">Universidad del Este</option>
+                        <option value="univ5">Universidad del Oeste</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="period">Periodo:</label>
+                    <select id="period" required>
+                        <option value="">Seleccione un periodo</option>
+                        <option value="2024-Q1">2024-Q1</option>
+                        <option value="2024-Q2">2024-Q2</option>
+                        <option value="2024-Q3">2024-Q3</option>
+                        <option value="2024-Q4">2024-Q4</option>
+                    </select>
+                </div>
+
+                <button id="uploadBtn" class="upload-btn" disabled>
+                    Cargar Archivo
+                </button>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <h2>Historial de Archivos</h2>
+            <div class="table-container">
+                <table id="fileHistory">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Archivo</th>
+                            <th>Universidad</th>
+                            <th>Periodo</th>
+                            <th>Estado</th>
+                            <th>Fecha de Carga</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Listado_Estudiantes_2024Q1.xlsx</td>
+                            <td>Universidad Central</td>
+                            <td>2024-Q1</td>
+                            <td><span class="status-badge finished">Finalizado</span></td>
+                            <td>15/01/2024</td>
+                            <td>
+                                <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Matriculas_Norte_2024.xlsx</td>
+                            <td>Universidad del Norte</td>
+                            <td>2024-Q1</td>
+                            <td><span class="status-badge processing">Procesando</span></td>
+                            <td>18/01/2024</td>
+                            <td>
+                                <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Registro_Sur_2024Q1.xlsx</td>
+                            <td>Universidad del Sur</td>
+                            <td>2024-Q1</td>
+                            <td><span class="status-badge received">Recibido</span></td>
+                            <td>20/01/2024</td>
+                            <td>
+                                <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Estudiantes_Este_2024.xlsx</td>
+                            <td>Universidad del Este</td>
+                            <td>2024-Q1</td>
+                            <td><span class="status-badge finished">Finalizado</span></td>
+                            <td>12/01/2024</td>
+                            <td>
+                                <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Matriculas_Oeste_Q1.xlsx</td>
+                            <td>Universidad del Oeste</td>
+                            <td>2024-Q1</td>
+                            <td><span class="status-badge processing">Procesando</span></td>
+                            <td>19/01/2024</td>
+                            <td>
+                                <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="JS/Carga_Base_Cartera.js"></script>
+</body>
+</html>
