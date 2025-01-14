@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Cartera</title>
+    <link rel="stylesheet" href="CSS/dashboard_cartera.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Cartera</h1>
+        <div class="metrics-container">
+            <div class="metric-card">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Total Pagos Recibidos</h3>
+                <p class="amount">$1,250,000</p>
+                <span class="variation positive">+8.2%</span>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-clock"></i>
+                <h3>Pagos Pendientes</h3>
+                <p class="amount">$450,000</p>
+                <span class="variation negative">-3.5%</span>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Pagos Vencidos</h3>
+                <p class="amount">$180,000</p>
+                <span class="variation negative">+2.8%</span>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-calendar"></i>
+                <h3>Cuotas del Periodo</h3>
+                <p class="amount">1,200</p>
+                <span class="variation positive">+5.3%</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="charts-section">
+            <div class="chart-container">
+                <h2>Distribución por Universidad</h2>
+                <canvas id="universityChart"></canvas>
+            </div>
+            <div class="quotas-container">
+                <h2>Estado de Cuotas del Cuatrimestre</h2>
+                <div class="quota-bar">
+                    <div class="progress-bar" data-percentage="85" style="background-color: #27ae60">
+                        <span class="quota-label">Cuota 1</span>
+                    </div>
+                    <span class="quota-info">85% completado (1020/1200 estudiantes)</span>
+                </div>
+                <div class="quota-bar">
+                    <div class="progress-bar" data-percentage="65" style="background-color: #f1c40f">
+                        <span class="quota-label">Cuota 2</span>
+                    </div>
+                    <span class="quota-info">65% completado (780/1200 estudiantes)</span>
+                </div>
+                <div class="quota-bar">
+                    <div class="progress-bar" data-percentage="45" style="background-color: #e67e22">
+                        <span class="quota-label">Cuota 3</span>
+                    </div>
+                    <span class="quota-info">45% completado (540/1200 estudiantes)</span>
+                </div>
+                <div class="quota-bar">
+                    <div class="progress-bar" data-percentage="25" style="background-color: #e74c3c">
+                        <span class="quota-label">Cuota 4</span>
+                    </div>
+                    <span class="quota-info">25% completado (300/1200 estudiantes)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-section">
+            <h2>Resumen por Universidad</h2>
+            <table id="summaryTable">
+                <thead>
+                    <tr>
+                        <th>Universidad</th>
+                        <th>Periodo</th>
+                        <th>Estudiantes Pagados</th>
+                        <th>Estudiantes Pendientes</th>
+                        <th>Total Recaudado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Universidad Central</td>
+                        <td>2024-Q1</td>
+                        <td>450</td>
+                        <td>150</td>
+                        <td>$525,000</td>
+                    </tr>
+                    <tr>
+                        <td>Universidad del Norte</td>
+                        <td>2024-Q1</td>
+                        <td>380</td>
+                        <td>120</td>
+                        <td>$420,000</td>
+                    </tr>
+                    <tr>
+                        <td>Universidad del Sur</td>
+                        <td>2024-Q1</td>
+                        <td>250</td>
+                        <td>80</td>
+                        <td>$305,000</td>
+                    </tr>
+                    <tr>
+                        <td>Universidad del Este</td>
+                        <td>2024-Q1</td>
+                        <td>320</td>
+                        <td>100</td>
+                        <td>$380,000</td>
+                    </tr>
+                    <tr>
+                        <td>Universidad del Oeste</td>
+                        <td>2024-Q1</td>
+                        <td>280</td>
+                        <td>70</td>
+                        <td>$340,000</td>
+                    </tr>
+                </tbody>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Cartera</title>
+    <link rel="stylesheet" href="CSS/dashboard_cartera.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Cartera</h1>
+        <div class="metrics-container">
+            <div class="metric-card">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Total Pagos Recibidos</h3>
+                <p class="amount">$1,250,000</p>
+                <span class="variation positive">+8.2%</span>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-clock"></i>
+                <h3>Pagos Pendientes</h3>
+                <p class="amount">$450,000</p>
+                <span class="variation negative">-3.5%</span>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Pagos Vencidos</h3>
+                <p class="amount">$180,000</p>
+                <span class="variation negative">+2.8%</span>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-calendar"></i>
+                <h3>Cuotas del Periodo</h3>
+                <p class="amount">1,200</p>
+                <span class="variation positive">+5.3%</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="charts-section">
+            <div class="chart-container">
+                <h2>Distribución por Universidad</h2>
+                <canvas id="universityChart"></canvas>
+            </div>
+            <div class="quotas-container">
+                <h2>Estado de Cuotas del Cuatrimestre</h2>
+                <div class="quota-bar">
+                    <div class="progress-bar" data-percentage="85" style="background-color: #27ae60">
+                        <span class="quota-label">Cuota 1</span>
+                    </div>
+                    <span class="quota-info">85% completado (1020/1200 estudiantes)</span>
+                </div>
+                <div class="quota-bar">
+                    <div class="progress-bar" data-percentage="65" style="background-color: #f1c40f">
+                        <span class="quota-label">Cuota 2</span>
+                    </div>
+                    <span class="quota-info">65% completado (780/1200 estudiantes)</span>
+                </div>
+                <div class="quota-bar">
+                    <div class="progress-bar" data-percentage="45" style="background-color: #e67e22">
+                        <span class="quota-label">Cuota 3</span>
+                    </div>
+                    <span class="quota-info">45% completado (540/1200 estudiantes)</span>
+                </div>
+                <div class="quota-bar">
+                    <div class="progress-bar" data-percentage="25" style="background-color: #e74c3c">
+                        <span class="quota-label">Cuota 4</span>
+                    </div>
+                    <span class="quota-info">25% completado (300/1200 estudiantes)</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="table-section">
+            <h2>Resumen por Universidad</h2>
+            <table id="summaryTable">
+                <thead>
+                    <tr>
+                        <th>Universidad</th>
+                        <th>Periodo</th>
+                        <th>Estudiantes Pagados</th>
+                        <th>Estudiantes Pendientes</th>
+                        <th>Total Recaudado</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p> 2024 Sistema de Gestión de Cartera</p>
+    </footer>
+
+    <script src="JS/dashboard_cartera.js"></script>
+    <script>
+        const tableBody = document.getElementById('table-body');
+        const data = [
+            { universidad: 'Universidad Central', periodo: '2024-Q1', pagados: 450, pendientes: 150, recaudado: '$525,000' },
+            { universidad: 'Universidad del Norte', periodo: '2024-Q1', pagados: 380, pendientes: 120, recaudado: '$420,000' },
+            { universidad: 'Universidad del Sur', periodo: '2024-Q1', pagados: 250, pendientes: 80, recaudado: '$305,000' },
+            { universidad: 'Universidad del Este', periodo: '2024-Q1', pagados: 320, pendientes: 100, recaudado: '$380,000' },
+            { universidad: 'Universidad del Oeste', periodo: '2024-Q1', pagados: 280, pendientes: 70, recaudado: '$340,000' },
+        ];
+
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.universidad}</td>
+                <td>${item.periodo}</td>
+                <td>${item.pagados}</td>
+                <td>${item.pendientes}</td>
+                <td>${item.recaudado}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    </script>
+</body>
+</html>
+```
+            </table>
+        </section>
+    </main>
+
+    <script src="JS/dashboard_cartera.js"></script>
+</body>
+</html>
