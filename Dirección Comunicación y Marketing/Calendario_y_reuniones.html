@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reuniones y Calendario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/Calendario_y_reuniones.css">
+</head>
+<body>
+    <div class="calendar-dashboard">
+        <header>
+            <h1>Calendario de Reuniones</h1>
+            <div class="calendar-controls">
+                <button id="prevMonth">&lt;</button>
+                <h2 id="currentMonth">Enero 2024</h2>
+                <button id="nextMonth">&gt;</button>
+                <div class="view-toggle">
+                    <button id="monthView" class="active">Mes</button>
+                    <button id="weekView">Semana</button>
+                </div>
+                <button id="addEventBtn" class="primary-btn">+ Nueva Reunión</button>
+            </div>
+        </header>
+
+        <div class="calendar-legend">
+            <div class="legend-item">
+                <span class="color-dot planning"></span>
+                Planificación
+            </div>
+            <div class="legend-item">
+                <span class="color-dot recording"></span>
+                Grabación
+            </div>
+            <div class="legend-item">
+                <span class="color-dot review"></span>
+                Revisión
+            </div>
+        </div>
+
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <div>Lunes</div>
+                <div>Martes</div>
+                <div>Miércoles</div>
+                <div>Jueves</div>
+                <div>Viernes</div>
+                <div>Sábado</div>
+                <div>Domingo</div>
+            </div>
+            <div id="calendarGrid" class="calendar-grid"></div>
+        </div>
+
+        <!-- Add Event Modal -->
+        <div id="eventModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Nueva Reunión</h2>
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label for="eventTitle">Título</label>
+                        <input type="text" id="eventTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventType">Tipo</label>
+                        <select id="eventType" required>
+                            <option value="planning">Planificación</option>
+                            <option value="recording">Grabación</option>
+                            <option value="review">Revisión</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate">Fecha</label>
+                        <input type="date" id="eventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventTime">Hora</label>
+                        <input type="time" id="eventTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventParticipants">Participantes</label>
+                        <input type="text" id="eventParticipants" placeholder="Separados por coma">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDescription">Descripción</label>
+                        <textarea id="eventDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventAttachments">Enlaces y Documentos</label>
+                        <textarea id="eventAttachments" rows="2" placeholder="Enlaces separados por línea"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Guardar</button>
+                        <button type="button" class="cancel-btn">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Event Details Modal -->
+        <div id="eventDetailsModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="eventDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notificationContainer"></div>
+    
+    <script src="JS/Calendario_y_reuniones.js"></script>
+</body>
+</html>

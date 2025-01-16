@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Manager Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/Gestion_social.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Social Manager Dashboard</h1>
+            <div class="date-range">
+                <input type="date" id="startDate">
+                <input type="date" id="endDate">
+                <button id="updateDates">Actualizar</button>
+            </div>
+        </header>
+
+        <section class="kpi-summary">
+            <div class="kpi-card">
+                <h3>Publicaciones</h3>
+                <div class="kpi-value" id="postsKPI">85%</div>
+                <div class="kpi-detail">34/40 completadas</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Engagement</h3>
+                <div class="kpi-value" id="engagementKPI">4.8%</div>
+                <div class="kpi-detail">↑ 0.5% vs mes anterior</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Conversión</h3>
+                <div class="kpi-value" id="conversionKPI">2.3%</div>
+                <div class="kpi-detail">156 leads generados</div>
+            </div>
+            <div class="kpi-card">
+                <h3>Tiempo Respuesta</h3>
+                <div class="kpi-value" id="responseTimeKPI">15m</div>
+                <div class="kpi-detail">Promedio mensual</div>
+            </div>
+        </section>
+
+        <section class="charts-container">
+            <div class="chart-wrapper">
+                <h2>Engagement por Red Social</h2>
+                <canvas id="engagementChart"></canvas>
+            </div>
+            <div class="chart-wrapper">
+                <h2>Conversión de Pautas</h2>
+                <canvas id="conversionChart"></canvas>
+            </div>
+        </section>
+
+        <section class="posts-table-section">
+            <div class="table-header">
+                <h2>Publicaciones</h2>
+                <div class="table-actions">
+                    <button id="createPostBtn" class="create-btn">
+                        <span>+</span> Nueva Publicación
+                    </button>
+                    <div class="table-filters">
+                        <select id="platformFilter">
+                            <option value="all">Todas las plataformas</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="linkedin">LinkedIn</option>
+                        </select>
+                        <select id="statusFilter">
+                            <option value="all">Todos los estados</option>
+                            <option value="scheduled">Programada</option>
+                            <option value="published">Publicada</option>
+                            <option value="pending">Pendiente</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="postsTable">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Plataforma</th>
+                            <th>Tipo</th>
+                            <th>Estado</th>
+                            <th>Engagement</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="postsTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Detail Modal -->
+        <div id="detailModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Detalles de Engagement</h2>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+
+        <!-- Create Post Modal -->
+        <div id="createPostModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Crear Nueva Publicación</h2>
+                <form id="createPostForm">
+                    <div class="form-group">
+                        <label for="postDate">Fecha de Publicación</label>
+                        <input type="datetime-local" id="postDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postPlatform">Plataforma</label>
+                        <select id="postPlatform" required>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="postType">Tipo de Contenido</label>
+                        <select id="postType" required>
+                            <option value="Imagen">Imagen</option>
+                            <option value="Video">Video</option>
+                            <option value="Carrusel">Carrusel</option>
+                            <option value="Texto">Texto</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent">Contenido</label>
+                        <textarea id="postContent" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="postStatus">Estado</label>
+                        <select id="postStatus" required>
+                            <option value="Programada">Programada</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Borrador">Borrador</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Crear Publicación</button>
+                        <button type="button" class="cancel-btn">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="JS/Gestion_social.js"></script>
+</body>
+</html>

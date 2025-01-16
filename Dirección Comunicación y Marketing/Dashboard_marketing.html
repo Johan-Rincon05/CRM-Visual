@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Dashboard</title>
+    <link rel="stylesheet" href="CSS/Dashboard_marketing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Dashboard de Marketing y Comunicación</h1>
+        </header>
+        
+        <div class="metrics-container">
+            <!-- Social Manager Section -->
+            <div class="metric-card">
+                <h2>Social Manager KPIs</h2>
+                <canvas id="socialManagerChart"></canvas>
+                <div class="kpi-details">
+                    <div class="kpi-item">
+                        <span>Engagement</span>
+                        <span id="engagementRate">85%</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span>Publicaciones</span>
+                        <span id="postsCount">45</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Designer Section -->
+            <div class="metric-card">
+                <h2>Diseñadora KPIs</h2>
+                <canvas id="designerChart"></canvas>
+                <div class="kpi-details">
+                    <div class="kpi-item">
+                        <span>Tickets Completados</span>
+                        <span id="ticketsComplete">90%</span>
+                    </div>
+                    <div class="kpi-item">
+                        <span>Tiempo Promedio</span>
+                        <span id="avgTime">2.5 días</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasks Section -->
+        <div class="tasks-section">
+            <h2>Estado de Tareas</h2>
+            <div class="tasks-grid">
+                <div class="task-column">
+                    <h3>Pendientes</h3>
+                    <div id="pendingTasks" class="task-list"></div>
+                </div>
+                <div class="task-column">
+                    <h3>En Proceso</h3>
+                    <div id="inProgressTasks" class="task-list"></div>
+                </div>
+                <div class="task-column">
+                    <h3>Completadas</h3>
+                    <div id="completedTasks" class="task-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts Section -->
+        <div class="alerts-section">
+            <h2>Alertas</h2>
+            <div id="alertsList" class="alerts-list"></div>
+        </div>
+    </div>
+    <script src="JS/Dashboard_marketing.js"></script>
+</body>
+</html>

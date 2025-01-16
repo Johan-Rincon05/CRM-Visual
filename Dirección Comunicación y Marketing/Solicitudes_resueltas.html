@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes Resueltas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/Solicitudes_resueltas.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Solicitudes Resueltas</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar por solicitante o tipo...">
+                <button id="searchBtn">Buscar</button>
+            </div>
+        </header>
+
+        <section class="metrics-summary">
+            <div class="metric-card">
+                <h3>Cumplimiento Total</h3>
+                <div class="metric-value" id="totalCompliance">92%</div>
+                <div class="metric-detail">↑ 5% vs mes anterior</div>
+            </div>
+            <div class="metric-card">
+                <h3>Solicitudes Totales</h3>
+                <div class="metric-value" id="totalRequests">156</div>
+                <div class="metric-detail">Este mes</div>
+            </div>
+            <div class="metric-card">
+                <h3>Tiempo Promedio</h3>
+                <div class="metric-value" id="avgTime">2.3 días</div>
+                <div class="metric-detail">↓ 0.5 días vs mes anterior</div>
+            </div>
+            <div class="chart-card">
+                <canvas id="complianceChart"></canvas>
+            </div>
+        </section>
+
+        <section class="requests-section">
+            <div class="table-header">
+                <h2>Registro de Solicitudes</h2>
+                <div class="table-filters">
+                    <select id="statusFilter">
+                        <option value="all">Todos los estados</option>
+                        <option value="delivered">Entregado</option>
+                        <option value="inProgress">En Proceso</option>
+                        <option value="delayed">Retrasado</option>
+                    </select>
+                    <select id="typeFilter">
+                        <option value="all">Todos los tipos</option>
+                        <option value="design">Diseño</option>
+                        <option value="social">Social Media</option>
+                        <option value="content">Contenido</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="requestsTable">
+                    <thead>
+                        <tr>
+                            <th>Solicitante</th>
+                            <th>Tipo</th>
+                            <th>Fecha Solicitud</th>
+                            <th>Fecha Entrega</th>
+                            <th>Estado</th>
+                            <th>Observaciones</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestsTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Status Update Modal -->
+        <div id="statusModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Actualizar Estado</h2>
+                <form id="statusForm">
+                    <div class="form-group">
+                        <label for="newStatus">Nuevo Estado</label>
+                        <select id="newStatus" required>
+                            <option value="delivered">Entregado</option>
+                            <option value="inProgress">En Proceso</option>
+                            <option value="delayed">Retrasado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="statusNotes">Observaciones</label>
+                        <textarea id="statusNotes" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Actualizar</button>
+                        <button type="button" class="cancel-btn">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Details Modal -->
+        <div id="detailsModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div id="requestDetails"></div>
+            </div>
+        </div>
+    </div>
+    <script src="JS/Solicitudes_resueltas.js"></script>
+</body>
+</html>
