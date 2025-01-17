@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Diseños</title>
+    <link rel="stylesheet" href="CSS/Biblioteca_diseños.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Barra lateral -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Biblioteca de Diseños</h1>
+            </div>
+            
+            <!-- Botón Agregar Nuevo -->
+            <button id="addNewBtn" class="add-button">
+                <i class="fas fa-plus"></i> Nuevo Diseño
+            </button>
+
+            <!-- Filtros -->
+            <div class="filters">
+                <h3>Filtros</h3>
+                <div class="filter-group">
+                    <label>Categoría</label>
+                    <select id="categoryFilter">
+                        <option value="">Todas</option>
+                        <option value="redes">Redes Sociales</option>
+                        <option value="publicidad">Publicidad</option>
+                        <option value="interno">Contenido Interno</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Fecha</label>
+                    <input type="month" id="dateFilter">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <!-- Barra de búsqueda -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar diseños...">
+                <button id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <!-- Cuadrícula de diseños -->
+            <div class="designs-grid" id="designsGrid">
+                <!-- Los diseños se agregarán dinámicamente -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para nuevo diseño -->
+    <div id="newDesignModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Nuevo Diseño</h2>
+            <form id="newDesignForm">
+                <div class="form-group">
+                    <label>Nombre del Diseño</label>
+                    <input type="text" id="designName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Categoría</label>
+                    <select id="designCategory" required>
+                        <option value="redes">Redes Sociales</option>
+                        <option value="publicidad">Publicidad</option>
+                        <option value="interno">Contenido Interno</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea id="designDescription"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Archivos</label>
+                    <div class="drop-zone" id="dropZone">
+                        <span class="drop-zone-prompt">
+                            Arrastra archivos aquí o haz clic para seleccionar
+                        </span>
+                        <input type="file" id="fileInput" multiple accept="image/*,.pdf">
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-button">Guardar Diseño</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para ver diseño -->
+    <div id="viewDesignModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="designDetails">
+                <!-- Detalles del diseño se agregarán dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/Biblioteca_diseños.js"></script>
+</body>
+</html>

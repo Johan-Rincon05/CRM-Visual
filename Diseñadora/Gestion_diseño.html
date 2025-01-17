@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Tiempos</title>
+    <link rel="stylesheet" href="CSS/Gestion_diseño.css">
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Panel izquierdo: Formulario de registro -->
+        <section class="registro-panel">
+            <h2>Registrar Tiempo</h2>
+            <form id="tiempoForm">
+                <div class="form-group">
+                    <label for="tarea">Tarea</label>
+                    <select id="tarea" required>
+                        <option value="">Seleccionar tarea</option>
+                        <option value="pautas">Pautas</option>
+                        <option value="publicaciones">Publicaciones</option>
+                        <option value="contenido">Contenido Interno</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="horas">Horas trabajadas</label>
+                    <input type="number" id="horas" min="0.5" step="0.5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="observaciones">Observaciones</label>
+                    <textarea id="observaciones"></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary">Registrar Tiempo</button>
+            </form>
+        </section>
+
+        <!-- Panel central: Gráficos -->
+        <section class="graficos-panel">
+            <h2>Distribución de Tiempo</h2>
+            <div class="chart-container">
+                <canvas id="tiemposChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Panel derecho: Historial -->
+        <section class="historial-panel">
+            <h2>Historial de Registros</h2>
+            <div class="tabla-container">
+                <table id="historialTabla">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Tarea</th>
+                            <th>Horas</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Se llena dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Notificaciones -->
+    <div id="notificacion" class="notificacion"></div>
+
+    <script src="JS/Gestion_diseño.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Diseño</title>
+    <link rel="stylesheet" href="CSS/Dashboard_diseño.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <h1>Dashboard de Diseño</h1>
+            <p>Última actualización: <span id="lastUpdate"></span></p>
+        </header>
+
+        <section class="kpi-section">
+            <h2>Indicadores Clave</h2>
+            <div class="kpi-cards">
+                <div class="kpi-card">
+                    <h3>Solicitudes Totales</h3>
+                    <div class="kpi-numbers">
+                        <span id="pendientes" class="pendiente">0</span> Pendientes
+                        <span id="enProceso" class="proceso">0</span> En Proceso
+                        <span id="entregadas" class="entregado">0</span> Entregadas
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <h3>Tiempos Promedio</h3>
+                    <div class="kpi-numbers">
+                        <span id="tiempoRedes">0h</span> Redes Sociales
+                        <span id="tiempoPublicidad">0h</span> Publicidad
+                        <span id="tiempoInterno">0h</span> Contenido Interno
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <h3>Cumplimiento</h3>
+                    <div class="kpi-numbers">
+                        <div class="progress-bar">
+                            <div id="progressBar" class="progress"></div>
+                        </div>
+                        <span id="cumplimiento">0%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="flex-container">
+            <section class="chart-section">
+                <h2>Distribución de Solicitudes</h2>
+                <canvas id="solicitudesChart"></canvas>
+            </section>
+
+            <section class="priority-section">
+                <h2>Prioridades del Día</h2>
+                <div id="priorityList" class="priority-list">
+                    <!-- Las tareas se agregarán dinámicamente -->
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="JS/Dashboard_diseño.js"></script>
+</body>
+</html>
