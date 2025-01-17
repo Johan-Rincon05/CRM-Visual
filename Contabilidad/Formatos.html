@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formato de Documentos</title>
+    <link rel="stylesheet" href="CSS/Formatos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Repositorio de Documentos</h1>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar documentos...">
+                <select id="categoryFilter">
+                    <option value="">Todas las categorías</option>
+                    <option value="facturacion">Facturación</option>
+                    <option value="contratos">Contratos</option>
+                    <option value="informes">Informes Financieros</option>
+                </select>
+                <input type="date" id="dateFilter">
+            </div>
+        </header>
+
+        <main>
+            <section class="categories">
+                <div class="category-card" data-category="facturacion">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>Facturación</h3>
+                    <span class="doc-count">0</span>
+                </div>
+                <div class="category-card" data-category="contratos">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Contratos</h3>
+                    <span class="doc-count">0</span>
+                </div>
+                <div class="category-card" data-category="informes">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Informes Financieros</h3>
+                    <span class="doc-count">0</span>
+                </div>
+            </section>
+
+            <section class="documents-grid" id="documentsContainer">
+                <!-- Documentos se cargarán dinámicamente -->
+            </section>
+        </main>
+
+        <button class="floating-button" onclick="showUploadModal()">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <!-- Modal de subida de documentos -->
+        <div id="uploadModal" class="modal">
+            <div class="modal-content">
+                <h2>Subir Nuevo Documento</h2>
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label>Nombre del Documento</label>
+                        <input type="text" name="documentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select name="category" required>
+                            <option value="facturacion">Facturación</option>
+                            <option value="contratos">Contratos</option>
+                            <option value="informes">Informes Financieros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Archivo</label>
+                        <input type="file" name="file" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Subir</button>
+                        <button type="button" onclick="closeUploadModal()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de previsualización -->
+        <div id="previewModal" class="modal">
+            <div class="modal-content">
+                <div id="previewContent"></div>
+                <button onclick="closePreviewModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    <script src="JS/Formatos.js"></script>
+</body>
+</html>

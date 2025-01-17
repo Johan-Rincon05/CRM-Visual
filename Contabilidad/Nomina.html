@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Nómina y Ausentismos</title>
+    <link rel="stylesheet" href="CSS/Nomina.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Control de Nómina y Ausentismos</h1>
+            <div class="metrics-dashboard">
+                <div class="metric-card">
+                    <h3>Total Ausentismos</h3>
+                    <p id="totalAusentismos">0</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Días Perdidos</h3>
+                    <p id="diasPerdidos">0</p>
+                </div>
+                <div class="metric-card">
+                    <h3>% Ausentismo</h3>
+                    <p id="porcentajeAusentismo">0%</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="controls">
+            <button onclick="agregarRegistro()">Nuevo Registro</button>
+            <input type="month" id="mesSelector">
+            <button onclick="exportarDatos()">Exportar Datos</button>
+        </div>
+
+        <div class="tabla-container">
+            <table id="tablaAusentismos">
+                <thead>
+                    <tr>
+                        <th onclick="ordenarTabla('nombre')">Nombre del Empleado</th>
+                        <th onclick="ordenarTabla('cargo')">Cargo</th>
+                        <th onclick="ordenarTabla('fecha')">Fecha</th>
+                        <th onclick="ordenarTabla('tipo')">Tipo de Ausentismo</th>
+                        <th onclick="ordenarTabla('duracion')">Duración</th>
+                        <th>Observaciones</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaBody"></tbody>
+            </table>
+        </div>
+
+        <div class="graficos">
+            <canvas id="graficoAusentismos"></canvas>
+        </div>
+    </div>
+    <script src="JS/Nomina.js"></script>
+</body>
+</html>

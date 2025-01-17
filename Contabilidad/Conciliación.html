@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Aprobación de Suscripciones</title>
+    <link rel="stylesheet" href="CSS/Conciliación.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Suscripciones</h1>
+        
+        <!-- Filtros -->
+        <div class="filtros">
+            <select id="filtroOrientador">
+                <option value="">Todos los orientadores</option>
+            </select>
+            <select id="filtroMetodoPago">
+                <option value="">Todos los métodos de pago</option>
+                <option value="Efectivo">Efectivo en INCCA</option>
+                <option value="QR">QR</option>
+                <option value="Nequi">Nequi</option>
+                <option value="Daviplata">Daviplata</option>
+                <option value="PSE">PSE</option>
+                <option value="Efecty">Efecty</option>
+                <option value="Consignacion">Consignación al banco</option>
+                <option value="Datafono">Por datáfono</option>
+                <option value="NequiAutorizado">A Nequi Autorizado</option>
+                <option value="TransfiYa">TransfiYa</option>
+            </select>
+            <input type="date" id="filtroFecha">
+            <select id="filtroAprobacion">
+                <option value="">Todos los estados</option>
+                <option value="aprobado">Aprobado</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="rechazado">Rechazado</option>
+            </select>
+        </div>
+
+        <!-- Botones de exportación -->
+        <div class="botones">
+            <button onclick="exportarExcel()">Exportar a Excel</button>
+            <button onclick="exportarPDF()">Exportar a PDF</button>
+        </div>
+
+        <!-- Tabla principal -->
+        <div class="tabla-container">
+            <table id="tablaSuscripciones">
+                <thead>
+                    <tr>
+                        <th>Fecha de Pago</th>
+                        <th>Nombre Cliente</th>
+                        <th>Número Documento</th>
+                        <th>Celular</th>
+                        <th>Valor Suscripción</th>
+                        <th>Abono</th>
+                        <th>¿Cómo pagó?</th>
+                        <th>Documento Consignante</th>
+                        <th>Observaciones Orientador</th>
+                        <th>Aprobación Contable</th>
+                        <th>Observaciones Contabilidad</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaCuerpo">
+                    <!-- Contenido dinámico -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="JS/Conciliación.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Gastos</title>
+    <link rel="stylesheet" href="CSS/Control_gastos.css">
+    <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard">
+            <div class="metric-card">
+                <h3>Total Gastos</h3>
+                <p id="totalGastos">$0</p>
+            </div>
+            <div class="metric-card">
+                <h3>Pendientes</h3>
+                <p id="porcentajePendientes">0%</p>
+            </div>
+            <div class="metric-card">
+                <h3>Vencidos</h3>
+                <p id="totalVencidos">0</p>
+            </div>
+        </header>
+
+        <div class="controls">
+            <button onclick="sincronizarDatos()">Sincronizar con Google Sheets</button>
+            <input type="month" id="periodoSelector">
+        </div>
+
+        <div class="tabla-container">
+            <table id="tablaGastos">
+                <thead>
+                    <tr>
+                        <th>Tipo de Gasto</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
+                        <th>Monto</th>
+                        <th>Fecha Máxima</th>
+                        <th>Fecha Real</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody id="gastosCuerpo"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="JS/Control_gastos.js"></script>
+</body>
+</html>
