@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/dashboard_social.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Social Media Dashboard</h1>
+
+            <div class="date-filter">
+                <div class="filter-container">
+                    <label for="startDate">Desde:</label>
+                    <input type="date" id="startDate" class="date-input">
+                    
+                    <label for="endDate">Hasta:</label>
+                    <input type="date" id="endDate" class="date-input">
+                    
+                    <button id="filterButton" class="filter-button">
+                        <i class="fas fa-filter"></i> Filtrar
+                    </button>
+                </div>
+            </div>
+
+        </header>
+        
+        <section class="kpi-cards">
+            <div class="card">
+                <h3>Publicaciones</h3>
+                <div class="kpi-value">
+                    <span id="posts-completed">0</span>/<span id="posts-scheduled">0</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Engagement Promedio</h3>
+                <div class="kpi-value" id="avg-engagement">0%</div>
+            </div>
+            <div class="card">
+                <h3>Leads Generados</h3>
+                <div class="kpi-value" id="leads">0</div>
+            </div>
+        </section>
+
+        <section class="charts">
+            <div class="chart-container">
+                <canvas id="publications-chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="platforms-chart"></canvas>
+            </div>
+        </section>
+
+        <section class="tasks">
+            <h2>Próximas Tareas</h2>
+            <div class="task-list" id="taskList"></div>
+        </section>
+    </div>
+    <script src="JS/dashboard_social.js"></script>
+</body>
+</html>

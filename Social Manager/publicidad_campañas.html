@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicidad y Campañas Digitales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/publicidad_campañas.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="campaigns-container">
+        <header>
+            <h1>Publicidad y Campañas Digitales</h1>
+            <button id="newCampaignBtn" class="primary-button">
+                <i class="fas fa-plus"></i> Nueva Campaña
+            </button>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Active Campaigns Section -->
+            <section class="campaigns-list">
+                <h2>Campañas Activas</h2>
+                <div class="campaigns-wrapper" id="activeCampaigns"></div>
+            </section>
+
+            <!-- Performance Charts Section -->
+            <section class="performance-charts">
+                <h2>Rendimiento de Campañas</h2>
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="leadsChart"></canvas>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- New Campaign Modal -->
+    <div id="campaignModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nueva Campaña</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="campaignForm">
+                <div class="form-group">
+                    <label>Nombre de la Campaña</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Objetivo</label>
+                    <select name="objective" required>
+                        <option value="reach">Alcance</option>
+                        <option value="traffic">Tráfico</option>
+                        <option value="conversions">Conversiones</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Plataforma</label>
+                    <select name="platform" required>
+                        <option value="facebook">Facebook Ads</option>
+                        <option value="google">Google Ads</option>
+                        <option value="instagram">Instagram Ads</option>
+                        <option value="linkedin">LinkedIn Ads</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Fecha de Inicio</label>
+                        <input type="date" name="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha de Fin</label>
+                        <input type="date" name="endDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Presupuesto (USD)</label>
+                    <input type="number" name="budget" min="1" step="0.01" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="primary-button">
+                        <i class="fas fa-save"></i> Crear Campaña
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Campaign Details Modal -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalles de Campaña</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="campaign-details" id="campaignDetails">
+                <!-- Details will be populated dynamically -->
+            </div>
+            <div class="modal-actions">
+                <button class="secondary-button" id="downloadReportBtn">
+                    <i class="fas fa-download"></i> Descargar Informe
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/publicidad_campañas.js"></script>
+</body>
+</html>
