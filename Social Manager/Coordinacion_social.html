@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaboración y Coordinación</title>
+    <link rel="stylesheet" href="CSS/Coordinacion_social.css">
+    <!-- FullCalendar CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.8/main.min.css' rel='stylesheet' />
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Calendario de Contenido Colaborativo</h1>
+            <div class="user-info">
+                <span class="user-avatar">SM</span>
+                <span class="user-name">Social Manager</span>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="view-controls">
+                <button id="monthView" class="active">Mes</button>
+                <button id="weekView">Semana</button>
+            </div>
+            <div class="filters">
+                <select id="eventFilter">
+                    <option value="all">Todos los eventos</option>
+                    <option value="publication">Publicaciones</option>
+                    <option value="meeting">Reuniones</option>
+                    <option value="recording">Grabaciones</option>
+                    <option value="design">Diseño</option>
+                </select>
+                <input type="text" id="searchEvent" placeholder="Buscar eventos...">
+            </div>
+        </div>
+
+        <div class="timeline">
+            <!-- Timeline se llenará dinámicamente -->
+        </div>
+
+        <div id="calendar"></div>
+
+        <button id="addEventBtn" class="floating-btn">
+            <span class="material-icons">add</span>
+        </button>
+    </div>
+
+    <!-- Modal para crear/editar eventos -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Evento</h2>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="eventTitle">Título</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventType">Tipo</label>
+                    <select id="eventType" required>
+                        <option value="publication">Publicación</option>
+                        <option value="meeting">Reunión</option>
+                        <option value="recording">Grabación</option>
+                        <option value="design">Entrega de Diseño</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Fecha</label>
+                    <input type="datetime-local" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Descripción</label>
+                    <textarea id="eventDescription"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventParticipants">Participantes</label>
+                    <select id="eventParticipants" multiple>
+                        <option value="social">Social Manager</option>
+                        <option value="director">Director</option>
+                        <option value="designer">Diseñadora</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="eventFiles">Archivos</label>
+                    <input type="file" id="eventFiles" multiple>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Guardar</button>
+                    <button type="button" class="cancel">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales/es.global.min.js'></script>
+        <script src='https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js'></script>
+        <script src="JS/Coordinacion_social.js"></script>
+
+</body>
+</html>
