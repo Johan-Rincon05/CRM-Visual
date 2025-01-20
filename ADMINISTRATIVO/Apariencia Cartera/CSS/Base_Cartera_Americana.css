@@ -1,14 +1,15 @@
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #34495e;
+    --primary-color: #001BCC;
+    --secondary-color: #0016A8;
     --success-color: #27ae60;
     --warning-color: #f1c40f;
     --danger-color: #e74c3c;
-    --info-color: #3498db;
+    --info-color: #001BCC;
     --background-color: #f5f6fa;
     --border-radius: 8px;
     --transition-speed: 0.3s;
 }
+
 
 /* Global Styles */
 * {
@@ -27,7 +28,7 @@ body {
 header {
     background-color: white;
     padding: 1rem 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px #001BCC;
     display: flex;
     justify-content: space-between;
     align-items: center;

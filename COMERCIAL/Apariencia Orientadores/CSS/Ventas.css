@@ -1,7 +1,7 @@
 :root {
     --primary-color: #2C3E50;
     --secondary-color: #34495E;
-    --accent-color: #3498DB;
+    --accent-color: #FFC800;
     --success-color: #2ECC71;
     --warning-color: #F1C40F;
     --danger-color: #E74C3C;
@@ -9,52 +9,80 @@
     --dark-gray: #7F8C8D;
     --shadow: 0 2px 4px rgba(0,0,0,0.1);
     --transition: all 0.3s ease;
+    --border-radius: 12px;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
 }
 
-/* Mejoras Generales */
+/* Base Styles */
 body {
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
     color: var(--primary-color);
     line-height: 1.6;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     max-width: 1400px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-xl);
 }
 
-/* Header Mejorado */
+/* Enhanced Header */
 .dashboard-header {
     background: white;
-    padding: 25px;
-    border-radius: 15px;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius);
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    margin-bottom: 25px;
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), transparent);
+    border-radius: 50%;
+    transform: translate(50%, -50%);
 }
 
 .header-content h1 {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 2.2rem;
+    font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 10px;
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 1;
 }
 
-/* Botones Mejorados */
+/* Enhanced Buttons */
 .add-btn {
-    background: linear-gradient(135deg, var(--accent-color), #2980b9);
+    background: linear-gradient(135deg, var(--accent-color), #FFC800);
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--border-radius);
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--spacing-sm);
     transition: var(--transition);
     font-weight: 500;
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+    position: relative;
+    overflow: hidden;
+    margin-right: auto; 
+    align-self: flex-start;
 }
 
 .add-btn:hover {
@@ -62,49 +90,85 @@ body {
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
 }
 
-/* Tabla Mejorada */
+.add-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.add-btn:hover::after {
+    left: 100%;
+}
+
+.button-container {
+    display: flex;
+    width: 100%;
+}
+
+/* Enhanced Table */
 .table-container {
     background: white;
-    border-radius: 15px;
+    border-radius: var(--border-radius);
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     overflow: hidden;
+    position: relative;
 }
 
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+    margin: 0;
 }
 
 th {
     background: linear-gradient(135deg, var(--secondary-color), #2c3e50);
     color: white;
     font-weight: 600;
-    padding: 15px 20px;
+    padding: var(--spacing-lg) var(--spacing-xl);
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 td {
-    padding: 15px 20px;
+    padding: var(--spacing-lg) var(--spacing-xl);
     border-bottom: 1px solid rgba(236, 240, 241, 0.5);
+    transition: var(--transition);
+    vertical-align: middle;
+}
+
+tr {
     transition: var(--transition);
 }
 
-tr:hover td {
+tr:hover {
     background-color: rgba(52, 152, 219, 0.05);
+    transform: translateX(5px);
 }
 
-/* Modal Pop-up Mejorado */
+/* Enhanced Modal */
 .modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
-    width: 600px;
+    width: min(600px, 90%);
     background: white;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     opacity: 0;
@@ -132,41 +196,33 @@ tr:hover td {
     transition: var(--transition);
 }
 
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
 .modal-content {
-    padding: 30px;
+    padding: var(--spacing-xl);
 }
 
 .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
     border-bottom: 2px solid var(--light-gray);
 }
 
-.modal-header h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-/* Checkboxes Personalizados */
+/* Enhanced Checkboxes */
 .checkbox-container {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
-    padding: 5px;
+    padding: var(--spacing-sm);
+    user-select: none;
 }
 
 .checkbox-container input {
     opacity: 0;
     position: absolute;
+    cursor: pointer;
 }
 
 .checkmark {
@@ -180,34 +236,66 @@ tr:hover td {
     transition: var(--transition);
 }
 
+.checkbox-container:hover .checkmark {
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
 .checkbox-container input:checked ~ .checkmark {
     background: var(--accent-color);
+    border-color: var(--accent-color);
 }
 
-.checkmark:after {
-    content: '';
-    position: absolute;
-    display: none;
-    left: 7px;
-    top: 3px;
-    width: 4px;
-    height: 8px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+/* Row States */
+tr.status-one { 
+    background-color: rgba(255, 160, 122, 0.15);
+    border-left: 4px solid var(--warning-color);
 }
 
-.checkbox-container input:checked ~ .checkmark:after {
-    display: block;
+tr.status-two { 
+    background-color: rgba(255, 215, 0, 0.15);
+    border-left: 4px solid var(--success-color);
 }
 
-/* Estados de Fila */
-tr.status-one { background-color: rgba(255, 160, 122, 0.15); }
-tr.status-two { background-color: rgba(255, 215, 0, 0.15); }
-tr.status-three { background-color: rgba(144, 238, 144, 0.15); }
+tr.status-three { 
+    background-color: rgba(144, 238, 144, 0.15);
+    border-left: 4px solid var(--accent-color);
+}
 
-/* Celda Seleccionada */
+/* Selected Cell */
 .selected {
     outline: 2px solid var(--accent-color);
     background-color: rgba(52, 152, 219, 0.1);
+    position: relative;
+}
+
+.selected::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    .dashboard-header {
+        padding: var(--spacing-lg);
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    th, td {
+        padding: var(--spacing-md);
+    }
+
+    .header-content h1 {
+        font-size: 1.8rem;
+    }
 }

@@ -1,3 +1,31 @@
+:root {
+    /* Colores principales */
+    --primary-color: #FFC800;
+    --primary-hover: #45a049;
+    --secondary-color: #f5f5f5;
+    
+    /* Colores de texto */
+    --text-primary: #333;
+    --text-secondary: #666;
+    --text-light: #888;
+    
+    /* Colores de estado */
+    --success-color: #00c853;
+    --error-color: #e53935;
+    --warning-color: #ff9800;
+    
+    /* Colores de fondo */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-hover: #f1f1f1;
+    
+    /* Colores de borde */
+    --border-color: #ddd;
+    
+    /* Colores de sombra */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +34,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: var(--secondary-color);
 }
 
 .container {
@@ -14,16 +42,15 @@ body {
     height: 100vh;
 }
 
-/* Sidebar Styles */
 .sidebar {
     width: 260px;
-    background-color: #f5f5f5;
+    background-color: var(--secondary-color);
     height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
     transition: all 0.3s ease;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 5px var(--shadow-color);
 }
 
 .sidebar.collapsed {
@@ -33,7 +60,7 @@ body {
 .sidebar-header {
     padding: 20px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
@@ -41,7 +68,6 @@ body {
     height: auto;
 }
 
-/* Logo Styles */
 .logo-full {
     max-width: 150px;
     height: auto;
@@ -73,7 +99,7 @@ body {
 .version {
     display: block;
     font-size: 12px;
-    color: #666;
+    color: var(--text-secondary);
     margin-top: 5px;
 }
 
@@ -81,7 +107,7 @@ body {
     position: absolute;
     right: -12px;
     top: 50%;
-    background: white;
+    background: var(--bg-primary);
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -89,7 +115,7 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 5px var(--shadow-color);
     transition: transform 0.3s ease;
 }
 
@@ -105,7 +131,7 @@ body {
     display: flex;
     align-items: center;
     padding: 12px 20px;
-    color: #333;
+    color: var(--text-primary);
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -115,8 +141,8 @@ body {
 }
 
 .sidebar-item.active {
-    background-color: #ff0000;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--bg-primary);
 }
 
 .sidebar-item i {
@@ -129,13 +155,12 @@ body {
     display: none;
 }
 
-/* Updated Sidebar Footer Styles */
 .sidebar-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     padding: 20px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
 
@@ -149,7 +174,7 @@ body {
 }
 
 .user-info:hover {
-    background-color: rgba(0,0,0,0.05);
+    background-color: var(--shadow-color);
 }
 
 .user-avatar {
@@ -193,7 +218,7 @@ body {
 .user-role {
     display: block;
     font-size: 12px;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .dropdown-icon {
@@ -207,9 +232,9 @@ body {
     bottom: 100%;
     left: 20px;
     right: 20px;
-    background: white;
+    background: var(--bg-primary);
     border-radius: 5px;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 -2px 10px var(--shadow-color);
 }
 
 .user-menu.active {
@@ -220,13 +245,13 @@ body {
     display: flex;
     align-items: center;
     padding: 10px;
-    color: #333;
+    color: var(--text-primary);
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
 .menu-item:hover {
-    background-color: #f0f0f0;
+    background-color: var(--bg-secondary);
 }
 
 .menu-item i {
@@ -234,7 +259,6 @@ body {
     margin-right: 10px;
 }
 
-/* Main Content Styles */
 .main-content {
     flex: 1;
     margin-left: 260px;
@@ -248,7 +272,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: white;
+    background-color: var(--bg-primary);
 }
 
 .content {
@@ -261,9 +285,9 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: white;
+    background-color: var(--bg-primary);
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px var(--shadow-color);
     padding: 40px;
     width: 100%;
     max-width: 800px;
@@ -280,19 +304,19 @@ body {
 .value {
     font-size: 36px;
     font-weight: bold;
-    color: #4CAF50;
+    color: var(--primary-color);
 }
 
 .label {
     font-size: 16px;
-    color: #888;
+    color: var(--text-light);
 }
 
 .search-bar {
     padding: 8px 16px;
     border-radius: 20px;
-    border: 1px solid #ddd;
-    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
 }
 
 .search-bar input {
@@ -303,9 +327,9 @@ body {
 }
 
 .careers-table {
-    background-color: #FFFFFF;
+    background-color: var(--bg-primary);
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--shadow-color);
     padding: 20px;
     width: 100%;
     max-width: 1000px;
@@ -325,28 +349,28 @@ body {
 }
 
 .careers-table tr:hover {
-    background-color: #f1f1f1;
+    background-color: var(--bg-hover);
 }
 
 .careers-table th,
 .careers-table td {
     padding: 12px 16px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .careers-table th {
     font-weight: bold;
-    background-color: #f8f9fa;
+    background-color: var(--bg-secondary);
 }
 
 .careers-table td.active {
-    color: #00c853;
+    color: var(--success-color);
     font-weight: bold;
 }
 
 .careers-table td.inactive {
-    color: #e53935;
+    color: var(--error-color);
     font-weight: bold;
 }
 
@@ -357,8 +381,8 @@ body {
 }
 
 .create-lead-btn {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--bg-primary);
     border: none;
     padding: 12px 24px;
     border-radius: 8px;
@@ -373,9 +397,8 @@ body {
     justify-content: center;
 }
 
-
 .create-lead-btn:hover {
-    background-color: #45a049;
+    background-color: var(--primary-hover);
 }
 
 .plus-icon {
@@ -383,33 +406,6 @@ body {
     font-weight: bold;
 }
 
-.search-lead-modal .modal-content {
-    max-width: 500px;
-    padding: 30px;
-}
-
-.search-lead-modal .search-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.search-lead-modal .validate-btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 10px;
-}
-
-.search-lead-modal .validate-btn:hover {
-    background-color: #45a049;
-}
-
-/* Modal Styles */
 .warning-modal {
     display: none;
     position: fixed;
@@ -424,7 +420,7 @@ body {
 }
 
 .warning-content {
-    background: white;
+    background: var(--bg-primary);
     padding: 30px;
     border-radius: 10px;
     text-align: center;
@@ -448,13 +444,13 @@ body {
 }
 
 .warning-buttons button:first-child {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--bg-primary);
 }
 
 .warning-buttons button:last-child {
-    background-color: #f44336;
-    color: white;
+    background-color: var(--error-color);
+    color: var(--bg-primary);
 }
 
 .modal-overlay {
@@ -471,7 +467,7 @@ body {
 }
 
 .modal-content {
-    background: white;
+    background: var(--bg-primary);
     padding: 30px;
     border-radius: 10px;
     width: 80%;
@@ -480,8 +476,6 @@ body {
     position: relative;
 }
 
-
-/* Para hacer el modal responsive en dispositivos más pequeños */
 @media screen and (max-width: 768px) {
     .modal-content {
         width: 80%;
@@ -510,7 +504,7 @@ body {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
 }
 
@@ -518,7 +512,6 @@ body {
     font-weight: bold;
 }
 
-/* Formulario*/
 .form-group {
     margin-bottom: 15px;
 }
@@ -527,26 +520,25 @@ body {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 14px;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: #4CAF50;
+    border-color: var(--primary-color);
     outline: none;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
 }
 
-/* Search Modal */
 #search-lead-modal .modal-content {
     max-width: 500px;
 }
@@ -556,8 +548,8 @@ body {
 }
 
 .validate-btn {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--bg-primary);
     padding: 12px 24px;
     border: none;
     border-radius: 4px;
@@ -568,7 +560,7 @@ body {
 }
 
 .validate-btn:hover {
-    background-color: #45a049;
+    background-color: var(--primary-hover);
 }
 
 .form-actions {
@@ -576,7 +568,7 @@ body {
     justify-content: flex-end;
     gap: 10px;
     padding: 15px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border-color);
     margin-top: 15px;
 }
 
@@ -592,36 +584,34 @@ body {
 }
 
 .btn-submit {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--bg-primary);
     border: none;
 }
 
 .btn-submit:hover {
-    background-color: #45a049;
+    background-color: var(--primary-hover);
 }
 
 .btn-cancel {
-    background-color: #f8f9fa;
-    color: #333;
-    border: 1px solid #ddd;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
 }
 
 .btn-cancel:hover {
-    background-color: #e9ecef;
+    background-color: var(--bg-hover);
 }
 
-
-/* Payment Section */
 .payment-section {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 2px solid #eee;
+    border-top: 2px solid var(--border-color);
 }
 
 .payment-section h3 {
     margin-bottom: 20px;
-    color: #2c3e50;
+    color: var(--text-primary);
 }
 
 .payment-fields {
@@ -638,8 +628,8 @@ body {
 }
 
 .update-button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--bg-primary);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -647,11 +637,10 @@ body {
     margin-top: 20px;
 }
 
-/* Modal Tabs */
 .modal-tabs {
     display: flex;
     margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .modal-tab {
@@ -663,8 +652,8 @@ body {
 }
 
 .modal-tab.active {
-    border-bottom: 3px solid #4CAF50;
-    color: #4CAF50;
+    border-bottom: 3px solid var(--primary-color);
+    color: var(--primary-color);
     font-weight: bold;
 }
 
@@ -676,18 +665,17 @@ body {
     display: block;
 }
 
-/* Chat Styles */
 .chat-container {
     height: 300px;
     overflow-y: auto;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 15px;
 }
 
 .chat-message {
-    background: #f5f5f5;
+    background: var(--secondary-color);
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 4px;
@@ -695,7 +683,7 @@ body {
 
 .chat-message .timestamp {
     font-size: 12px;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .chat-input-container {
@@ -708,12 +696,11 @@ body {
     gap: 10px;
 }
 
-/* Document Styles */
 .documents-container {
     padding: 30px;
-    background-color: #f8f9fa;
+    background-color: var(--bg-secondary);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px var(--shadow-color);
     margin: 20px;
 }
 
@@ -726,69 +713,66 @@ body {
 }
 
 .document-upload-section h3 {
-    color: #2c3e50;
+    color: var(--text-primary);
     font-size: 24px;
     text-align: center;
     margin-bottom: 30px;
     padding-bottom: 15px;
-    border-bottom: 2px solid #e9ecef;
+    border-bottom: 2px solid var(--bg-secondary);
 }
 
 .document-item {
     display: grid;
     gap: 15px;
     padding: 25px 30px;
-    background: white;
+    background: var(--bg-primary);
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px var(--shadow-color);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     margin-bottom: 20px;
 }
 
 .document-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .document-item label {
     font-weight: 600;
-    color: #34495e;
+    color: var(--text-primary);
     font-size: 16px;
     margin-bottom: 10px;
 }
 
 .document-item input[type="file"] {
     padding: 15px;
-    border: 2px solid #e9ecef;
+    border: 2px solid var(--bg-secondary);
     border-radius: 6px;
-    background-color: #f8f9fa;
+    background-color: var(--bg-secondary);
     cursor: pointer;
     transition: border-color 0.3s ease;
     margin: 10px 0;
 }
 
 .document-item input[type="file"]:hover {
-    border-color: #4a90e2;
+    border-color: var(--primary-color);
 }
 
 .document-item input[type="file"]:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
 }
 
-
-/* Estilos para secciones colapsables del formulario */
 .form-section {
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     width: 100%;
 }
 
-
 .section-header {
-    background-color: #f8f9fa;
+    background-color: var(--bg-secondary);
     padding: 12px 15px;
     display: flex;
     justify-content: space-between;
@@ -798,19 +782,19 @@ body {
 }
 
 .section-header:hover {
-    background-color: #e9ecef;
+    background-color: var(--bg-hover);
 }
 
 .section-header h3 {
     margin: 0;
-    color: #333;
+    color: var(--text-primary);
     font-size: 16px;
 }
 
 .section-content {
     display: none;
     padding: 15px;
-    background-color: #fff;
+    background-color: var(--bg-primary);
 }
 
 .section-content.active {

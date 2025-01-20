@@ -1,13 +1,13 @@
 :root {
-    --primary-color: #2C3E50;
-    --secondary-color: #34495E;
-    --accent-color: #3498DB;
+    --primary-color: #009EED;
+    --secondary-color: #0084C8;
+    --accent-color: #00B0FF;
     --success-color: #2ECC71;
     --warning-color: #F1C40F;
     --danger-color: #E74C3C;
     --light-gray: #ECF0F1;
     --dark-gray: #7F8C8D;
-    --gradient: linear-gradient(135deg, #3498db, #2980b9);
+    --gradient: linear-gradient(135deg, #009EED, #0084C8);
 }
 
 body {

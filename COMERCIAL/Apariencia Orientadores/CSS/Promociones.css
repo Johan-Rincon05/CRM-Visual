@@ -1,7 +1,7 @@
 :root {
     --primary-color: #2C3E50;
-    --secondary-color: #34495E;
-    --accent-color: #3498DB;
+    --secondary-color: #FFC800;
+    --accent-color: #FFC800;
     --success-color: #2ECC71;
     --warning-color: #F1C40F;
     --danger-color: #E74C3C;
@@ -11,27 +11,36 @@
     --transition: all 0.3s ease;
 }
 
-/* Mejoras Generales */
+/* Base Styles */
 body {
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
     color: var(--primary-color);
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     max-width: 1400px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
-/* Header Mejorado */
+/* Header Styles */
 .dashboard-header {
     background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    margin-bottom: 25px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+.header-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: center;
 }
 
 .header-content h1 {
@@ -41,7 +50,85 @@ body {
     margin-bottom: 10px;
 }
 
-/* Botones Mejorados */
+.price-base {
+    background: linear-gradient(135deg, var(--accent-color), #2980b9);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+}
+
+/* Search Controls */
+.search-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.search-box {
+    flex: 1;
+    position: relative;
+}
+
+.search-box input {
+    width: 60%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--dark-gray);
+}
+
+/* Table Styles */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th {
+    background: linear-gradient(135deg, var(--secondary-color), #2c3e50);
+    color: white;
+    padding: 1.2rem 1.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+td {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--light-gray);
+    vertical-align: middle;
+}
+
+tr:hover {
+    background-color: rgba(52, 152, 219, 0.05);
+    transform: translateX(5px);
+    transition: var(--transition);
+}
+
+/* Button Styles */
 .add-btn {
     background: linear-gradient(135deg, var(--accent-color), #2980b9);
     color: white;
@@ -62,83 +149,60 @@ body {
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
 }
 
-/* Tabla Mejorada */
-.table-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+.action-btn {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    margin: 0 0.3rem;
+    position: relative;
     overflow: hidden;
 }
 
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-th {
-    background: linear-gradient(135deg, var(--secondary-color), #2c3e50);
+.action-btn.edit {
+    background: var(--warning-color);
     color: white;
-    font-weight: 600;
-    padding: 15px 20px;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
 }
 
-td {
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(236, 240, 241, 0.5);
+.action-btn.delete {
+    background: var(--danger-color);
+    color: white;
+}
+
+.careers-btn {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
     transition: var(--transition);
+    font-weight: 500;
 }
 
-tr:hover td {
-    background-color: rgba(52, 152, 219, 0.05);
-}
-
-/* Modal Pop-up Mejorado */
+/* Modal Styles */
 .modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
-    width: 600px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-}
-
-.modal.active {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-overlay {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .modal-content {
-    padding: 30px;
+    position: relative;
+    background: white;
+    margin: 5% auto;
+    padding: 2rem;
+    width: 70%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease-out;
 }
 
 .modal-header {
@@ -156,109 +220,108 @@ tr:hover td {
     color: var(--primary-color);
 }
 
-/* Checkboxes Personalizados */
-.checkbox-container {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    padding: 5px;
-}
-
-.checkbox-container input {
-    opacity: 0;
-    position: absolute;
-}
-
-.checkmark {
-    position: relative;
-    display: block;
-    width: 22px;
-    height: 22px;
-    background: white;
-    border: 2px solid var(--accent-color);
-    border-radius: 4px;
-    transition: var(--transition);
-}
-
-.checkbox-container input:checked ~ .checkmark {
-    background: var(--accent-color);
-}
-
-.checkmark:after {
-    content: '';
-    position: absolute;
-    display: none;
-    left: 7px;
-    top: 3px;
-    width: 4px;
-    height: 8px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-.checkbox-container input:checked ~ .checkmark:after {
-    display: block;
-}
-
-/* Estados de Fila */
-tr.status-one { background-color: rgba(255, 160, 122, 0.15); }
-tr.status-two { background-color: rgba(255, 215, 0, 0.15); }
-tr.status-three { background-color: rgba(144, 238, 144, 0.15); }
-
-/* Celda Seleccionada */
-.selected {
-    outline: 2px solid var(--accent-color);
-    background-color: rgba(52, 152, 219, 0.1);
-}
-
-/* Add your existing CSS styles and add these new ones */
-.price-base {
-    background: var(--accent-color);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-.careers-btn {
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
+/* Status Badges */
 .status-active {
     background: var(--success-color);
     color: white;
-    padding: 6px 12px;
+    padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.9rem;
+    display: inline-block;
 }
 
-.careers-list {
+/* Form Styles */
+.discount-form {
     display: grid;
-    gap: 15px;
+    gap: 1.5rem;
+    padding: 1.5rem;
 }
 
-.career-item {
+.form-group {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background: var(--light-gray);
-    border-radius: 8px;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.badge {
-    background: var(--accent-color);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
+.form-group label {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.form-group input, 
+.form-group select {
+    padding: 0.8rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+/* Animations */
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .header-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-controls {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 992px) {
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+    }
+    
+    .discount-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .action-buttons-container {
+        flex-direction: column;
+    }
+    
+    .status-message {
+        flex-direction: column;
+        text-align: center;
+    }
 }

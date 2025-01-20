@@ -1,3 +1,15 @@
+:root {
+    --primary-color: #FF6600;
+    --primary-hover: #e65c00;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --background-light: #f5f5f5;
+    --border-color: #dddddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --success-color: #4CAF50;
+    --danger-color: #f44336;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +18,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: var(--background-light);
 }
 
 .container {
@@ -17,14 +29,14 @@ body {
 .sidebar {
     width: 250px;
     background-color: #292D32;
-    color: white;
+    color: var(--text-light);
     padding: 20px;
 }
 
 .sidebar-item {
     display: block;
     text-decoration: none;
-    color: white;
+    color: var(--text-light);
     padding: 12px 15px;
     margin: 5px 0;
     border-radius: 8px;
@@ -33,12 +45,12 @@ body {
 }
 
 .sidebar-item.active {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--primary-color);
     font-weight: bold;
 }
 
 .sidebar-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--primary-hover);
 }
 
 .main-content {
@@ -58,14 +70,14 @@ body {
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: #666;
+    color: var(--text-dark);
     padding: 8px 16px;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
 
 .back-btn:hover {
-    background-color: #eee;
+    background-color: var(--border-color);
 }
 
 .upload-container {
@@ -76,14 +88,14 @@ body {
 }
 
 .upload-section, .preview-section {
-    background-color: white;
+    background-color: var(--text-light);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .file-upload-area {
-    border: 2px dashed #ddd;
+    border: 2px dashed var(--border-color);
     border-radius: 10px;
     padding: 40px 20px;
     text-align: center;
@@ -92,21 +104,21 @@ body {
 }
 
 .file-upload-area.drag-over {
-    border-color: #2196F3;
-    background-color: rgba(33, 150, 243, 0.05);
+    border-color: var(--primary-color);
+    background-color: rgba(255, 102, 0, 0.05);
 }
 
 .file-upload-area i {
     font-size: 48px;
-    color: #666;
+    color: var(--text-dark);
     margin-bottom: 15px;
 }
 
 .upload-btn {
     display: inline-block;
     padding: 8px 16px;
-    background-color: #2196F3;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-light);
     border-radius: 5px;
     cursor: pointer;
     margin: 10px 0;
@@ -114,11 +126,11 @@ body {
 }
 
 .upload-btn:hover {
-    background-color: #1976D2;
+    background-color: var(--primary-hover);
 }
 
 .file-info {
-    color: #666;
+    color: var(--text-dark);
     margin-top: 10px;
 }
 
@@ -133,21 +145,21 @@ body {
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #444;
+    color: var(--text-dark);
 }
 
 .form-group select {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
 }
 
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-light);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -159,7 +171,7 @@ body {
 }
 
 .submit-btn:disabled {
-    background-color: #ccc;
+    background-color: var(--border-color);
     cursor: not-allowed;
 }
 
@@ -175,13 +187,13 @@ table {
 th, td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
 }
 
 th {
     background-color: #f8f9fa;
     font-weight: bold;
-    color: #444;
+    color: var(--text-dark);
 }
 
 .upload-status {
@@ -191,7 +203,7 @@ th {
 
 .progress-bar {
     height: 8px;
-    background-color: #f0f0f0;
+    background-color: var(--background-light);
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -199,7 +211,7 @@ th {
 
 .progress {
     height: 100%;
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     width: 0;
     transition: width 0.3s;
 }
@@ -211,11 +223,11 @@ th {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: var(--shadow-color);
 }
 
 .modal-content {
-    background-color: white;
+    background-color: var(--text-light);
     padding: 30px;
     border-radius: 10px;
     width: 90%;
@@ -238,13 +250,13 @@ th {
 }
 
 .confirm-btn {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-light);
 }
 
 .cancel-btn {
-    background-color: #f44336;
-    color: white;
+    background-color: var(--danger-color);
+    color: var(--text-light);
 }
 
 @media (max-width: 1200px) {
