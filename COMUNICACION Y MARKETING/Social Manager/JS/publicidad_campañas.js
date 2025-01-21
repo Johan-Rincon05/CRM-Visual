@@ -429,8 +429,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     label: 'Presupuesto Total',
                     data: campaigns.map(c => c.budget),
-                    backgroundColor: 'rgba(48, 79, 254, 0.2)',
-                    borderColor: 'rgba(48, 79, 254, 1)',
+                    backgroundColor: '#CF85D1',
+                    borderColor: '#CF85D1',
                     borderWidth: 1
                 },
                 {
@@ -450,8 +450,8 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'Leads Generados',
                 data: campaigns.map(c => c.leads),
-                backgroundColor: 'rgba(33, 150, 243, 0.2)',
-                borderColor: 'rgba(33, 150, 243, 1)',
+                backgroundColor: '#CF85D1',
+                borderColor: '#CF85D1',
                 borderWidth: 2,
                 tension: 0.4
             }]

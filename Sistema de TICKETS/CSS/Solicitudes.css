@@ -1,12 +1,12 @@
 :root {
     --primary-color: #2C3E50;
     --secondary-color: #34495E;
-    --accent-color: #3498DB;
+    --accent-color: #AE2809;
     --success-color: #2ECC71;
     --light-gray: #ECF0F1;
     --dark-gray: #7F8C8D;
     --shadow: 0 2px 4px rgba(0,0,0,0.1);
-    --gradient: linear-gradient(135deg, #3498db, #2980b9);
+    --gradient: linear-gradient(135deg, #AE2809, #DD1A00);
 }
 
 body {

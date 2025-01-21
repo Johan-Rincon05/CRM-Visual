@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'Leads Generados',
                 data: [45, 38, 52, 31],
-                backgroundColor: '#3b82f6'
+                backgroundColor: '#8505A0'
             }]
         },
         options: {

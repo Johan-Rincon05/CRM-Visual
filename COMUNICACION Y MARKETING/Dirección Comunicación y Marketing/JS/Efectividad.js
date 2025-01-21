@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     label: 'Leads',
                     data: adsData.map(ad => ad.leads),
-                    backgroundColor: '#4f46e5'
+                    backgroundColor: '#8505A0'
                 },
                 {
                     label: 'Suscripciones',
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'ROI %',
                 data: [280, 320, 250],
-                backgroundColor: '#6366f1'
+                backgroundColor: '#8505A0'
             }]
         },
         options: {

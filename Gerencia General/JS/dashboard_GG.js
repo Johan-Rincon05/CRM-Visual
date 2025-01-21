@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         primary: '#3498db',
         success: '#2ecc71',
         warning: '#f1c40f',
-        danger: '#e74c3c',
-        purple: '#9b59b6',
+        danger: '#AE2809',
+        red: '#AE2809',
         orange: '#e67e22'
     };
 
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             datasets: [{
                 label: 'Leads por Canal',
                 data: data.leads.data,
-                backgroundColor: colors.purple,
+                backgroundColor: colors.red,
                 borderRadius: 6
             }]
         }
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             datasets: [{
                 label: 'Tasa de Conversión (%)',
                 data: data.conversion.data,
-                backgroundColor: colors.success,
+                backgroundColor: colors.red,
                 borderRadius: 6
             }]
         },
@@ -117,10 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
             datasets: [{
                 label: 'Inscripciones 2024',
                 data: data.enrollment.data,
-                borderColor: colors.primary,
+                borderColor: colors.red,
                 tension: 0.4,
                 fill: true,
-                backgroundColor: `${colors.primary}20`
+                backgroundColor: `${colors.red}20`
             }]
         }
     });
@@ -132,11 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
             datasets: [{
                 label: 'Salarios',
                 data: data.nomina.salarios,
-                backgroundColor: colors.primary
+                backgroundColor: colors.red
             }, {
                 label: 'Prestaciones',
                 data: data.nomina.prestaciones,
-                backgroundColor: colors.warning
+                backgroundColor: colors.primary
             }]
         },
         options: {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             datasets: [{
                 label: 'ROI Marketing (%)',
                 data: data.roi.data,
-                borderColor: colors.success,
+                borderColor: colors.red,
                 tension: 0.4
             }]
         }

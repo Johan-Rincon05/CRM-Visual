@@ -1,11 +1,11 @@
 :root {
     --primary-color: #2C3E50;
-    --secondary-color: #34495E;
+    --secondary-color: #F9DA69;
     --accent-color: #3498DB;
     --success-color: #2ECC71;
     --warning-color: #F1C40F;
     --danger-color: #E74C3C;
-    --light-gray: #ECF0F1;
+    --light-gray: #000000;
     --dark-gray: #7F8C8D;
     --shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -104,7 +104,7 @@ th, td {
 
 th {
     background-color: var(--secondary-color);
-    color: white;
+    color: rgb(0, 0, 0);
     position: sticky;
     top: 0;
     z-index: 10;

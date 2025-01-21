@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'Alcance',
                 data: [1200, 1900, 800],
-                backgroundColor: '#3498db'
+                backgroundColor: '#CF85D1'
             }, {
                 label: 'Engagement',
                 data: [500, 1200, 600],
-                backgroundColor: '#e74c3c'
+                backgroundColor: '#8505A0'
             }]
         },
         options: {

@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 data: [85, 15],
                 backgroundColor: [
-                    '#10b981',
-                    '#ef4444'
+                    '#8505A0',
+                    '#C158D8'
                 ]
             }]
         },

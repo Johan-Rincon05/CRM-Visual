@@ -78,12 +78,12 @@ function inicializarGraficoEngagement() {
                 {
                     label: 'Alcance',
                     data: datosEngagement.alcance,
-                    backgroundColor: '#3498db',
+                    backgroundColor: '#CF85D1',
                 },
                 {
                     label: 'Interacciones',
                     data: datosEngagement.interacciones,
-                    backgroundColor: '#2ecc71',
+                    backgroundColor: '#C158D8',
                 }
             ]
         },

@@ -1,11 +1,12 @@
 /* Base Styles */
 :root {
-    --primary-color: #2C3E50;
+    --primary-color: #000000;
     --accent-color: #E74C3C;
     --success-color: #27AE60;
     --warning-color: #F1C40F;
     --background-color: #F5F6FA;
     --card-background: #FFFFFF;
+    --background-color-primary:#F9DA69;
 }
 
 * {
@@ -32,9 +33,9 @@ body {
     align-items: center;
     margin-bottom: 20px;
     padding: 20px;
-    background-color: var(--card-background);
+    background-color: var(--background-color-primary);
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px #000000;
 }
 
 .header h1 {

@@ -1,6 +1,6 @@
 /* Variables de colores modernos */
 :root {
-    --color-primario: #1a237e;
+    --color-primario: #149933;
     --color-secundario: #f5f6fa;
     --color-aprobado: #2ecc71;
     --color-pendiente: #f1c40f;
@@ -103,7 +103,7 @@ tr:hover {
 
 /* Estados de las filas mejorados */
 .fila-aprobada {
-    background-color: rgba(46, 204, 113, 0.1) !important;
+    background-color: #b7eec4 !important;
     border-left: 4px solid var(--color-aprobado);
 }
 

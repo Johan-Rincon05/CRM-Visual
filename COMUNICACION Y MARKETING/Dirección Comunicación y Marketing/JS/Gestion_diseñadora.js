@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'Tiempo Promedio (días)',
                 data: [1.5, 2.3, 3.8],
-                backgroundColor: '#818cf8',
+                backgroundColor: '#8505A0',
                 borderRadius: 6
             }]
         },

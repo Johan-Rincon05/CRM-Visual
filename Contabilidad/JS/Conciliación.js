@@ -46,7 +46,7 @@ function actualizarTabla() {
             </td>
             <td>
                 <select onchange="actualizarMetodoPago(this)">
-                    <option value="Efectivo" ${sus.metodoPago === 'Efectivo' ? 'selected' : ''}>Efectivo en INCCA</option>
+                    <option value="Efectivo" ${sus.metodoPago === 'Efectivo' ? 'selected' : ''}>Efectivo</option>
                     <option value="QR" ${sus.metodoPago === 'QR' ? 'selected' : ''}>QR</option>
                 </select>
             </td>
