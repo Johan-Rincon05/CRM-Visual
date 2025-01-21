@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría - CRM</title>
+    <link rel="stylesheet" href="CSS/Auditoria.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="audit-container">
+        <header class="audit-header">
+            <h1>Auditoría del Sistema</h1>
+            <div class="export-buttons">
+                <button class="export-btn csv">Exportar CSV</button>
+                <button class="export-btn pdf">Exportar PDF</button>
+            </div>
+        </header>
+
+        <section class="filters-section">
+            <div class="filter-group">
+                <input type="text" id="userFilter" placeholder="Buscar usuario...">
+                <select id="actionFilter">
+                    <option value="">Todas las acciones</option>
+                    <option value="login">Inicio de sesión</option>
+                    <option value="permissions">Edición de permisos</option>
+                    <option value="create">Creación de usuario</option>
+                </select>
+                <select id="areaFilter">
+                    <option value="">Todas las áreas</option>
+                    <option value="admin">Administrativa</option>
+                    <option value="commercial">Comercial</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+                <div class="date-filter">
+                    <input type="date" id="startDate">
+                    <input type="date" id="endDate">
+                </div>
+                <button class="apply-filter">Aplicar Filtros</button>
+            </div>
+        </section>
+
+        <section class="charts-section">
+            <div class="chart-container">
+                <canvas id="activityByArea"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="activityByAction"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="activityByUser"></canvas>
+            </div>
+        </section>
+
+        <section class="activity-log-section">
+            <h2>Registro de Actividad</h2>
+            <div class="table-container">
+                <table class="activity-table">
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Correo</th>
+                            <th>Fecha y Hora</th>
+                            <th>Acción</th>
+                            <th>Área</th>
+                            <th>IP</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityLogBody">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button class="pagination-btn" id="prevPage">Anterior</button>
+                <span id="currentPage">1</span>
+                <button class="pagination-btn" id="nextPage">Siguiente</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Activity Details Modal -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Detalles de Actividad</h2>
+            <div id="activityDetails">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/Auditoria.js"></script>
+</body>
+</html>

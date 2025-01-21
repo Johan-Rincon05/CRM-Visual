@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control</title>
+    <link rel="stylesheet" href="CSS/Dashboard_gestion.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Panel Principal</h1>
+        </header>
+
+        <div class="quick-actions">
+            <button class="action-btn" id="btnGeneral">Vista General</button>
+            <button class="action-btn">Gestión Usuarios</button>
+            <button class="action-btn">Roles</button>
+            <button class="action-btn">Áreas</button>
+            <button class="action-btn">Auditoría</button>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3>Usuarios por Área</h3>
+                <canvas id="usersChart"></canvas>
+            </div>
+
+            <div class="card">
+                <h3>Resumen de Roles</h3>
+                <canvas id="rolesChart"></canvas>
+            </div>
+
+            <div class="card logs">
+                <h3>Actividad Reciente</h3>
+                <div class="logs-container" id="logsContainer"></div>
+            </div>
+        </div>
+    </div>
+    <script src="JS/Dashboard_gestion.js"></script>
+</body>
+</html>

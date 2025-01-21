@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Super Usuario - CRM Emprende Tu Carrera</title>
+    <link rel="stylesheet" href="CSS/Panel_config.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <img src="logo.png" alt="Logo" class="logo">
+                <h1>Super Admin Panel</h1>
+            </div>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li class="active"><a href="#"><i class="fas fa-home"></i> Panel</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Usuarios</a></li>
+                    <li><a href="roles.html"><i class="fas fa-user-tag"></i> Roles</a></li>
+                    <li><a href="areas.html"><i class="fas fa-sitemap"></i> Áreas</a></li>
+                    <li><a href="audit.html"><i class="fas fa-clipboard-list"></i> Auditoría</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Configuración</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar...">
+                </div>
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <div class="user-profile">
+                    <img src="profile.jpg" alt="Profile" class="profile-img">
+                    <span>Juan Admin</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Stats Cards -->
+            <section class="stats-cards">
+                <div class="stat-card users">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Usuarios Activos</h3>
+                        <p class="stat-number">245</p>
+                        <span class="stat-change positive">+12% esta semana</span>
+                    </div>
+                </div>
+                <div class="stat-card roles">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-tag"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Roles Definidos</h3>
+                        <p class="stat-number">8</p>
+                        <span class="stat-change">Último: Gerente Marketing</span>
+                    </div>
+                </div>
+                <div class="stat-card areas">
+                    <div class="stat-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Áreas Activas</h3>
+                        <p class="stat-number">6</p>
+                        <span class="stat-change">100% configuradas</span>
+                    </div>
+                </div>
+                <div class="stat-card activity">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-details">
+                        <h3>Actividad Diaria</h3>
+                        <p class="stat-number">1,234</p>
+                        <span class="stat-change positive">+25% vs ayer</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-grid">
+                <div class="chart-container">
+                    <h3>Usuarios por Área</h3>
+                    <canvas id="usersByAreaChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Actividad del Sistema</h3>
+                    <canvas id="systemActivityChart"></canvas>
+                </div>
+                <div class="chart-container full-width">
+                    <h3>Distribución de Roles</h3>
+                    <canvas id="rolesDistributionChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <div class="section-header">
+                    <h3>Actividad Reciente</h3>
+                    <button class="view-all-btn">Ver Todo</button>
+                </div>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="activity-details">
+                            <p>Nuevo usuario creado: María González</p>
+                            <span class="activity-time">Hace 5 minutos</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <div class="activity-details">
+                            <p>Rol modificado: Gerente de Marketing</p>
+                            <span class="activity-time">Hace 15 minutos</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </div>
+                        <div class="activity-details">
+                            <p>Inicio de sesión: Carlos Pérez</p>
+                            <span class="activity-time">Hace 30 minutos</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h3>Acciones Rápidas</h3>
+                <div class="actions-grid">
+                    <button class="action-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Nuevo Usuario
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-key"></i>
+                        Nuevo Rol
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-download"></i>
+                        Exportar Logs
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-cog"></i>
+                        Configuración
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Modal -->
+    <div id="notificationModal" class="modal">
+        <div class="modal-content">
+            <h2>Notificaciones</h2>
+            <div class="notifications-list">
+                <div class="notification-item">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div class="notification-details">
+                        <p>Nueva solicitud de acceso pendiente</p>
+                        <span>Hace 10 minutos</span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <i class="fas fa-user-shield"></i>
+                    <div class="notification-details">
+                        <p>Actualización de seguridad disponible</p>
+                        <span>Hace 1 hora</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/Panel_config.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="CSS/Gestion_usuarios.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Gestión de Usuarios</h1>
+        </header>
+
+        <div class="filters-section">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre o correo...">
+            </div>
+            <div class="filter-controls">
+                <select id="areaFilter">
+                    <option value="">Todas las áreas</option>
+                    <option value="IT">IT</option>
+                    <option value="RRHH">RRHH</option>
+                    <option value="Ventas">Ventas</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+                <select id="roleFilter">
+                    <option value="">Todos los roles</option>
+                    <option value="admin">Administrador</option>
+                    <option value="supervisor">Supervisor</option>
+                    <option value="user">Usuario</option>
+                </select>
+                <select id="statusFilter">
+                    <option value="">Todos los estados</option>
+                    <option value="active">Activo</option>
+                    <option value="inactive">Inactivo</option>
+                </select>
+                <button class="action-btn" id="newUserBtn">+ Nuevo Usuario</button>
+            </div>
+        </div>
+
+        <div class="users-table-container card">
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>Área</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    <!-- Filled by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal for Create/Edit User -->
+        <div class="modal" id="userModal">
+            <div class="modal-content card">
+                <h2 id="modalTitle">Nuevo Usuario</h2>
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="userName">Nombre</label>
+                        <input type="text" id="userName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Correo</label>
+                        <input type="email" id="userEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">Rol</label>
+                        <select id="userRole" required>
+                            <option value="admin">Administrador</option>
+                            <option value="supervisor">Supervisor</option>
+                            <option value="user">Usuario</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userArea">Área</label>
+                        <select id="userArea" required>
+                            <option value="IT">IT</option>
+                            <option value="RRHH">RRHH</option>
+                            <option value="Ventas">Ventas</option>
+                            <option value="Marketing">Marketing</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userStatus">Estado</label>
+                        <select id="userStatus" required>
+                            <option value="active">Activo</option>
+                            <option value="inactive">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="action-btn">Guardar</button>
+                        <button type="button" class="secondary-btn" id="resetPasswordBtn">Restablecer Contraseña</button>
+                        <button type="button" class="cancel-btn" id="closeModal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="JS/Gestion_usuarios.js"></script>
+</body>
+</html>

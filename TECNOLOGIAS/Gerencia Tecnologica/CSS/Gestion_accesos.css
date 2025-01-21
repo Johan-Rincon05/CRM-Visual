@@ -1,0 +1,321 @@
+:root {
+    --primary-color: #DD1A00;
+    --secondary-color: #f5f5f5;
+    --text-color: #333;
+    --border-color: #ddd;
+    --hover-color: #ff2b10;
+    --success-color: #28a745;
+    --white: #ffffff;
+    --modal-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Enhanced Table Styles */
+.users-table-section {
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#searchUser {
+    padding: 10px 15px;
+    width: 300px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+#searchUser:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(221, 26, 0, 0.1);
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.users-table th {
+    background-color: var(--secondary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+/* Check Box Styles */
+/* Custom Checkbox Styles */
+.permissions-list label,
+.area-header label,
+.role label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.permissions-list label:hover,
+.area-header label:hover,
+.role label:hover {
+    background-color: rgba(221, 26, 0, 0.05);
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+input[type="checkbox"]:indeterminate {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+input[type="checkbox"]:indeterminate::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 2px;
+    background-color: white;
+}
+
+/* Checkbox Focus States */
+input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(221, 26, 0, 0.2);
+}
+
+/* Role Level Checkboxes */
+.role-checkbox {
+    margin-right: 12px;
+}
+
+/* Area Level Checkboxes */
+.area-checkbox {
+    margin-right: 12px;
+}
+
+/* Checkbox Label Text */
+.permissions-list label span,
+.area-header label span,
+.role label span {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+/* Enhanced Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--white);
+    margin: 50px auto;
+    padding: 25px;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 12px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--modal-shadow);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.close-modal {
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+/* Enhanced Checkbox Styles */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin-right: 8px;
+    accent-color: var(--primary-color);
+}
+
+.permissions-grid {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.area-section {
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--white);
+    transition: box-shadow 0.3s ease;
+}
+
+.area-section:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.area-header {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.role-permissions {
+    margin-left: 25px;
+}
+
+.permissions-list {
+    margin-left: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+/* Enhanced Button Styles */
+.add-user-btn, .save-btn, .cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.add-user-btn, .save-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.add-user-btn:hover, .save-btn:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-1px);
+}
+
+.cancel-btn {
+    background-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.cancel-btn:hover {
+    background-color: #ccc;
+}
+
+.edit-permissions-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-permissions-btn:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-1px);
+}
+
+/* Enhanced Status Styles */
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.status.active {
+    background-color: var(--success-color);
+    color: var(--white);
+}
+
+/* Modal Footer */
+.modal-footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}

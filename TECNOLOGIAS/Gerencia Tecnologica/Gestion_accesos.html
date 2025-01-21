@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Accesos de Usuarios - CRM</title>
+    <link rel="stylesheet" href="CSS/Gestion_accesos.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestión de Accesos de Usuarios</h1>
+        </header>
+        
+        <main>
+            <section class="users-table-section">
+                <div class="table-controls">
+                    <input type="text" id="searchUser" placeholder="Buscar usuario...">
+                    <button class="add-user-btn">Agregar Usuario</button>
+                </div>
+                
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Cargo</th>
+                            <th>Área</th>
+                            <th>Estado</th>
+                            <th>Permisos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <!-- Sample row -->
+                        <tr>
+                            <td>Juan Pérez</td>
+                            <td>juan@ejemplo.com</td>
+                            <td>Auxiliar Administrativo</td>
+                            <td>Administrativo</td>
+                            <td><span class="status active">Activo</span></td>
+                            <td>
+                                <button class="edit-permissions-btn" onclick="openPermissionsModal(1)">Editar Permisos</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal de Permisos -->
+    <div id="permissionsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Permisos de Usuario</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="user-info">
+                    <h3>Información del Usuario</h3>
+                    <p>Nombre: <span id="modalUserName">Juan Pérez</span></p>
+                    <p>Cargo: <span id="modalUserPosition">Auxiliar Administrativo</span></p>
+                </div>
+
+                <form id="permissionsForm">
+                    <div class="permissions-grid">
+                        <!-- 1. Administrativo -->
+                        <div class="area-section">
+                            <div class="area-header">
+                                <input type="checkbox" id="admin-area" class="area-checkbox">
+                                <label for="admin-area">Administrativo</label>
+                            </div>
+                            <div class="role-permissions">
+                                <!-- Auxiliar Administrativo -->
+                                <div class="role">
+                                    <input type="checkbox" id="aux-admin" class="role-checkbox">
+                                    <label for="aux-admin">Auxiliar Administrativo</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="documentos"> Documentos</label>
+                                        <label><input type="checkbox" name="dashboard_aux"> Dashboard Auxiliar</label>
+                                        <label><input type="checkbox" name="revision_doc"> Revisión Documentos</label>
+                                        <label><input type="checkbox" name="base_aux"> Base Auxiliar</label>
+                                    </div>
+                                </div>
+                                <!-- Cartera -->
+                                <div class="role">
+                                    <input type="checkbox" id="cartera" class="role-checkbox">
+                                    <label for="cartera">Cartera</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="carga_base_cartera"> Carga Base Cartera</label>
+                                        <label><input type="checkbox" name="dashboard_cartera"> Dashboard Cartera</label>
+                                        <label><input type="checkbox" name="base_central"> Base Central</label>
+                                        <label><input type="checkbox" name="base_cartera_sc_cenda"> Base Cartera SC y CENDA</label>
+                                        <label><input type="checkbox" name="base_cartera_incca"> Base Cartera INCCA</label>
+                                        <label><input type="checkbox" name="base_cartera_americana"> Base Cartera Americana</label>
+                                    </div>
+                                </div>
+                                <!-- Director Administrativo -->
+                                <div class="role">
+                                    <input type="checkbox" id="dir-admin" class="role-checkbox">
+                                    <label for="dir-admin">Director Administrativo</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="dashboard"> Gráficos Dashboard</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- 2. Comercial -->
+                        <div class="area-section">
+                            <div class="area-header">
+                                <input type="checkbox" id="commercial-area" class="area-checkbox">
+                                <label for="commercial-area">Comercial</label>
+                            </div>
+                            <div class="role-permissions">
+                                <!-- Director Comercial -->
+                                <div class="role">
+                                    <input type="checkbox" id="dir-comercial" class="role-checkbox">
+                                    <label for="dir-comercial">Director Comercial</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="carga_leads"> Carga Leads</label>
+                                        <label><input type="checkbox" name="reportes"> Reportes</label>
+                                        <label><input type="checkbox" name="base_master"> Base Master</label>
+                                        <label><input type="checkbox" name="dashboard_direccion"> Dashboard Dirección</label>
+                                        <label><input type="checkbox" name="equipos"> Equipos</label>
+                                        <label><input type="checkbox" name="metas_comerciales"> Metas Comerciales</label>
+                                        <label><input type="checkbox" name="ventas"> Ventas</label>
+                                    </div>
+                                </div>
+                                <!-- Orientadores -->
+                                <div class="role">
+                                    <input type="checkbox" id="orientadores" class="role-checkbox">
+                                    <label for="orientadores">Orientadores</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="carreras"> Carreras</label>
+                                        <label><input type="checkbox" name="ventas_orientadores"> Ventas</label>
+                                        <label><input type="checkbox" name="base"> BASE</label>
+                                        <label><input type="checkbox" name="dashboard_orientadores"> Dashboard</label>
+                                        <label><input type="checkbox" name="promociones"> Promociones</label>
+                                    </div>
+                                </div>
+                                <!-- Coordinación -->
+                                <div class="role">
+                                    <input type="checkbox" id="coordinacion" class="role-checkbox">
+                                    <label for="coordinacion">Coordinación</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="base_coordinacion"> Base Coordinación</label>
+                                        <label><input type="checkbox" name="dashboard_coordinacion"> Dashboard Coordinación</label>
+                                    </div>
+                                </div>
+                                <!-- Documentales -->
+                                <div class="role">
+                                    <input type="checkbox" id="documentales" class="role-checkbox">
+                                    <label for="documentales">Documentales</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="base_comun"> Base Común</label>
+                                        <label><input type="checkbox" name="base_documentos"> Base Documentos</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- 3. Comunicación y Marketing -->
+                        <div class="area-section">
+                            <div class="area-header">
+                                <input type="checkbox" id="marketing-area" class="area-checkbox">
+                                <label for="marketing-area">Comunicación y Marketing</label>
+                            </div>
+                            <div class="role-permissions">
+                                <!-- Dirección Comunicación y Marketing -->
+                                <div class="role">
+                                    <input type="checkbox" id="dir-marketing" class="role-checkbox">
+                                    <label for="dir-marketing">Dirección Comunicación y Marketing</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="dashboard_marketing"> Dashboard Marketing</label>
+                                        <label><input type="checkbox" name="gestion_social"> Gestión Social</label>
+                                        <label><input type="checkbox" name="calendario_reuniones"> Calendario y Reuniones</label>
+                                        <label><input type="checkbox" name="efectividad"> Efectividad</label>
+                                        <label><input type="checkbox" name="gestion_disenadora"> Gestión Diseñadora</label>
+                                        <label><input type="checkbox" name="solicitudes_resueltas"> Solicitudes Resueltas</label>
+                                    </div>
+                                </div>
+                                <!-- Diseñadora -->
+                                <div class="role">
+                                    <input type="checkbox" id="disenadora" class="role-checkbox">
+                                    <label for="disenadora">Diseñadora</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="gestion_diseno"> Gestión Diseño</label>
+                                        <label><input type="checkbox" name="biblioteca_disenos"> Biblioteca Diseños</label>
+                                        <label><input type="checkbox" name="dashboard_diseno"> Dashboard Diseño</label>
+                                    </div>
+                                </div>
+                                <!-- Social -->
+                                <div class="role">
+                                    <input type="checkbox" id="social" class="role-checkbox">
+                                    <label for="social">Social</label>
+                                    <div class="permissions-list">
+                                        <label><input type="checkbox" name="coordinacion_social"> Coordinación Social</label>
+                                        <label><input type="checkbox" name="dashboard_social"> Dashboard Social</label>
+                                        <label><input type="checkbox" name="gestion_rs"> Gestión RS</label>
+                                        <label><input type="checkbox" name="publicidad_campanas"> Publicidad Campañas</label>
+                                        <label><input type="checkbox" name="reportes_social"> Reportes Social</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- 4. Contabilidad -->
+                        <div class="area-section">
+                            <div class="area-header">
+                                <input type="checkbox" id="contabilidad-area" class="area-checkbox">
+                                <label for="contabilidad-area">Contabilidad</label>
+                            </div>
+                            <div class="role-permissions">
+                                <div class="permissions-list">
+                                    <label><input type="checkbox" name="conciliacion"> Conciliación</label>
+                                    <label><input type="checkbox" name="control_gastos"> Control Gastos</label>
+                                    <label><input type="checkbox" name="formatos"> Formatos</label>
+                                    <label><input type="checkbox" name="nomina"> Nómina</label>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- 5. Gerencia General -->
+                        <div class="area-section">
+                            <div class="area-header">
+                                <input type="checkbox" id="gerencia-area" class="area-checkbox">
+                                <label for="gerencia-area">Gerencia General</label>
+                            </div>
+                            <div class="role-permissions">
+                                <div class="permissions-list">
+                                    <label><input type="checkbox" name="dashboard_gg"> Dashboard Gerencia General</label>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- 6. Login -->
+                        <div class="area-section">
+                            <div class="area-header">
+                                <input type="checkbox" id="login-area" class="area-checkbox">
+                                <label for="login-area">Login</label>
+                            </div>
+                            <div class="role-permissions">
+                                <div class="permissions-list">
+                                    <label><input type="checkbox" name="login"> Login</label>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!-- 7. Sistema de Tickets -->
+                        <div class="area-section">
+                            <div class="area-header">
+                                <input type="checkbox" id="tickets-area" class="area-checkbox">
+                                <label for="tickets-area">Sistema de Tickets</label>
+                            </div>
+                            <div class="role-permissions">
+                                <div class="permissions-list">
+                                    <label><input type="checkbox" name="gestion_tickets"> Gestión Tickets</label>
+                                    <label><input type="checkbox" name="solicitudes_tickets"> Solicitudes TICKETS</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="modal-footer">
+                        <button type="submit" class="save-btn">Guardar Cambios</button>
+                        <button type="button" class="cancel-btn">Cancelar</button>
+                    </div>
+                </form>                
+            </div>
+        </div>
+    </div>
+    <script src="js/gestion_accesos.js"></script>
+</body>
+</html>

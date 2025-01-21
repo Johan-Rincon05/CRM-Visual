@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas y Gestión de Tareas</title>
+    <link rel="stylesheet" href="CSS/Gestion_areas.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header Section -->
+        <header>
+            <h1>Dashboard de Estadísticas y Tareas</h1>
+            <div class="area-selector">
+                <select id="areaFilter">
+                    <option value="all">Todas las áreas</option>
+                    <option value="administrativa">Administrativa</option>
+                    <option value="comercial">Comercial</option>
+                    <option value="marketing">Marketing</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Statistics Section -->
+        <section class="statistics-section">
+            <h2>Estadísticas del Área</h2>
+            <div class="charts-container">
+                <div class="chart-box">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <canvas id="tasksChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Personnel Section -->
+        <section class="personnel-section">
+            <h2>Personal Activo</h2>
+            <div class="filters">
+                <input type="text" id="searchPersonnel" placeholder="Buscar personal...">
+                <select id="roleFilter">
+                    <option value="all">Todos los roles</option>
+                    <option value="admin">Administrativo</option>
+                    <option value="manager">Gerente</option>
+                    <option value="staff">Staff</option>
+                </select>
+            </div>
+            <table class="personnel-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Último Acceso</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="personnelTableBody">
+                    <!-- Dynamic content -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Task Management Section -->
+        <section class="task-section">
+            <h2>Gestión de Tareas</h2>
+            <button id="newTaskBtn" class="primary-btn">Nueva Tarea</button>
+            
+            <div class="tasks-container">
+                <div class="active-tasks">
+                    <h3>Tareas Activas</h3>
+                    <div class="task-cards" id="activeTasksContainer">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- New Task Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Nueva Tarea</h2>
+            <form id="newTaskForm">
+                <div class="form-group">
+                    <label for="taskArea">Área</label>
+                    <select id="taskArea" required>
+                        <option value="">Seleccionar área</option>
+                        <option value="administrativa">Administrativa</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="marketing">Marketing</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Descripción</label>
+                    <textarea id="taskDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate">Fecha de vencimiento</label>
+                    <input type="date" id="taskDueDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskPriority">Prioridad</label>
+                    <select id="taskPriority" required>
+                        <option value="high">Alta</option>
+                        <option value="medium">Media</option>
+                        <option value="low">Baja</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="taskFiles">Archivos adjuntos</label>
+                    <input type="file" id="taskFiles" multiple>
+                </div>
+                <button type="submit" class="primary-btn">Guardar Tarea</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="JS/Gestion_areas.js"></script>
+</body>
+</html>
