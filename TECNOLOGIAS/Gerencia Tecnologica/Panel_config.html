@@ -3,192 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Super Usuario - CRM Emprende Tu Carrera</title>
+    <title>Gestión de Usuarios - CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/Panel_config.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
 </head>
 <body>
-    <div class="dashboard-layout">
-        <!-- Top Navigation -->
-        <nav class="top-nav">
-            <div class="nav-left">
-                <img src="logo.png" alt="Logo" class="logo">
-                <h1>Super Admin Panel</h1>
-            </div>
-            <div class="nav-center">
-                <ul class="nav-links">
-                    <li class="active"><a href="#"><i class="fas fa-home"></i> Panel</a></li>
-                    <li><a href="users.html"><i class="fas fa-users"></i> Usuarios</a></li>
-                    <li><a href="roles.html"><i class="fas fa-user-tag"></i> Roles</a></li>
-                    <li><a href="areas.html"><i class="fas fa-sitemap"></i> Áreas</a></li>
-                    <li><a href="audit.html"><i class="fas fa-clipboard-list"></i> Auditoría</a></li>
-                    <li><a href="settings.html"><i class="fas fa-cog"></i> Configuración</a></li>
-                </ul>
-            </div>
-            <div class="nav-right">
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Buscar...">
-                </div>
-                <button class="notification-btn">
-                    <i class="fas fa-bell"></i>
-                    <span class="notification-badge">3</span>
-                </button>
-                <div class="user-profile">
-                    <img src="profile.jpg" alt="Profile" class="profile-img">
-                    <span>Juan Admin</span>
+    <header class="bg-white text-black p-3">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Gestión de Usuarios</h1>
+                <div>
+                    <button class="btn btn-light me-2" data-bs-toggle="modal" data-bs-target="#exportModal">
+                        <i class="fas fa-download"></i> Exportar Datos
+                    </button>
+                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newUserModal">
+                        <i class="fas fa-plus"></i> Nuevo Usuario
+                    </button>
                 </div>
             </div>
-        </nav>
+        </div>
+    </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Stats Cards -->
-            <section class="stats-cards">
-                <div class="stat-card users">
-                    <div class="stat-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-details">
-                        <h3>Usuarios Activos</h3>
-                        <p class="stat-number">245</p>
-                        <span class="stat-change positive">+12% esta semana</span>
-                    </div>
-                </div>
-                <div class="stat-card roles">
-                    <div class="stat-icon">
-                        <i class="fas fa-user-tag"></i>
-                    </div>
-                    <div class="stat-details">
-                        <h3>Roles Definidos</h3>
-                        <p class="stat-number">8</p>
-                        <span class="stat-change">Último: Gerente Marketing</span>
+    <div class="container mt-4">
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="text-muted">Total Usuarios</h6>
+                                <h3>150</h3>
+                            </div>
+                            <div class="stat-icon bg-primary">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="stat-card areas">
-                    <div class="stat-icon">
-                        <i class="fas fa-sitemap"></i>
-                    </div>
-                    <div class="stat-details">
-                        <h3>Áreas Activas</h3>
-                        <p class="stat-number">6</p>
-                        <span class="stat-change">100% configuradas</span>
-                    </div>
-                </div>
-                <div class="stat-card activity">
-                    <div class="stat-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="stat-details">
-                        <h3>Actividad Diaria</h3>
-                        <p class="stat-number">1,234</p>
-                        <span class="stat-change positive">+25% vs ayer</span>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="text-muted">Usuarios Activos</h6>
+                                <h3>120</h3>
+                            </div>
+                            <div class="stat-icon bg-success">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="text-muted">Ausencias Hoy</h6>
+                                <h3>5</h3>
+                            </div>
+                            <div class="stat-icon bg-warning">
+                                <i class="fas fa-user-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card stat-card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="text-muted">Alertas Médicas</h6>
+                                <h3>3</h3>
+                            </div>
+                            <div class="stat-icon bg-danger">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <!-- Charts Section -->
-            <section class="charts-grid">
-                <div class="chart-container">
-                    <h3>Usuarios por Área</h3>
-                    <canvas id="usersByAreaChart"></canvas>
+        <!-- Charts Section -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Distribución por Estado</h5>
+                        <div class="chart-container">
+                            <canvas id="userStatusChart"></canvas>
+                        </div>
+                    </div>
                 </div>
-                <div class="chart-container">
-                    <h3>Actividad del Sistema</h3>
-                    <canvas id="systemActivityChart"></canvas>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Distribución por Área</h5>
+                        <div class="chart-container">
+                            <canvas id="departmentChart"></canvas>
+                        </div>
+                    </div>
                 </div>
-                <div class="chart-container full-width">
-                    <h3>Distribución de Roles</h3>
-                    <canvas id="rolesDistributionChart"></canvas>
-                </div>
-            </section>
+            </div>
+        </div>
+        
+        
 
-            <!-- Recent Activity -->
-            <section class="recent-activity">
-                <div class="section-header">
-                    <h3>Actividad Reciente</h3>
-                    <button class="view-all-btn">Ver Todo</button>
-                </div>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <div class="activity-icon">
-                            <i class="fas fa-user-plus"></i>
-                        </div>
-                        <div class="activity-details">
-                            <p>Nuevo usuario creado: María González</p>
-                            <span class="activity-time">Hace 5 minutos</span>
-                        </div>
+        <!-- Search and Filter Section -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Buscar usuario...">
                     </div>
-                    <div class="activity-item">
-                        <div class="activity-icon">
-                            <i class="fas fa-key"></i>
-                        </div>
-                        <div class="activity-details">
-                            <p>Rol modificado: Gerente de Marketing</p>
-                            <span class="activity-time">Hace 15 minutos</span>
-                        </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">Filtrar por Área</option>
+                            <option value="rh">Recursos Humanos</option>
+                            <option value="ti">TI</option>
+                            <option value="ventas">Ventas</option>
+                        </select>
                     </div>
-                    <div class="activity-item">
-                        <div class="activity-icon">
-                            <i class="fas fa-sign-in-alt"></i>
-                        </div>
-                        <div class="activity-details">
-                            <p>Inicio de sesión: Carlos Pérez</p>
-                            <span class="activity-time">Hace 30 minutos</span>
-                        </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">Estado</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary w-100">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Quick Actions -->
-            <section class="quick-actions">
-                <h3>Acciones Rápidas</h3>
-                <div class="actions-grid">
-                    <button class="action-btn">
-                        <i class="fas fa-user-plus"></i>
-                        Nuevo Usuario
-                    </button>
-                    <button class="action-btn">
-                        <i class="fas fa-key"></i>
-                        Nuevo Rol
-                    </button>
-                    <button class="action-btn">
-                        <i class="fas fa-download"></i>
-                        Exportar Logs
-                    </button>
-                    <button class="action-btn">
-                        <i class="fas fa-cog"></i>
-                        Configuración
-                    </button>
+        <!-- Users Table -->
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Área</th>
+                                <th>Cargo</th>
+                                <th>Estado</th>
+                                <th>Última Actividad</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>Juan Pérez</td>
+                                <td>Recursos Humanos</td>
+                                <td>Analista Senior</td>
+                                <td><span class="badge bg-success">Activo</span></td>
+                                <td>Hace 5 minutos</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#userDetailsModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#medicalHistoryModal">
+                                        <i class="fas fa-notes-medical"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#attendanceModal">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- More rows... -->
+                        </tbody>
+                    </table>
                 </div>
-            </section>
-        </main>
+            </div>
+        </div>
     </div>
 
-    <!-- Notification Modal -->
-    <div id="notificationModal" class="modal">
-        <div class="modal-content">
-            <h2>Notificaciones</h2>
-            <div class="notifications-list">
-                <div class="notification-item">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <div class="notification-details">
-                        <p>Nueva solicitud de acceso pendiente</p>
-                        <span>Hace 10 minutos</span>
-                    </div>
+    <!-- Modals -->
+    <!-- User Details Modal -->
+    <div class="modal fade" id="userDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalles del Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="notification-item">
-                    <i class="fas fa-user-shield"></i>
-                    <div class="notification-details">
-                        <p>Actualización de seguridad disponible</p>
-                        <span>Hace 1 hora</span>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="userDetailsTabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#generalInfo">Información General</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#medicalInfo">Información Médica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#laboralInfo">Información Laboral</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-3">
+                        <div class="tab-pane fade show active" id="generalInfo">
+                            <form>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Nombre Completo</label>
+                                        <input type="text" class="form-control" value="Juan Pérez">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Cédula</label>
+                                        <input type="text" class="form-control" value="12345678">
+                                    </div>
+                                </div>
+                                <!-- More fields... -->
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="medicalInfo">
+                            <!-- Medical Information Form -->
+                        </div>
+                        <div class="tab-pane fade" id="laboralInfo">
+                            <!-- Labor Information Form -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- New User Modal -->
+    <div class="modal fade" id="newUserModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- New User Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medical History Modal -->
+    <div class="modal fade" id="medicalHistoryModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Historial Médico</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Medical History Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attendance Modal -->
+    <div class="modal fade" id="attendanceModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registro de Asistencia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Attendance Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="JS/Panel_config.js"></script>
 </body>
 </html>
