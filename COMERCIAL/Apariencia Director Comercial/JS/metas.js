@@ -6,15 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initializeCharts() {
-    // Team Progress Chart
     new Chart(document.getElementById('teamProgressChart'), {
         type: 'bar',
         data: {
             labels: ['Equipo Diana', 'Equipo Nicol'],
             datasets: [{
                 label: 'Progreso',
-                data: [],
-                backgroundColor: ['#4CAF50', '#2196F3']
+                data: [75, 82],
+                backgroundColor: ['#2563eb', '#10b981']
             }]
         },
         options: {
@@ -29,78 +28,90 @@ function initializeCharts() {
         }
     });
 
-    // Completion Trend Chart
     new Chart(document.getElementById('completionTrendChart'), {
         type: 'line',
         data: {
-            labels: [],
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
             datasets: [{
                 label: 'Tendencia de Cumplimiento',
-                data: [],
-                borderColor: '#2196F3',
-                tension: 0.4
+                data: [65, 70, 75, 80, 85, 82],
+                borderColor: '#2563eb',
+                tension: 0.4,
+                fill: false
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
         }
     });
 }
 
-async function loadGoalsData() {
-    try {
-        const response = await fetch('../api/goals-data.php');
-        const data = await response.json();
-        updateDashboard(data);
-    } catch (error) {
-        console.error('Error loading goals data:', error);
-    }
+function loadGoalsData() {
+    const mockData = {
+        totalSalesGoal: 150,
+        currentSales: 120,
+        totalCollectionGoal: SUBSCRIPTION_PRICE * 150,
+        currentCollections: SUBSCRIPTION_PRICE * 120,
+        lastProjection: 85,
+        teamsData: [
+            {
+                name: 'Equipo Diana',
+                salesGoal: 80,
+                currentSales: 65,
+                collectionGoal: SUBSCRIPTION_PRICE * 80,
+                currentCollections: SUBSCRIPTION_PRICE * 65
+            },
+            {
+                name: 'Equipo Nicol',
+                salesGoal: 70,
+                currentSales: 55,
+                collectionGoal: SUBSCRIPTION_PRICE * 70,
+                currentCollections: SUBSCRIPTION_PRICE * 55
+            }
+        ]
+    };
+
+    updateDashboard(mockData);
 }
 
 function updateDashboard(data) {
-    // Update metrics
     updateMetrics(data);
-    // Update charts
-    updateCharts(data);
-    // Update table
     updateGoalsTable(data.teamsData);
 }
 
 function updateMetrics(data) {
-    const salesGoal = document.getElementById('salesGoal');
-    const collectionGoal = document.getElementById('collectionGoal');
-    const projectedCompletion = document.getElementById('projectedCompletion');
-    
-    salesGoal.textContent = data.totalSalesGoal;
-    collectionGoal.textContent = `$${(data.totalSalesGoal * SUBSCRIPTION_PRICE).toLocaleString()}`;
-    
-    // Update progress bars
-    updateProgress('salesProgress', 'salesProgressLabel', 
-        (data.currentSales / data.totalSalesGoal) * 100);
-    updateProgress('collectionProgress', 'collectionProgressLabel',
-        (data.currentCollections / (data.totalSalesGoal * SUBSCRIPTION_PRICE)) * 100);
-    
-    // Update projection
+    document.getElementById('salesGoal').textContent = data.totalSalesGoal;
+    document.getElementById('collectionGoal').textContent = 
+        `$${(data.totalSalesGoal * SUBSCRIPTION_PRICE).toLocaleString()}`;
+
+    const salesProgress = (data.currentSales / data.totalSalesGoal) * 100;
+    const collectionProgress = (data.currentCollections / data.totalCollectionGoal) * 100;
+
+    updateProgress('salesProgress', 'salesProgressLabel', salesProgress);
+    updateProgress('collectionProgress', 'collectionProgressLabel', collectionProgress);
+
     const projection = calculateProjection(data);
-    projectedCompletion.textContent = `${projection}%`;
+    document.getElementById('projectedCompletion').textContent = `${projection}%`;
     document.getElementById('projectionTrend').textContent = 
         projection >= data.lastProjection ? '↑' : '↓';
 }
 
 function updateProgress(progressBarId, labelId, percentage) {
-    const progressBar = document.getElementById(progressBarId);
-    const label = document.getElementById(labelId);
-    
-    progressBar.style.width = `${percentage}%`;
-    label.textContent = `${Math.round(percentage)}%`;
+    document.getElementById(progressBarId).style.width = `${percentage}%`;
+    document.getElementById(labelId).textContent = `${Math.round(percentage)}%`;
 }
 
 function calculateProjection(data) {
-    const daysInPeriod = 30; // Adjust based on selected period
+    const daysInMonth = 30;
     const currentDay = new Date().getDate();
     const dailyRate = data.currentSales / currentDay;
-    const projectedTotal = dailyRate * daysInPeriod;
+    const projectedTotal = dailyRate * daysInMonth;
     
     return Math.round((projectedTotal / data.totalSalesGoal) * 100);
 }
@@ -108,12 +119,12 @@ function calculateProjection(data) {
 function updateGoalsTable(teamsData) {
     const tbody = document.getElementById('goalsTableBody');
     tbody.innerHTML = '';
-    
+
     teamsData.forEach(team => {
-        const row = document.createElement('tr');
         const progress = (team.currentSales / team.salesGoal) * 100;
         const projection = calculateTeamProjection(team);
-        
+
+        const row = document.createElement('tr');
         row.innerHTML = `
             <td>${team.name}</td>
             <td>${team.salesGoal}</td>
@@ -149,7 +160,7 @@ function closeModal() {
     document.getElementById('goalModal').style.display = 'none';
 }
 
-async function handleGoalSubmit(e) {
+function handleGoalSubmit(e) {
     e.preventDefault();
     
     const formData = {
@@ -158,29 +169,16 @@ async function handleGoalSubmit(e) {
         teamNicol: document.getElementById('teamNicolGoal').value
     };
 
-    try {
-        const response = await fetch('../api/update-goals.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-
-        if (response.ok) {
-            closeModal();
-            loadGoalsData();
-        }
-    } catch (error) {
-        console.error('Error updating goals:', error);
-    }
+    console.log('Updating goals:', formData);
+    closeModal();
+    loadGoalsData();
 }
 
 function calculateTeamProjection(team) {
-    const daysInPeriod = 30;
+    const daysInMonth = 30;
     const currentDay = new Date().getDate();
     const dailyRate = team.currentSales / currentDay;
-    const projectedTotal = dailyRate * daysInPeriod;
+    const projectedTotal = dailyRate * daysInMonth;
     
     return Math.round((projectedTotal / team.salesGoal) * 100);
 }

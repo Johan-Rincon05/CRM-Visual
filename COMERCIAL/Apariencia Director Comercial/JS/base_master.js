@@ -1,56 +1,10 @@
-// Main Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    initializeSidebar();
-    initializeUserMenu();
     initializeTable();
     loadOrientadores();
     setupEventListeners();
     initializePagination();
 });
 
-// Sidebar Functionality
-function initializeSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const mainContent = document.querySelector('.main-content');
-
-    sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-        mainContent.style.marginLeft = sidebar.classList.contains('collapsed') ? '70px' : '260px';
-    });
-
-    // Handle responsive sidebar
-    window.addEventListener('resize', () => {
-        if (window.innerWidth <= 768) {
-            sidebar.classList.add('collapsed');
-            mainContent.style.marginLeft = '0';
-        } else {
-            mainContent.style.marginLeft = sidebar.classList.contains('collapsed') ? '70px' : '260px';
-        }
-    });
-}
-
-// User Menu Functionality
-function initializeUserMenu() {
-    const userInfo = document.getElementById('userInfo');
-    const userMenu = document.getElementById('userMenu');
-    const dropdownIcon = userInfo.querySelector('.dropdown-icon');
-
-    userInfo.addEventListener('click', (e) => {
-        e.stopPropagation();
-        userMenu.classList.toggle('active');
-        dropdownIcon.style.transform = userMenu.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!userInfo.contains(e.target) && !userMenu.contains(e.target)) {
-            userMenu.classList.remove('active');
-            dropdownIcon.style.transform = 'rotate(0)';
-        }
-    });
-}
-
-// Table Management
 let currentLeads = [];
 let selectedLeads = new Set();
 let currentPage = 1;
@@ -102,7 +56,6 @@ function updateTable(filteredData = currentLeads) {
     });
 }
 
-// Pagination Functions
 function initializePagination() {
     document.getElementById('prevPage').addEventListener('click', () => {
         if (currentPage > 1) {
@@ -130,7 +83,6 @@ function updatePagination() {
     document.getElementById('nextPage').disabled = currentPage === totalPages;
 }
 
-// Filter Functions
 function updateFilters(data) {
     const uniqueCarreras = [...new Set(data.map(lead => lead.carrera_interes))];
     const carreraSelect = document.getElementById('carreraFilter');
@@ -166,7 +118,6 @@ function applyFilters() {
     updatePagination();
 }
 
-// Lead Assignment Functions
 async function handleAssignment(e) {
     e.preventDefault();
     
@@ -199,9 +150,7 @@ async function handleAssignment(e) {
     }
 }
 
-// Utility Functions
 function showNotification(message, type) {
-    // Implement your notification system here
     console.log(`${type}: ${message}`);
 }
 
@@ -210,13 +159,45 @@ function closeModal() {
 }
 
 function editLead(leadId) {
-    // Implement lead editing functionality
     console.log('Editing lead:', leadId);
 }
 
-// Event Listeners Setup
+async function loadOrientadores() {
+    try {
+        const response = await fetch('../api/get-orientadores.php');
+        const orientadores = await response.json();
+        
+        const orientadorSelect = document.getElementById('orientadorSelect');
+        const orientadorFilter = document.getElementById('orientadorFilter');
+        
+        [orientadorSelect, orientadorFilter].forEach(select => {
+            select.innerHTML = '<option value="">Seleccione un orientador</option>';
+            orientadores.forEach(orientador => {
+                const option = document.createElement('option');
+                option.value = orientador.id;
+                option.textContent = orientador.nombre;
+                select.appendChild(option);
+            });
+        });
+    } catch (error) {
+        console.error('Error loading orientadores:', error);
+        showNotification('Error al cargar orientadores', 'error');
+    }
+}
+
+function updateAssignButton() {
+    const assignButton = document.getElementById('assignLeadsBtn');
+    assignButton.disabled = selectedLeads.size === 0;
+    
+    if (selectedLeads.size > 0) {
+        document.getElementById('selectedLeadsCount').textContent = selectedLeads.size;
+        assignButton.addEventListener('click', () => {
+            document.getElementById('assignModal').style.display = 'block';
+        });
+    }
+}
+
 function setupEventListeners() {
-    // Search functionality
     document.getElementById('searchLeads').addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
         const filteredLeads = currentLeads.filter(lead => 
@@ -229,12 +210,10 @@ function setupEventListeners() {
         updatePagination();
     });
 
-    // Filter handlers
     ['pautaFilter', 'orientadorFilter', 'carreraFilter'].forEach(filterId => {
         document.getElementById(filterId).addEventListener('change', applyFilters);
     });
 
-    // Select all checkbox
     document.getElementById('selectAll').addEventListener('change', (e) => {
         const checkboxes = document.querySelectorAll('.lead-checkbox');
         checkboxes.forEach(checkbox => {
@@ -248,7 +227,6 @@ function setupEventListeners() {
         updateAssignButton();
     });
 
-    // Individual checkboxes
     document.addEventListener('change', (e) => {
         if (e.target.classList.contains('lead-checkbox')) {
             if (e.target.checked) {
@@ -260,6 +238,5 @@ function setupEventListeners() {
         }
     });
 
-    // Assignment form
     document.getElementById('assignForm').addEventListener('submit', handleAssignment);
 }

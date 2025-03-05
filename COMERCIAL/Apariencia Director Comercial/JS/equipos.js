@@ -1,35 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const userInfo = document.getElementById('userInfo');
-    const userMenu = document.getElementById('userMenu');
     const mainContent = document.getElementById('mainContent');
-
-    // Sidebar Toggle Functionality
-    sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-        localStorage.setItem('sidebarState', sidebar.classList.contains('collapsed'));
-    });
-
-    // Restore Sidebar State
-    const sidebarState = localStorage.getItem('sidebarState');
-    if (sidebarState === 'true') {
-        sidebar.classList.add('collapsed');
-    }
-
-    // User Menu Toggle
-    userInfo.addEventListener('click', (e) => {
-        e.stopPropagation();
-        userMenu.classList.toggle('active');
-    });
-
-    // Close User Menu on Outside Click
-    document.addEventListener('click', (e) => {
-        if (!userInfo.contains(e.target)) {
-            userMenu.classList.remove('active');
-        }
-    });
 
     // Teams Data
     const teamDianaMembers = [
@@ -84,15 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function updateDataForPeriod(period) {
-        // Implement period-based data update logic here
         console.log(`Updating data for period: ${period}`);
-        // You can add API calls or data processing here
+        // Add API calls or data processing here
     }
 
     // Mobile Responsiveness
     function handleResize() {
         if (window.innerWidth <= 768) {
-            sidebar.classList.add('collapsed');
+            mainContent.classList.add('mobile-view');
+        } else {
+            mainContent.classList.remove('mobile-view');
         }
     }
 
