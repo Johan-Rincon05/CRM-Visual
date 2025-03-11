@@ -5,10 +5,6 @@ let tempRow = null;
 
 document.addEventListener('DOMContentLoaded', function() {
     const tableRows = document.querySelectorAll('#leadsTableBody tr');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const userInfo = document.getElementById('userInfo');
-    const userMenu = document.getElementById('userMenu');
 
     tableRows.forEach(row => {
         row.addEventListener('click', function() {
@@ -21,46 +17,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 estado: this.cells[5].textContent
             };
             
-            // Mostrar el modal
             const modalOverlay = document.getElementById('modal-overlay');
             modalOverlay.style.display = 'flex';
             
-            // Llenar los campos del formulario con los datos
             document.getElementById('nombres').value = data.nombre;
             document.getElementById('email').value = data.correo;
             document.getElementById('celular').value = data.telefono;
             
-            // Activar el primer tab por defecto
             switchTab('form');
         });
-    });
-    
-    // Toggle sidebar
-    sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-    });
-
-    // Toggle user menu
-    userInfo.addEventListener('click', () => {
-        userMenu.classList.toggle('active');
-        userInfo.querySelector('.dropdown-icon').style.transform = 
-            userMenu.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
-    });
-
-    // Close user menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!userInfo.contains(e.target) && !userMenu.contains(e.target)) {
-            userMenu.classList.remove('active');
-            userInfo.querySelector('.dropdown-icon').style.transform = 'rotate(0)';
-        }
-    });
-
-    // Set active menu item based on current page
-    const currentPage = window.location.pathname.split('/').pop();
-    document.querySelectorAll('.sidebar-item').forEach(item => {
-        if (item.getAttribute('href') === currentPage) {
-            item.classList.add('active');
-        }
     });
 });
 
@@ -119,12 +84,10 @@ function switchTab(tabName) {
 }
 
 function toggleSection(sectionId) {
-    // Obtener todas las secciones
     const allSections = document.querySelectorAll('.section-content');
     const selectedSection = document.getElementById(`${sectionId}-section`);
     const icon = selectedSection.previousElementSibling.querySelector('i');
     
-    // Manejar el ícono
     const allIcons = document.querySelectorAll('.section-header i');
     allIcons.forEach(i => {
         if(i !== icon) {
@@ -136,11 +99,8 @@ function toggleSection(sectionId) {
     icon.classList.toggle('fa-chevron-up');
     icon.classList.toggle('fa-chevron-down');
     
-    // Toggle de la sección seleccionada
     selectedSection.classList.toggle('active');
 }
-
-
 
 document.getElementById('searchInput').addEventListener('input', function() {
     const filter = this.value.toLowerCase();
@@ -290,11 +250,9 @@ function updateStats() {
     document.querySelectorAll('.stats .value')[1].textContent = activeLeads;
 }
 
-
 document.getElementById('createLeadBtn').addEventListener('click', () => {
     openSearchModal();
 });
-
 
 function openSearchModal() {
     document.getElementById('search-lead-modal').style.display = 'flex';
@@ -304,13 +262,11 @@ function closeSearchModal() {
     document.getElementById('search-lead-modal').style.display = 'none';
 }
 
-
 document.getElementById('validate-lead').addEventListener('click', async () => {
     const phone = document.getElementById('search-phone').value;
     const email = document.getElementById('search-email').value;
     
     try {
-        
         await new Promise(resolve => setTimeout(resolve, 1000));
         const exists = Math.random() > 0.5; 
         

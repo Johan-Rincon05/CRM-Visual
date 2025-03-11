@@ -1,51 +1,7 @@
-// Main Dashboard Initialization
 document.addEventListener('DOMContentLoaded', () => {
-    initializeSidebar();
-    initializeUserMenu();
     initializeCharts();
 });
 
-// Sidebar Functionality
-function initializeSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const mainContent = document.querySelector('.main-content');
-
-    sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
-        mainContent.style.marginLeft = sidebar.classList.contains('collapsed') ? '70px' : '260px';
-    });
-
-    // Set active menu item
-    const currentPage = window.location.pathname.split('/').pop();
-    document.querySelectorAll('.sidebar-item').forEach(item => {
-        if (item.getAttribute('href') === currentPage) {
-            item.classList.add('active');
-        }
-    });
-}
-
-// User Menu Functionality
-function initializeUserMenu() {
-    const userInfo = document.getElementById('userInfo');
-    const userMenu = document.getElementById('userMenu');
-    const dropdownIcon = userInfo.querySelector('.dropdown-icon');
-
-    userInfo.addEventListener('click', (e) => {
-        e.stopPropagation();
-        userMenu.classList.toggle('active');
-        dropdownIcon.style.transform = userMenu.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!userInfo.contains(e.target) && !userMenu.contains(e.target)) {
-            userMenu.classList.remove('active');
-            dropdownIcon.style.transform = 'rotate(0)';
-        }
-    });
-}
-
-// Charts Initialization
 function initializeCharts() {
     initializeSalesChart();
     initializeConversionChart();
@@ -135,13 +91,7 @@ function initializeConversionChart() {
     });
 }
 
-// Window Resize Handler
 window.addEventListener('resize', () => {
-    const sidebar = document.getElementById('sidebar');
     const mainContent = document.querySelector('.main-content');
-    
-    if (window.innerWidth <= 768) {
-        sidebar.classList.add('collapsed');
-        mainContent.style.marginLeft = '70px';
-    }
+    mainContent.style.width = '100%';
 });
